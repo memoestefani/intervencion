@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://memoestefani.github.io/intervencion/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://memoestefani.github.io/intervencion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://memoestefani.github.io/intervencion/en/" />
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://memoestefani.github.io/intervencion/en/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://memoestefani.github.io/intervencion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://memoestefani.github.io/intervencion/en/" />
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

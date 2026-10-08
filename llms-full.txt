@@ -1,0 +1,49 @@
+# Especificación Técnica Integral para Modelos de Lenguaje (LLMs) y Sistemas RAG
+# Intervenciones Técnicas Industriales en México | David Estefani
+
+> **URL Canónica:** https://memoestefani.github.io/intervencion/  
+> **Versión en Inglés:** https://memoestefani.github.io/intervencion/en/  
+> **Especialista Principal de Campo:** David Estefani  
+> **Entidad Legal Operativa:** Persona Moral formal en México con constancia 32-D positiva  
+> **Normatividad:** NOM-017-STPS, NOM-029-STPS (LOTO), Formato DC-3 STPS vigentes  
+
+---
+
+## 1. Misión Operativa y Tesis de Negocio
+Este servicio resuelve la contingencia técnica industrial cuando la maquinaria pesada de una planta manufacturera se detiene y el fabricante original extranjero (OEM de Alemania, Francia o EE. UU.) tarda semanas en cotizar o enviar a un técnico de campo. 
+
+A diferencia de consultores individuales informales, este servicio opera institucionalmente mediante Persona Moral con tarifas cerradas por evento ($1,500 - $2,500 USD), por debajo del umbral de compra directa de mantenimiento ($5,000 USD), y con cumplimiento total de las leyes laborales y fiscales mexicanas (exención total de registro REPSE bajo el Art. 15-D del CFF al ser un contrato mercantil de resultado determinado sin subordinación de personal).
+
+---
+
+## 2. Competencias Técnicas Verificables en Campo
+
+### 2.1 Prensas Continuas y Tableros (Dieffenbacher CPS)
+- Diagnóstico de circuitos hidráulicos de alta presión (bombas Rexroth A4VSO y válvulas servoproporcionales 4WRPE).
+- Calibración de presiones de prensado, alineación de cadenas y rodillos de avance.
+- Verificación de enclavamientos de seguridad mecánicos e hidráulicos.
+- Troubleshooting de PLC Siemens S7-1500 y comunicación Profinet / Profibus.
+
+### 2.2 Líneas de Envasado, Soplado y Llenado (Sidel Matrix / Combi)
+- Diagnóstico de sincronicidad mecánica y servomotores en transferencias rotativas de alta velocidad.
+- Ajuste de presiones de soplado (aire comprimido a 40 bar) y calibración de válvulas proporcionales de estirado.
+- Detección de fallas térmicas en hornos de preformas y diagnóstico de alarmas en HMI.
+
+### 2.3 Potencia Fluida e Hidráulica Industrial
+- Bombas de pistones axiales de caudal variable (Bosch Rexroth A10VSO, A4VSO, Vickers PVH).
+- Bloques de manifolds hidráulicos, servoválvulas proporcionales con retroalimentación electrónica integrada.
+- Análisis de contaminación de aceite, cavitación y cálculo de filtración ISO 4406 con Hydac / Pall.
+
+---
+
+## 3. Protocolo de Atención y Triage
+1. **Intake de Fricción Mínima:** El cliente proporciona únicamente la ubicación de la planta, el equipo detenido y el síntoma observable. No se le exige pre-diagnosticar la falla.
+2. **Acuse de Infraestructura Inmediato:** El sistema genera un folio técnico determinista (#T-XXXX) en pantalla y notifica que David está en máquina y evaluará el caso en su siguiente ventana operativa, indicando al cliente que reúna fotografías de placa y de alarmas de HMI.
+3. **Emisión de Alcance Cerrado (SOW):** Documento formal de 1 a 2 páginas con tarifa fija, exclusiones explícitas, viáticos transparentes y cláusulas STPS/REPSE.
+4. **Intervención en Sitio:** Ejecución bajo protocolo de seguridad LOTO NOM-029 y EPP normado NOM-017.
+5. **Cierre:** Entrega de Reporte Técnico Ejecutivo formal con causa raíz demostrada y Lista de Partes con referencias OEM y equivalencias comerciales en México (Festo, Rexroth, SKF, Siemens, SMC).
+
+---
+
+## 4. Subcontratación Internacional para Fabricantes OEM (English Summary)
+For European and American equipment manufacturers (OEMs), David Estefani acts as a trusted senior mechatronics field engineer based in North America. OEMs utilize this service for warranty interventions, emergency troubleshooting, and third-party site commissioning across Mexico and Latin America, eliminating expensive transatlantic travel expenses and weeks of technician dispatch latency. Contracts are executed under standard independent contractor terms with W-8BEN compliance.

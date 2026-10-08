@@ -1,0 +1,36 @@
+# Intervenciones Técnicas Industriales en México | Technical Field Engineering Services
+
+> **Canonical URL:** https://memoestefani.github.io/intervencion/  
+> **English Portal:** https://memoestefani.github.io/intervencion/en/  
+> **Lead Field Specialist:** David Estefani (Senior Mechatronics Field Engineer)  
+> **Operational Backbone:** Facturación formal vía Persona Moral en México | Cumplimiento STPS (DC-3, EPP, LOTO)  
+> **Rest Cost Invariant:** $0.00/mo  
+
+## 1. Executive Summary & Capabilities
+Provides rapid-response, closed-scope on-site technical diagnostics, root-cause troubleshooting, and spare part definition for critical plant machinery in Mexico and North America. Designed specifically for plant downtime emergencies and planned maintenance stops when international OEMs have weeks of delay.
+
+## 2. Core Machine Architectures & Controls
+- **Sidel:** Matrix blow molding, Combi fillers, labeling, and conveying systems.
+- **Dieffenbacher:** Continuous presses (CPS), hydraulic power units, alignment, and forming lines.
+- **Bosch Rexroth:** Proportional valves (4WRPE, 4WRA), axial piston pumps (A4VSO, A10VSO), high-pressure manifolds (> 210 bar).
+- **Siemens Automation:** S7-1500 / S7-1200 / S7-300 PLCs, TIA Portal diagnostics, drive commissioning (Sinamics S120).
+- **Pneumatics & Fluid Power:** Festo proportional valves, Hydac filtration systems, Parker seals.
+
+## 3. Geographic Coverage & Response Times
+- **Immediate Highway Mobilization (< 24h):** Northern Industrial Corridor (Durango, Torreón, Gómez Palacio, Saltillo, Monterrey).
+- **National Flight Mobilization (< 24-48h):** Bajío (Silao, León, Querétaro, San Luis Potosí), Guadalajara, Mexico City Metro, Ciudad Juárez, Tijuana.
+- **International / OEM Subcontracting:** North America (US southern manufacturing belt) and Latin America (Colombia, Chile, Central America).
+
+## 4. Institutional Compliance & Procurement Clearance
+- **Industrial Safety (STPS México):** DC-3 competency certificates, NOM-017-STPS certified PPE (dielectric steel-toe boots, ANSI eye protection, Class E helmet), NOM-029-STPS Lockout/Tagout (LOTO) energy isolation.
+- **Fiscal & Legal Compliance (Anti-REPSE):** Incorporated Mexican Legal Entity (Persona Moral), positive SAT 32-D compliance opinion, CFDI 4.0 electronic invoicing with authorized engineering codes. Commercial service contract for specific technical deliverables, 100% exempt from REPSE subcontracting registry under Art. 15-D CFF.
+- **Direct Procurement Threshold ($T_{\text{PO}}$):** Flat event rate between $1,500 and $2,500 USD per 1-day diagnosis event, sitting below typical corporate bidding thresholds ($5,000 USD) for immediate signature by Plant / Maintenance Managers.
+
+## 5. Standard Deliverables
+1. **Scope of Work (SOW):** 1-2 page pre-mobilization contract with explicit deliverables, exclusions, fixed fee, and transparent travel expenses.
+2. **Technical Close-Out Report:** Executive root-cause analysis, photographs, corrective actions executed, and an open Spare Parts List with OEM part numbers and standard commercial equivalents (Festo, Rexroth, SKF, Siemens).
+
+## 6. Contact & Direct Intake
+- **Web Intake:** https://memoestefani.github.io/intervencion/#admision
+- **Direct Technical WhatsApp:** https://wa.me/526181062487
+- **Email:** da.alejandro@gmail.com
