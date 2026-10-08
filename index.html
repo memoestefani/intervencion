@@ -65,32 +65,66 @@
 </head>
 <body>
 
-  <!-- Barra Superior Institucional -->
+  <!-- Barra Superior Institucional (Apple-Grade Minimalista) -->
   <header class="top-bar">
     <div class="top-bar-badge">
       <span class="top-bar-dot" aria-hidden="true"></span>
       <span>Disponibilidad en Planta: México / North America</span>
     </div>
-    <nav class="top-bar-links" aria-label="Navegación de idioma">
-      <a href="en/" hreflang="en">English (US / OEMs)</a>
+    <nav class="lang-toggle" aria-label="Navegación de idioma">
+      <a href="./" class="active">ES</a>
+      <a href="en/" hreflang="en">EN</a>
     </nav>
   </header>
 
   <main class="container">
 
     <!-- Hero Section -->
-    <section class="hero" aria-label="Introducción y Servicios Principales">
+    <section class="hero" id="stage-diagnostic" aria-label="Introducción y Servicios Principales">
       <div class="kicker">
-        <span>Soporte Especializado en Sitio • Respuesta Inmediata</span>
+        <span>«DIAGNÓSTICO EN SITIO»</span>
       </div>
       
       <h1 class="hero-title">
-        Paro en Línea de Envasado o Prensa Continua. Diagnóstico en Sitio en &lt; 24–48 h.
+        Paro Crítico en Línea de Producción. Diagnóstico en Sitio en &lt; 24–48 h.
       </h1>
+
+      <!-- Segmentador Táctil de Maquinaria Industrial -->
+      <div class="machine-segmenter" role="group" aria-label="Segmentador de Maquinaria">
+        <button type="button" class="machine-chip-btn active" id="chipSidel" data-target="specSidel">
+          <span>🧴 Líneas de Envasado (Sidel / Krones)</span>
+        </button>
+        <button type="button" class="machine-chip-btn" id="chipDieff" data-target="specDieff">
+          <span>🪵 Prensas Continuas (Dieffenbacher / Siempelkamp)</span>
+        </button>
+        <button type="button" class="machine-chip-btn" id="chipRexroth" data-target="specRexroth">
+          <span>⚙️ Hidráulica Proporcional (Rexroth / Moog)</span>
+        </button>
+      </div>
       
       <p class="hero-subtitle">
-        Especialista mecatrónico independiente en sitio con alcance técnico y costo fijo acordado ($1,500 – $2,500 USD) antes de salir. Facturación W-8BEN o Persona Moral SAT 32-D. Movilización en menos de 24–48 horas a complejos fabriles en México y cobertura transfronteriza.
+        Intervención técnica en sitio en menos de 24 horas con alcance cerrado y reporte de causa raíz independiente.
       </p>
+
+      <!-- Micro-Pastillas de Garantía Fiduciaria -->
+      <div class="hero-guarantee-grid">
+        <div class="guarantee-badge">
+          <span class="guarantee-badge-icon">⚡</span>
+          <span>En Sitio &lt; 24h</span>
+        </div>
+        <div class="guarantee-badge">
+          <span class="guarantee-badge-icon">🎯</span>
+          <span>Costo Cerrado ($1.5k–$2.5k USD)</span>
+        </div>
+        <div class="guarantee-badge">
+          <span class="guarantee-badge-icon">📋</span>
+          <span>BOM Abierta (Cero Cautiverio)</span>
+        </div>
+        <div class="guarantee-badge">
+          <span class="guarantee-badge-icon">🛡️</span>
+          <span>Alta Compras (32-D / W-8BEN)</span>
+        </div>
+      </div>
 
       <!-- Banda Dual de Acción Inmediata (Above-the-Fold Thumb Zone) -->
       <div class="hero-actions">
@@ -103,37 +137,47 @@
       </div>
     </section>
 
-    <!-- Chips Interactivos de Maquinaria y Pericia de Campo -->
+    <!-- Ficha Técnica Reactiva de Maquinaria Soportada -->
     <section class="brands-strip" aria-label="Ecosistema Técnico Soportado">
-      <div class="brands-label">Maquinaria y Sistemas de Control Soportados (Toca para prellenar diagnóstico):</div>
+      <div class="brands-label">Maquinaria y Sistemas de Control Soportados (Telemetría de Inspección):</div>
       <div class="brands-grid" role="group" aria-label="Sistemas industriales">
-        <span class="brand-chip" tabindex="0" data-machine="Líneas de Envasado Sidel Matrix / Combi" data-diag="Soplado y llenado continuo: desincronización de servomotores, fallas de presurización de molde a 40 bar y micro-fugas en carrusel.">
+        <span class="brand-chip" tabindex="0" data-machine="Líneas de Envasado Sidel Matrix / Combi" data-diag="Soplado y llenado continuo: desincronización de servomotores, presurización de molde 40 bar y micro-fugas en carrusel.">
           <span>Sidel Matrix / Combi</span>
         </span>
-        <span class="brand-chip" tabindex="0" data-machine="Prensas Continuas Dieffenbacher CPS" data-diag="Prensas continuas de alta potencia: desalineación térmica, desbalance de presiones en marcos y saturación de retorno electrohidráulico.">
+        <span class="brand-chip" tabindex="0" data-machine="Prensas Continuas Dieffenbacher CPS" data-diag="Prensas continuas: desalineación térmica, desbalance de presiones en marcos y retorno electrohidráulico.">
           <span>Dieffenbacher CPS</span>
         </span>
-        <span class="brand-chip" tabindex="0" data-machine="Sistemas Electrohidráulicos Bosch Rexroth A4VSO / 4WRPE" data-diag="Válvulas proporcionales y bombas de pistones: cavitación, respuesta lenta de corredera y calibración de lazo cerrado p/Q.">
+        <span class="brand-chip" tabindex="0" data-machine="Sistemas Electrohidráulicos Bosch Rexroth A4VSO / 4WRPE" data-diag="Válvulas proporcionales y bombas de pistones: cavitación, respuesta lenta de corredera y calibración p/Q.">
           <span>Bosch Rexroth A4VSO / 4WRPE</span>
         </span>
-        <span class="brand-chip" tabindex="0" data-machine="Autómatas Siemens S7-1500 / TIA Portal" data-diag="Control y redes: diagnóstico de periferia Profinet, alarmas de seguridad F-CPU y lectura de bloques de diagnóstico de accionamientos.">
+        <span class="brand-chip" tabindex="0" data-machine="Autómatas Siemens S7-1500 / TIA Portal" data-diag="Control y redes: diagnóstico Profinet, alarmas de seguridad F-CPU y bloques de accionamiento.">
           <span>Siemens S7-1500 / TIA Portal</span>
         </span>
-        <span class="brand-chip" tabindex="0" data-machine="Neumática Proporcional Festo" data-diag="Terminales de válvulas y actuadores proporcionales: pérdida de caudal, desgaste de sellos y regulación servo-neumática.">
+        <span class="brand-chip" tabindex="0" data-machine="Neumática Proporcional Festo" data-diag="Terminales de válvulas y actuadores proporcionales: pérdida de caudal y regulación servo-neumática.">
           <span>Festo Proportional Pneumatics</span>
         </span>
       </div>
 
-      <!-- Ficha Técnica Reactiva en el Mismo Viewport (Patrón Linear) -->
+      <!-- Ficha Técnica Reactiva en el Mismo Viewport -->
       <div class="machine-spec-card" id="machineSpecCard">
         <div class="machine-spec-header">
-          <div class="machine-spec-title" id="machineSpecTitle">Equipo Seleccionado</div>
+          <div class="machine-spec-title" id="machineSpecTitle">Líneas de Envasado Sidel Matrix / Combi</div>
           <span class="machine-spec-badge" id="machineSpecBadge">Inspección p/Q</span>
         </div>
-        <p id="machineSpecSummary" style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.5rem;"></p>
-        <ul class="machine-spec-points" id="machineSpecPoints">
-          <!-- Puntos clave de inspección cargados dinámicamente -->
-        </ul>
+        <div class="spec-grid-3col">
+          <div class="spec-col-item">
+            <div class="spec-col-label">Subsistemas Críticos</div>
+            <div class="spec-col-val" id="machineSpecSubsys">Carrusel de soplado, manifold de 40 bar, servoválvulas proporcionales y servos de estirado.</div>
+          </div>
+          <div class="spec-col-item">
+            <div class="spec-col-label">Modo de Falla Resuelto</div>
+            <div class="spec-col-val" id="machineSpecFailure">Desincronización angular, micro-fugas en juntas rotativas y despresurización de molde.</div>
+          </div>
+          <div class="spec-col-item">
+            <div class="spec-col-label">Protocolo de Intervención</div>
+            <div class="spec-col-val" id="machineSpecProtocol">Medición dinámica p/Q en manifold, análisis de bus Profinet y calibración de lazo de servoválvula.</div>
+          </div>
+        </div>
         <div class="machine-spec-footer">
           <div class="machine-spec-rate">
             Tarifa estimada: <strong id="machineSpecRate">$1,500 – $2,500 USD</strong> (Costo fijo cerrado)
@@ -145,97 +189,7 @@
       </div>
     </section>
 
-    <!-- Visor de Entregables Reales que Protegen tu Inversión -->
-    <section class="deliverables-section" aria-label="Entregables Operativos Formales">
-      <div class="deliverables-header">
-        <h2>Entregables Técnicos que Justifican tu Inversión ante Compras y Finanzas</h2>
-        <p>Intervenciones técnicas de alcance cerrado y entregables garantizados antes de viajar:</p>
-      </div>
-
-      <div class="deliverables-grid">
-        <article class="deliverable-card">
-          <div class="deliverable-badge">Entregable 1: Ex-Ante</div>
-          <h4>Proforma de Alcance y Costo Cerrado (SOW)</h4>
-          <p>Acordada y firmada antes de que el especialista aborde el transporte hacia tu planta. Sin sorpresas de sobrecostos.</p>
-          <div class="spec-sheet">
-            • <strong>Alcance Incluido:</strong> Pruebas estáticas, verificación de lazo p/Q, diagnóstico de causa raíz y restablecimiento guiado.<br>
-            • <strong>Exclusiones Explícitas:</strong> Sin cuadrillas de obra civil, sin suministro forzado de refacciones cautivas.<br>
-            • <strong>Tarifa Fija:</strong> Importe cerrado por evento ($1,500 – $2,500 USD) bajo el umbral de orden de compra directa MRO.
-          </div>
-        </article>
-
-        <article class="deliverable-card">
-          <div class="deliverable-badge">Entregable 2: Ex-Post</div>
-          <h4>Reporte Técnico de Cierre y Lista de Refacciones</h4>
-          <p>Dictamen técnico estructurado con evidencia fotográfica, lecturas de instrumentación y despiece abierto.</p>
-          <div class="spec-sheet">
-            • <strong>Causa Raíz Determinista:</strong> Análisis físico del fallo (mecánico, hidráulico o de control).<br>
-            • <strong>Lista de Partes Abierta:</strong> Referencias de componentes estándar (Festo, Rexroth, SKF, Siemens) para compra directa.<br>
-            • <strong>Sin Candados:</strong> Elimina el sobreprecio de hasta 400% impuesto por revendedores de partes del fabricante.
-          </div>
-        </article>
-      </div>
-
-      <!-- Muestra Fáctica de Reporte Técnico de Cierre (reporte_cierre_template.md) -->
-      <div class="report-sample-sheet" aria-label="Muestra Real de Reporte de Cierre">
-        <div class="report-sheet-header">
-          <div style="display: flex; align-items: center; gap: 0.65rem;">
-            <span class="report-folio-tag">#T-261007-8F2B</span>
-            <strong style="font-size: 0.95rem;">Reporte de Cierre Técnico e Inventario de Causa Raíz</strong>
-          </div>
-          <span class="report-sheet-meta">Sopladora Rotativa / Llenadora Isométrica</span>
-        </div>
-        <div class="report-telemetry-box">
-          • Variable Crítica Medida: Presión en manifold de soplado <strong>38 bar (Medida)</strong> vs. <strong>40 bar (Nominal)</strong>.<br>
-          • Hallazgo Determinista: Fuga dinámica en junta rotativa de distribución y corredera de válvula servoproporcional atascada por barniz térmico.
-        </div>
-        <div class="report-bom-table-wrapper">
-          <table class="report-bom-table">
-            <thead>
-              <tr>
-                <th>Prioridad</th>
-                <th>Componente de Falla</th>
-                <th>Refacción Homologada Abierta</th>
-                <th>Fabricante</th>
-                <th>Disponibilidad</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="badge-urgency inmediata">🔴 INMEDIATA</span></td>
-                <td>Válvula servoproporcional NG10</td>
-                <td><code>4WRPE10-W6-50L-2X/G24K0/A1M</code></td>
-                <td>Bosch Rexroth</td>
-                <td>Distribución local abierta</td>
-              </tr>
-              <tr>
-                <td><span class="badge-urgency inmediata">🔴 INMEDIATA</span></td>
-                <td>Elemento filtrante alta presión 10µm</td>
-                <td><code>0240D010BN4HC</code></td>
-                <td>Hydac</td>
-                <td>En stock distribuidor</td>
-              </tr>
-              <tr>
-                <td><span class="badge-urgency preventiva">🟡 PREVENTIVA (30d)</span></td>
-                <td>Juego de sellos Vitón alta temperatura</td>
-                <td><code>V8388-75 Parker O-Ring Kit</code></td>
-                <td>Parker Hannifin</td>
-                <td>Tiempo entrega 5 días</td>
-              </tr>
-              <tr>
-                <td><span class="badge-urgency stock">🟢 STOCK PLANTA</span></td>
-                <td>Servomotor sincrónico eje soplado</td>
-                <td><code>1FK7060-2AC71-1QA0</code></td>
-                <td>Siemens</td>
-                <td>Existente en almacén cliente</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Matriz Asimétrica de ROI vs. OEM -->
+    <!-- Matriz Asimétrica de ROI vs. OEM (Fase 3: Ecuación Económica) -->
     <section class="roi-section" aria-label="Comparativa de Tiempo y Costo frente a Alternativas">
       <h2>Costo de Paro en Línea vs. Inversión en Diagnóstico</h2>
       <p>Cuando cada hora de paro en línea destruye miles de dólares de producción, la variable crítica es la velocidad de certidumbre:</p>
@@ -338,7 +292,7 @@
       </div>
     </section>
 
-    <!-- Sección de Vías de Aprobación para Compras (Aliado Fiduciario Institucional) -->
+    <!-- Sección de Vías de Aprobación para Compras (Fase 4: Compliance y Rutas Fiduciarias) -->
     <section class="procurement-section" aria-label="Rutas de Aprobación y Facilidad de Compra">
       <div class="procurement-header">
         <h2>3 Vías Ágiles de Autorización para Compras y Finanzas</h2>
@@ -387,9 +341,124 @@
       </div>
     </section>
 
-    <!-- Sección de Formulario de Admisión (Intake) -->
+    <!-- Visor de Entregables Reales que Protegen tu Inversión (Fase 5: Evidencia Documental) -->
+    <section class="deliverables-section" aria-label="Entregables Operativos Formales">
+      <div class="deliverables-header">
+        <h2>Entregables Técnicos que Justifican tu Inversión ante Compras y Finanzas</h2>
+        <p>Intervenciones técnicas de alcance cerrado y entregables garantizados antes de viajar:</p>
+      </div>
+
+      <div class="deliverables-grid">
+        <article class="deliverable-card">
+          <div class="deliverable-badge">Entregable 1: Ex-Ante</div>
+          <h4>Proforma de Alcance y Costo Cerrado (SOW)</h4>
+          <p>Acordada y firmada antes de que el especialista aborde el transporte hacia tu planta. Sin sorpresas de sobrecostos.</p>
+          <div class="spec-sheet">
+            • <strong>Alcance Incluido:</strong> Pruebas estáticas, verificación de lazo p/Q, diagnóstico de causa raíz y restablecimiento guiado.<br>
+            • <strong>Exclusiones Explícitas:</strong> Sin cuadrillas de obra civil, sin suministro forzado de refacciones cautivas.<br>
+            • <strong>Tarifa Fija:</strong> Importe cerrado por evento ($1,500 – $2,500 USD) bajo el umbral de orden de compra directa MRO.<br>
+            • <strong>Viáticos y Logística:</strong> Facturados a costo comprobable transparente (sin sobreprecio), o gestionados directamente por la logística de planta.
+          </div>
+        </article>
+
+        <article class="deliverable-card">
+          <div class="deliverable-badge">Entregable 2: Ex-Post</div>
+          <h4>Reporte Técnico de Cierre y Lista de Refacciones</h4>
+          <p>Dictamen técnico estructurado con evidencia fotográfica, lecturas de instrumentación y despiece abierto.</p>
+          <div class="spec-sheet">
+            • <strong>Causa Raíz Determinista:</strong> Análisis físico del fallo (mecánico, hidráulico o de control).<br>
+            • <strong>Lista de Partes Abierta:</strong> Referencias de componentes estándar (Festo, Rexroth, SKF, Siemens) para compra directa.<br>
+            • <strong>Sin Candados:</strong> Elimina el sobreprecio de hasta 400% impuesto por revendedores de partes del fabricante.
+          </div>
+        </article>
+      </div>
+
+      <!-- Muestra Fáctica de Reporte Técnico de Cierre (reporte_cierre_template.md) -->
+      <div class="report-sample-sheet" aria-label="Muestra Real de Reporte de Cierre">
+        <div class="report-sheet-header">
+          <div style="display: flex; align-items: center; gap: 0.65rem;">
+            <span class="report-folio-tag">#T-261007-8F2B</span>
+            <strong style="font-size: 0.95rem;">Reporte de Cierre Técnico e Inventario de Causa Raíz</strong>
+          </div>
+          <span class="report-sheet-meta">Sopladora Rotativa / Llenadora Isométrica</span>
+        </div>
+
+        <!-- Pestañas Interactivas de la Muestra (Telemetría vs Refacciones) -->
+        <div class="bom-tabs-nav" role="tablist">
+          <button type="button" class="bom-tab-btn active" id="tabBtnTelemetry" role="tab" aria-selected="true" data-tab="tabTelemetry">
+            📊 Telemetría y Causa Raíz
+          </button>
+          <button type="button" class="bom-tab-btn" id="tabBtnParts" role="tab" aria-selected="false" data-tab="tabParts">
+            📋 Lista Abierta de Refacciones (Sin Cautiverio)
+          </button>
+        </div>
+
+        <div class="bom-tab-pane active" id="tabTelemetry" role="tabpanel">
+          <div class="report-telemetry-box">
+            • <strong>Variable Crítica Medida:</strong> Presión en manifold de soplado <strong>38 bar (Medida)</strong> vs. <strong>40 bar (Nominal)</strong>.<br>
+            • <strong>Hallazgo Determinista:</strong> Fuga dinámica en junta rotativa de distribución y corredera de válvula servoproporcional atascada por barniz térmico.<br>
+            • <strong>Acción Ejecutada:</strong> Desmontaje in-situ, flushing ultrasónico de corredera, reemplazo de empaque primario y recalibración de lazo cerrado p/Q.
+          </div>
+        </div>
+
+        <div class="bom-tab-pane" id="tabParts" role="tabpanel">
+          <div class="report-bom-table-wrapper">
+            <table class="report-bom-table">
+              <thead>
+                <tr>
+                  <th>Prioridad</th>
+                  <th>Componente de Falla</th>
+                  <th>Refacción Homologada Abierta</th>
+                  <th>Fabricante</th>
+                  <th>Disponibilidad</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-urgency inmediata">🔴 INMEDIATA</span></td>
+                  <td>Válvula servoproporcional NG10</td>
+                  <td><code>4WRPE10-W6-50L-2X/G24K0/A1M</code></td>
+                  <td>Bosch Rexroth</td>
+                  <td>Distribución local abierta</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-urgency inmediata">🔴 INMEDIATA</span></td>
+                  <td>Elemento filtrante alta presión 10µm</td>
+                  <td><code>0240D010BN4HC</code></td>
+                  <td>Hydac</td>
+                  <td>En stock distribuidor</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-urgency preventiva">🟡 PREVENTIVA (30d)</span></td>
+                  <td>Juego de sellos Vitón alta temperatura</td>
+                  <td><code>V8388-75 Parker O-Ring Kit</code></td>
+                  <td>Parker Hannifin</td>
+                  <td>Tiempo entrega 5 días</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-urgency stock">🟢 STOCK PLANTA</span></td>
+                  <td>Servomotor sincrónico eje soplado</td>
+                  <td><code>1FK7060-2AC71-1QA0</code></td>
+                  <td>Siemens</td>
+                  <td>Existente en almacén cliente</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Formulario de Admisión (Fase 6: Intake Operativo) -->
     <section class="intake-section" id="intakeSection" aria-label="Mesa de Entrada Técnica">
       <div class="intake-header">
+        <!-- Docket Activo Preliminar en Vivo -->
+        <div>
+          <div class="active-docket-badge" id="activeDocketBadge">
+            <span class="active-docket-dot"></span>
+            <span>DOCKET ACTIVO: <strong id="docketFolioDisplay">#T-AAMMDD-XXXX</strong></span>
+          </div>
+        </div>
         <h2 class="intake-title">Mesa de Entrada para Intervención Técnica</h2>
         <p class="intake-desc">Describe el problema observable en planta. David revisa personalmente la solicitud para verificar la viabilidad técnica y emitir la proforma de alcance cerrado en su siguiente ventana operativa.</p>
       </div>
@@ -399,6 +468,18 @@
         <input type="hidden" name="folio" id="fieldFolioHidden" value="">
         <input type="hidden" name="subject" value="[INTERVENCIÓN TÉCNICA] Solicitud de Diagnóstico en Sitio">
         <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+        <!-- Conmutador Háptico iOS de Emergencia de Planta -->
+        <div class="ios-switch-container" id="urgentSwitchContainer">
+          <div class="ios-switch-label">
+            <strong>🚨 Paro Crítico de Línea de Producción</strong>
+            <span>Activa canalización y movilización prioritaria en menos de 24 horas</span>
+          </div>
+          <label class="ios-switch" for="fieldUrgentStop">
+            <input type="checkbox" id="fieldUrgentStop" name="urgent_line_stop" value="true">
+            <span class="ios-slider"></span>
+          </label>
+        </div>
 
         <div class="form-group">
           <label class="form-label" for="fieldPlant">1. Ubicación de la Planta y Complejo Fabril *</label>
@@ -413,13 +494,6 @@
         <div class="form-group">
           <label class="form-label" for="fieldSymptom">3. Síntoma Físico Observable o Código de Alarma *</label>
           <textarea class="form-textarea" id="fieldSymptom" name="symptom" required placeholder="Ej. Alarma E-402 en panel HMI, caída de presión en carrera descendente y micro-fuga por sello principal..."></textarea>
-        </div>
-
-        <div class="form-group" style="margin-top: 0.25rem; margin-bottom: 0.75rem;">
-          <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-size: 0.92rem; font-weight: 700;">
-            <input type="checkbox" id="fieldUrgentStop" name="urgent_line_stop" value="true" style="width: 20px; height: 20px; cursor: pointer;">
-            <span>¿Paro crítico total de línea de producción? (Prioridad de emergencia de campo)</span>
-          </label>
         </div>
 
         <div class="btn-group">
@@ -471,22 +545,6 @@
           </div>
         </div>
       </details>
-    </section>
-
-    <!-- Matriz de Cobertura Geográfica -->
-    <section class="travel-matrix" aria-label="Cobertura y Política de Viáticos">
-      <h2 style="font-size: 1.25rem; margin-bottom: 0.4rem;">Cobertura Geográfica y Política de Viáticos Transparentes</h2>
-      <p style="font-size: 0.92rem;">Operación central basada en Durango, con cobertura inmediata a corredores fabriles de México y Norteamérica:</p>
-      <div class="travel-grid">
-        <div class="travel-col">
-          <div class="travel-col-title">Zona Norte y Noreste (Carretera / Traslado Terrestre)</div>
-          <p style="font-size: 0.88rem;">Durango, Comarca Lagunera (Torreón/Gómez Palacio), Saltillo y Monterrey. Movilización por carretera con partida fija de transporte y casetas.</p>
-        </div>
-        <div class="travel-col">
-          <div class="travel-col-title">Bajío, Centro, Frontera y Cobertura EE.UU.</div>
-          <p style="font-size: 0.88rem;">Bajío (Silao, León, Querétaro, San Luis Potosí), Guadalajara, CDMX y cruces fronterizos. Pasajes de avión y hotel gestionados directamente por la planta o reembolsables a costo real comprobado.</p>
-        </div>
-      </div>
     </section>
 
   </main>

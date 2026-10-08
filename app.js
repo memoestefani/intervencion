@@ -1,6 +1,6 @@
 /**
- * app.js -- Lógica Client-Side Soberana y Resiliente (Swiss Precision)
- * Protocolo de Admisión, Folios Deterministas #T-XXXX, Web3Forms y Chips Hápticos
+ * app.js -- Lógica Client-Side Soberana y Resiliente (Apple-Grade Swiss Precision)
+ * Protocolo de Admisión, Folios Deterministas #T-XXXX, Web3Forms, Docket Activo y Switch Háptico
  * Mapeo 1:1 con backend en Rust (IntakePayload struct)
  */
 
@@ -18,18 +18,22 @@
   }
 
   // 2. Construcción de Enlace Profundo (Deeplink) a WhatsApp
-  function updateWhatsAppDeeplink(folio, plant, equipment, symptom, isEnglish) {
+  function updateWhatsAppDeeplink(folio, plant, equipment, symptom, isUrgent, isEnglish) {
     const waBtn = document.getElementById('btnWhatsAppDirect');
     const heroWaBtn = document.querySelector('.btn-hero-wa');
     const baseWaUrl = "https://wa.me/526181062487"; // David Estefani - WhatsApp Operativo
 
+    const urgencyHeader = isUrgent
+      ? (isEnglish ? "[🚨 CRITICAL LINE DOWN - PRIORITY INTERVENTION]\n" : "[🚨 PARO CRÍTICO TOTAL DE LÍNEA - MOVILIZACIÓN PRIORITARIA]\n")
+      : "";
+
     const text = isEnglish
-      ? `Hello David, plant service request.\n` +
+      ? `${urgencyHeader}Hello David, plant technical intervention request.\n` +
         `Folio: ${folio || 'PENDING'}\n` +
         `Plant: ${plant || 'Not specified'}\n` +
         `System: ${equipment || 'Not specified'}\n` +
         `Symptom: ${symptom || 'Unplanned line downtime'}`
-      : `Hola David, solicitud de intervención técnica en planta.\n` +
+      : `${urgencyHeader}Hola David, solicitud de intervención técnica en planta.\n` +
         `Folio: ${folio || 'PENDIENTE'}\n` +
         `Planta: ${plant || 'No especificada'}\n` +
         `Equipo: ${equipment || 'No especificado'}\n` +
@@ -46,105 +50,178 @@
     const intakeForm = document.getElementById('intakeForm');
     const ackCard = document.getElementById('ackCard');
     const ackFolioDisplay = document.getElementById('ackFolioDisplay');
+    const docketFolioDisplay = document.getElementById('docketFolioDisplay');
     const plantInput = document.getElementById('fieldPlant');
     const equipmentInput = document.getElementById('fieldEquipment');
     const symptomInput = document.getElementById('fieldSymptom');
+    const urgentStopEl = document.getElementById('fieldUrgentStop');
+    const urgentSwitchContainer = document.getElementById('urgentSwitchContainer');
     const submitBtn = document.getElementById('btnSubmitIntake');
-    const machineDiagBox = document.getElementById('machineDiagBox');
-    const machineDiagTitle = document.getElementById('machineDiagTitle');
-    const machineDiagText = document.getElementById('machineDiagText');
+
+    // Elementos de la Ficha Técnica de Telemetría
     const machineSpecCard = document.getElementById('machineSpecCard');
     const machineSpecTitle = document.getElementById('machineSpecTitle');
     const machineSpecBadge = document.getElementById('machineSpecBadge');
-    const machineSpecSummary = document.getElementById('machineSpecSummary');
-    const machineSpecPoints = document.getElementById('machineSpecPoints');
+    const machineSpecSubsys = document.getElementById('machineSpecSubsys');
+    const machineSpecFailure = document.getElementById('machineSpecFailure');
+    const machineSpecProtocol = document.getElementById('machineSpecProtocol');
+    const machineSpecRate = document.getElementById('machineSpecRate');
     const btnMachineSpecAction = document.getElementById('btnMachineSpecAction');
 
-    // Perfiles técnicos de inspección para la Ficha Reactiva
+    // Elementos de las Pestañas de la Muestra BOM
+    const tabBtnTelemetry = document.getElementById('tabBtnTelemetry');
+    const tabBtnParts = document.getElementById('tabBtnParts');
+    const tabTelemetry = document.getElementById('tabTelemetry');
+    const tabParts = document.getElementById('tabParts');
+
+    // Perfiles técnicos estructurados para la Ficha Reactiva de Telemetría
     const machineProfiles = {
       "Sidel": {
-        badge: isEnglish ? "High-Pressure Blowing (40 bar)" : "Soplado Alta Presión (40 bar)",
-        points: isEnglish ? [
-          "Static & dynamic pressure decay checks on 40-bar blowing manifold",
-          "Rotary distributor carousel seal & micro-leak telemetry",
-          "B&R / Siemens servo axis synchronization jitter diagnosis"
-        ] : [
-          "Verificación estática y dinámica de presurización a 40 bar en manifold de soplado",
-          "Detección de micro-fugas en carrusel y juntas rotativas de distribución",
-          "Desincronización y jitter en lazo de servomotores B&R / Siemens"
-        ]
+        title: isEnglish ? "Sidel Matrix / Combi Bottling Lines" : "Líneas de Envasado Sidel Matrix / Combi",
+        badge: isEnglish ? "High-Pressure p/Q (40 bar)" : "Inspección p/Q (40 bar)",
+        subsys: isEnglish
+          ? "Rotary blowing carousel, 40-bar manifold, proportional servo valves and stretch servos."
+          : "Carrusel de soplado, manifold de 40 bar, servoválvulas proporcionales y servos de estirado.",
+        failure: isEnglish
+          ? "Angular axis desynchronization, rotary joint seal micro-leakage and mold depressurization."
+          : "Desincronización angular, micro-fugas en juntas rotativas y despresurización de molde.",
+        protocol: isEnglish
+          ? "Dynamic 40-bar manifold telemetry, Profinet bus jitter analysis and closed-loop servo calibration."
+          : "Medición dinámica p/Q en manifold, análisis de bus Profinet y calibración de lazo de servoválvula.",
+        rate: "$1,500 – $2,500 USD"
       },
       "Dieffenbacher": {
-        badge: isEnglish ? "Continuous Press Hydraulics" : "Hidráulica de Prensa Continua",
-        points: isEnglish ? [
-          "Thermal frame alignment & expansion delta verification",
-          "Closed-loop proportional valve p/Q curve calibration",
-          "Return line oil aeration, varnish buildup & cavitation audit"
-        ] : [
-          "Alineación térmica y desbalance de presiones en marcos de prensado",
-          "Calibración de lazo cerrado p/Q en servoválvulas proporcionales",
-          "Saturación de retorno electrohidráulico, aireación y barniz térmico"
-        ]
+        title: isEnglish ? "Dieffenbacher CPS Continuous Presses" : "Prensas Continuas Dieffenbacher CPS",
+        badge: isEnglish ? "Continuous Press Hydraulics" : "Hidráulica de Prensado",
+        subsys: isEnglish
+          ? "Multi-cylinder heating platen frames, Rexroth A4VSO pumps and closed-loop proportional manifolds."
+          : "Marcos de cilindros de prensado, bombas Rexroth A4VSO y manifolds proporcionales en lazo cerrado.",
+        failure: isEnglish
+          ? "Thermal platen alignment delta, hydraulic pressure frame imbalance and return line varnish buildup."
+          : "Alineación térmica de placas, desbalance de presiones en marcos y saturación por barniz térmico.",
+        protocol: isEnglish
+          ? "Proportional spool deadband compensation, swashplate ripple profiling and hydraulic aeration purge."
+          : "Compensación de banda muerta en correderas, perfil de ondulación de bomba y purga de aireación.",
+        rate: "$1,800 – $2,500 USD"
       },
       "Rexroth": {
-        badge: isEnglish ? "Electro-Hydraulic Servo Systems" : "Sistemas Electrohidráulicos",
-        points: isEnglish ? [
-          "NG6/NG10 proportional spool response & deadband tuning",
-          "Axial piston pump swashplate displacement & ripple check",
-          "ISO 4406 fluid contamination & filter element differential pressure"
-        ] : [
-          "Respuesta dinámica de corredera y compensación de banda muerta en servoválvulas",
-          "Cavitación y pulsación de caudal en bombas de pistones axiales",
-          "Análisis de contaminación de fluido ISO 4406 y saturación de filtros"
-        ]
+        title: isEnglish ? "Bosch Rexroth A4VSO / 4WRPE Electro-Hydraulics" : "Sistemas Electrohidráulicos Bosch Rexroth A4VSO / 4WRPE",
+        badge: isEnglish ? "Servo-Proportional Control" : "Control Servoproporcional",
+        subsys: isEnglish
+          ? "Variable axial piston pumps, onboard electronics (OBE) servo valves and inline pressure sensors."
+          : "Bombas de pistones axiales de caudal variable, servoválvulas OBE con electrónica integrada y transductores.",
+        failure: isEnglish
+          ? "Cavitation noise, sluggish spool transient response and ISO 4406 particulate fluid contamination."
+          : "Cavitación hidráulica, respuesta transitoria lenta de corredera y contaminación de fluido ISO 4406.",
+        protocol: isEnglish
+          ? "NPSH margin verification, step-response spool audit and high-pressure filtration element renewal."
+          : "Verificación de margen NPSH, prueba de respuesta escalón en servoválvula y reemplazo de filtros 10µm.",
+        rate: "$1,500 – $2,200 USD"
       },
       "Siemens": {
-        badge: isEnglish ? "Industrial Automation & Safety" : "Automatización y Redes",
-        points: isEnglish ? [
-          "Profinet packet jitter & cyclic bus topology fault isolation",
-          "Safety-integrated F-CPU interlock & emergency stop sequence audit",
-          "Sinamics S120 drive diagnostic buffer & encoder error readout"
-        ] : [
-          "Aislamiento de fallos intermitentes en topología de bus Profinet",
-          "Auditoría de enclavamientos de seguridad F-CPU y cadenas de paro de emergencia",
-          "Lectura profunda del búfer de fallos en variadores Sinamics S120 y encoders"
-        ]
+        title: isEnglish ? "Siemens S7-1500 / TIA Portal Automation" : "Autómatas Siemens S7-1500 / TIA Portal",
+        badge: isEnglish ? "Industrial Networks & Safety" : "Automatización y Redes",
+        subsys: isEnglish
+          ? "F-CPU safety PLC, Sinamics S120 drives and Profinet IO distributed peripheral modules."
+          : "PLC de seguridad F-CPU, accionamientos Sinamics S120 y módulos de periferia descentralizada Profinet.",
+        failure: isEnglish
+          ? "Profinet cyclic bus communication drops, safe torque off (STO) lockouts and drive buffer fault trips."
+          : "Pérdida de paquetes en bus Profinet, disparos de seguridad STO y saturación de fallos en variadores.",
+        protocol: isEnglish
+          ? "Profinet packet jitter logging, safety interlock chain trace and servo encoder signal diagnostic."
+          : "Registro de jitter en bus, rastreo de enclavamientos de seguridad y diagnóstico de encoders de eje.",
+        rate: "$1,500 – $2,200 USD"
       },
       "Festo": {
-        badge: isEnglish ? "Precision Servo-Pneumatics" : "Neumática Proporcional",
-        points: isEnglish ? [
-          "MPPE / VPPM proportional pressure regulator calibration",
-          "Valve manifold bus interface & air starvation troubleshooting",
-          "Cylinder seal blow-by & dynamic backpressure profiling"
-        ] : [
-          "Calibración de reguladores de presión proporcionales MPPE / VPPM",
-          "Diagnóstico de caída de caudal y estrangulamiento en terminales de válvulas",
-          "Desgaste dinámico de sellos de actuador y contrapresiones parásitas"
-        ]
+        title: isEnglish ? "Festo Proportional Pneumatics" : "Neumática Proporcional Festo",
+        badge: isEnglish ? "High-Speed Positioning" : "Servo-Neumática",
+        subsys: isEnglish
+          ? "VPPM/MPPE proportional pressure regulators, valve terminals and pneumatic rodless cylinders."
+          : "Reguladores proporcionales VPPM/MPPE, terminales de válvulas CPX y cilindros neumáticos sin vástago.",
+        failure: isEnglish
+          ? "Flow rate starvation, dynamic seal blow-by and backpressure parasitic oscillation."
+          : "Caída de caudal por restricción, fuga por desgaste de sellos y oscilaciones de contrapresión.",
+        protocol: isEnglish
+          ? "Dynamic flow capacity audit, servo-pneumatic positioning tune and seal integrity verification."
+          : "Auditoría de caudal dinámico, sintonización de posicionamiento servo-neumático y cambio de empaques.",
+        rate: "$1,500 – $2,000 USD"
       }
     };
 
-    // Generar un folio base para la sesión
+    // 4. Generación Inmediata de Folio en Vivo (Docket Activo)
     const sessionFolio = generateTechnicalFolio();
     const hiddenFolioInput = document.getElementById('fieldFolioHidden');
     if (hiddenFolioInput) hiddenFolioInput.value = sessionFolio;
+    if (docketFolioDisplay) docketFolioDisplay.textContent = sessionFolio;
+    if (ackFolioDisplay) ackFolioDisplay.textContent = sessionFolio;
 
-    // Actualizar deeplink dinámicamente cuando el usuario teclee
+    // Sincronización continua de campos con el enlace de WhatsApp
     function syncInputsToWhatsApp() {
       const p = plantInput ? plantInput.value.trim() : '';
       const eq = equipmentInput ? equipmentInput.value.trim() : '';
       const s = symptomInput ? symptomInput.value.trim() : '';
-      updateWhatsAppDeeplink(sessionFolio, p, eq, s, isEnglish);
+      const isUrgent = urgentStopEl ? urgentStopEl.checked : false;
+      updateWhatsAppDeeplink(sessionFolio, p, eq, s, isUrgent, isEnglish);
     }
 
     if (plantInput) plantInput.addEventListener('input', syncInputsToWhatsApp);
     if (equipmentInput) equipmentInput.addEventListener('input', syncInputsToWhatsApp);
     if (symptomInput) symptomInput.addEventListener('input', syncInputsToWhatsApp);
 
+    // Conmutador Táctil iOS de Emergencia de Planta
+    if (urgentStopEl) {
+      urgentStopEl.addEventListener('change', () => {
+        if (urgentSwitchContainer) {
+          if (urgentStopEl.checked) {
+            urgentSwitchContainer.classList.add('urgent-active');
+          } else {
+            urgentSwitchContainer.classList.remove('urgent-active');
+          }
+        }
+        syncInputsToWhatsApp();
+      });
+    }
+
     // Configuración inicial de WhatsApp
     syncInputsToWhatsApp();
 
-    // 4. Lógica de Chips Interactivos de Maquinaria y Ficha Reactiva
+    // 5. Función de Actualización de la Ficha de Telemetría
+    function setMachineProfile(key) {
+      const profile = machineProfiles[key] || machineProfiles["Sidel"];
+      if (machineSpecTitle) machineSpecTitle.textContent = profile.title;
+      if (machineSpecBadge) machineSpecBadge.textContent = profile.badge;
+      if (machineSpecSubsys) machineSpecSubsys.textContent = profile.subsys;
+      if (machineSpecFailure) machineSpecFailure.textContent = profile.failure;
+      if (machineSpecProtocol) machineSpecProtocol.textContent = profile.protocol;
+      if (machineSpecRate) machineSpecRate.textContent = profile.rate;
+      if (equipmentInput) {
+        equipmentInput.value = profile.title;
+        syncInputsToWhatsApp();
+      }
+    }
+
+    // Segmentador de Máquinas (Botones Principales en Hero)
+    const chipSidel = document.getElementById('chipSidel');
+    const chipDieff = document.getElementById('chipDieff');
+    const chipRexroth = document.getElementById('chipRexroth');
+    const allSegmenterBtns = [chipSidel, chipDieff, chipRexroth].filter(Boolean);
+
+    allSegmenterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        allSegmenterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        if (btn.id === 'chipSidel') setMachineProfile("Sidel");
+        else if (btn.id === 'chipDieff') setMachineProfile("Dieffenbacher");
+        else if (btn.id === 'chipRexroth') setMachineProfile("Rexroth");
+
+        if (machineSpecCard) {
+          machineSpecCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    });
+
+    // Chips Secundarios de Ecosistema Técnico (Brands Strip)
     const brandChips = document.querySelectorAll('.brand-chip');
     brandChips.forEach(chip => {
       chip.addEventListener('click', () => {
@@ -152,48 +229,17 @@
         chip.classList.add('selected');
 
         const machineName = chip.getAttribute('data-machine') || '';
-        const diagInfo = chip.getAttribute('data-diag') || '';
-
-        if (equipmentInput && machineName) {
-          equipmentInput.value = machineName;
-          syncInputsToWhatsApp();
-        }
-
-        // Determinar perfil técnico para la Ficha Reactiva
         let profileKey = "Sidel";
         if (machineName.includes("Dieffenbacher")) profileKey = "Dieffenbacher";
         else if (machineName.includes("Rexroth")) profileKey = "Rexroth";
         else if (machineName.includes("Siemens")) profileKey = "Siemens";
         else if (machineName.includes("Festo")) profileKey = "Festo";
 
-        const profile = machineProfiles[profileKey];
-
-        if (machineSpecCard) {
-          if (machineSpecTitle) machineSpecTitle.textContent = machineName;
-          if (machineSpecBadge && profile) machineSpecBadge.textContent = profile.badge;
-          if (machineSpecSummary) machineSpecSummary.textContent = diagInfo;
-
-          if (machineSpecPoints && profile) {
-            machineSpecPoints.innerHTML = profile.points.map(pt => `<li>${pt}</li>`).join('');
-          }
-
-          machineSpecCard.classList.add('visible');
-        }
-
-        // Soporte retrocompatible
-        if (machineDiagBox && machineDiagText && diagInfo) {
-          if (machineDiagTitle) {
-            machineDiagTitle.textContent = isEnglish
-              ? `Diagnostic Scope for: ${machineName}`
-              : `Alcance de Diagnóstico para: ${machineName}`;
-          }
-          machineDiagText.textContent = diagInfo;
-          machineDiagBox.classList.add('visible');
-        }
+        setMachineProfile(profileKey);
       });
     });
 
-    // Acción directa desde la Ficha Reactiva
+    // Botón de Acción en Ficha Reactiva
     if (btnMachineSpecAction) {
       btnMachineSpecAction.addEventListener('click', () => {
         if (symptomInput) {
@@ -203,7 +249,30 @@
       });
     }
 
-    // 5. Manejo de Envío Asíncrono con Web3Forms y Honeypot Anti-Bot
+    // 6. Pestañas Interactivas de la Muestra BOM (Telemetría vs Refacciones)
+    if (tabBtnTelemetry && tabBtnParts) {
+      tabBtnTelemetry.addEventListener('click', () => {
+        tabBtnTelemetry.classList.add('active');
+        tabBtnTelemetry.setAttribute('aria-selected', 'true');
+        tabBtnParts.classList.remove('active');
+        tabBtnParts.setAttribute('aria-selected', 'false');
+
+        if (tabTelemetry) tabTelemetry.classList.add('active');
+        if (tabParts) tabParts.classList.remove('active');
+      });
+
+      tabBtnParts.addEventListener('click', () => {
+        tabBtnParts.classList.add('active');
+        tabBtnParts.setAttribute('aria-selected', 'true');
+        tabBtnTelemetry.classList.remove('active');
+        tabBtnTelemetry.setAttribute('aria-selected', 'false');
+
+        if (tabParts) tabParts.classList.add('active');
+        if (tabTelemetry) tabTelemetry.classList.remove('active');
+      });
+    }
+
+    // 7. Manejo de Envío Asíncrono con Web3Forms y Honeypot Anti-Bot
     if (intakeForm) {
       intakeForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -234,15 +303,14 @@
 
         const formData = new FormData(intakeForm);
         const timestamp_utc = Math.floor(Date.now() / 1000);
-        const urgentStopEl = document.getElementById('fieldUrgentStop');
-        const urgent_line_stop = urgentStopEl ? urgentStopEl.checked : false;
+        const isUrgent = urgentStopEl ? urgentStopEl.checked : false;
 
         formData.set('folio', sessionFolio);
         formData.set('timestamp_utc', timestamp_utc.toString());
         formData.set('plant_location', plantVal);
         formData.set('machine_model', eqVal);
         formData.set('observed_symptom', symVal);
-        formData.set('urgent_line_stop', urgent_line_stop.toString());
+        formData.set('urgent_line_stop', isUrgent.toString());
         formData.set('subject', `[INTERVENCIÓN TÉCNICA] Solicitud ${sessionFolio} - ${plantVal}`);
         formData.set('from_name', 'Mesa de Entrada Técnica (Industrial)');
 
@@ -270,7 +338,7 @@
           }
         } catch (err) {
           console.warn("Fallo de red al enviar a Web3Forms, aplicando fallback directo:", err);
-          // Fallback a prueba de fallos: Mostrar acuse en pantalla y permitir envío por WhatsApp
+          // Fallback a prueba de fallos: Mostrar acuse en pantalla
           intakeForm.style.display = 'none';
           if (ackCard) {
             if (ackFolioDisplay) ackFolioDisplay.textContent = sessionFolio;

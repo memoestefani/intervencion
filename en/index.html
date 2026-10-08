@@ -65,32 +65,66 @@
 </head>
 <body>
 
-  <!-- Top Institutional Bar -->
+  <!-- Institutional Top Bar (Apple-Grade Minimalist) -->
   <header class="top-bar">
     <div class="top-bar-badge">
       <span class="top-bar-dot" aria-hidden="true"></span>
       <span>North America Field Availability: US & Mexico</span>
     </div>
-    <nav class="top-bar-links" aria-label="Language navigation">
-      <a href="../" hreflang="es">Versión en Español</a>
+    <nav class="lang-toggle" aria-label="Language navigation">
+      <a href="../" hreflang="es">ES</a>
+      <a href="./" class="active">EN</a>
     </nav>
   </header>
 
   <main class="container">
 
     <!-- Hero Section -->
-    <section class="hero" aria-label="Field Service Overview">
+    <section class="hero" id="stage-diagnostic" aria-label="Field Service Overview">
       <div class="kicker">
-        <span>Emergency Field Service • Rapid North America Dispatch</span>
+        <span>«ON-SITE DIAGNOSTICS»</span>
       </div>
       
       <h1 class="hero-title">
         Bottling Line or Continuous Press Downtime. On-Site Root-Cause Triage in &lt; 24–48 h.
       </h1>
+
+      <!-- Industrial Machinery Touch Segmenter -->
+      <div class="machine-segmenter" role="group" aria-label="Machinery Segmenter">
+        <button type="button" class="machine-chip-btn active" id="chipSidel" data-target="specSidel">
+          <span>🧴 Bottling Lines (Sidel / Krones)</span>
+        </button>
+        <button type="button" class="machine-chip-btn" id="chipDieff" data-target="specDieff">
+          <span>🪵 Continuous Presses (Dieffenbacher / Siempelkamp)</span>
+        </button>
+        <button type="button" class="machine-chip-btn" id="chipRexroth" data-target="specRexroth">
+          <span>⚙️ Proportional Hydraulics (Rexroth / Moog)</span>
+        </button>
+      </div>
       
       <p class="hero-subtitle">
         Independent bilingual mechatronics field specialist with closed scope and fixed-fee agreements ($1,500 – $2,500 USD) prior to dispatch. Direct corporate billing with W-8BEN and SWIFT wire transfers. Rapid on-site mobilization across US plants and cross-border corridors.
       </p>
+
+      <!-- Fiduciary Guarantee Badges (Apple-Grade Grid) -->
+      <div class="hero-guarantee-grid">
+        <div class="guarantee-badge">
+          <span class="guarantee-badge-icon">⚡</span>
+          <span>On-Site &lt; 24–48h</span>
+        </div>
+        <div class="guarantee-badge">
+          <span class="guarantee-badge-icon">🎯</span>
+          <span>Fixed Cost ($1.5k–$2.5k USD)</span>
+        </div>
+        <div class="guarantee-badge">
+          <span class="guarantee-badge-icon">📋</span>
+          <span>Open BOM (Zero Lock-in)</span>
+        </div>
+        <div class="guarantee-badge">
+          <span class="guarantee-badge-icon">🛡️</span>
+          <span>Procurement Ready (W-8BEN)</span>
+        </div>
+      </div>
 
       <!-- Dual Action Band (Above-the-Fold Thumb Zone) -->
       <div class="hero-actions">
@@ -103,9 +137,9 @@
       </div>
     </section>
 
-    <!-- Interactive Machine Chips -->
+    <!-- Reactive Technical Spec Card (Linear Telemetry Layout) -->
     <section class="brands-strip" aria-label="Supported Systems">
-      <div class="brands-label">Supported Machinery & Control Systems (Tap to pre-fill scope):</div>
+      <div class="brands-label">Supported Machinery & Control Systems (Inspection Telemetry):</div>
       <div class="brands-grid" role="group" aria-label="Industrial machinery systems">
         <span class="brand-chip" tabindex="0" data-machine="Sidel Matrix / Combi Bottling Lines" data-diag="High-speed blow-fill lines: servo axis desynchronization, 40-bar blowing pressure drops, and carousel rotary joint seal leaks.">
           <span>Sidel Matrix / Combi</span>
@@ -124,16 +158,26 @@
         </span>
       </div>
 
-      <!-- Reactive Technical Spec Card (Linear Pattern) -->
+      <!-- Reactive Technical Spec Card in Viewport -->
       <div class="machine-spec-card" id="machineSpecCard">
         <div class="machine-spec-header">
-          <div class="machine-spec-title" id="machineSpecTitle">Selected System</div>
-          <span class="machine-spec-badge" id="machineSpecBadge">p/Q Inspection</span>
+          <div class="machine-spec-title" id="machineSpecTitle">Sidel Matrix / Combi Bottling Lines</div>
+          <span class="machine-spec-badge" id="machineSpecBadge">High-Pressure p/Q (40 bar)</span>
         </div>
-        <p id="machineSpecSummary" style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.5rem;"></p>
-        <ul class="machine-spec-points" id="machineSpecPoints">
-          <!-- Key inspection points loaded dynamically -->
-        </ul>
+        <div class="spec-grid-3col">
+          <div class="spec-col-item">
+            <div class="spec-col-label">Critical Subsystems</div>
+            <div class="spec-col-val" id="machineSpecSubsys">Rotary blowing carousel, 40-bar manifold, proportional servo valves and stretch servos.</div>
+          </div>
+          <div class="spec-col-item">
+            <div class="spec-col-label">Failure Modes Resolved</div>
+            <div class="spec-col-val" id="machineSpecFailure">Angular axis desynchronization, rotary joint seal micro-leakage and mold depressurization.</div>
+          </div>
+          <div class="spec-col-item">
+            <div class="spec-col-label">Intervention Protocol</div>
+            <div class="spec-col-val" id="machineSpecProtocol">Dynamic 40-bar manifold telemetry, Profinet bus jitter analysis and closed-loop servo calibration.</div>
+          </div>
+        </div>
         <div class="machine-spec-footer">
           <div class="machine-spec-rate">
             Estimated Fee: <strong id="machineSpecRate">$1,500 – $2,500 USD</strong> (Predictable fixed cost)
@@ -141,96 +185,6 @@
           <a class="machine-spec-btn" href="#fieldSymptom" id="btnMachineSpecAction">
             <span>Request Scope for this Machine</span>
           </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Deliverables Viewer -->
-    <section class="deliverables-section" aria-label="Deliverables Overview">
-      <div class="deliverables-header">
-        <h2>Formal Engineering Deliverables Backing Your Purchase Order</h2>
-        <p>Predictable fixed-scope interventions and guaranteed deliverables prior to dispatch:</p>
-      </div>
-
-      <div class="deliverables-grid">
-        <article class="deliverable-card">
-          <div class="deliverable-badge">Deliverable 1: Ex-Ante</div>
-          <h4>Fixed-Scope Statement of Work (SOW)</h4>
-          <p>Agreed and executed before mobilization to your plant. Zero cost surprises.</p>
-          <div class="spec-sheet">
-            • <strong>Included Scope:</strong> Static checks, p/Q loop validation, root-cause identification, and guided recovery.<br>
-            • <strong>Explicit Exclusions:</strong> No civil works, no captive parts bundling.<br>
-            • <strong>Fixed Fee:</strong> Predictable single-event price ($1,500 – $2,500 USD) below discretionary MRO PO thresholds.
-          </div>
-        </article>
-
-        <article class="deliverable-card">
-          <div class="deliverable-badge">Deliverable 2: Ex-Post</div>
-          <h4>Technical Closeout Report & Open BOM</h4>
-          <p>Structured diagnostic documentation with photos, sensor readings, and unbundled replacement parts.</p>
-          <div class="spec-sheet">
-            • <strong>Deterministic Root-Cause:</strong> Physical analysis of failure mode (mechanical, hydraulic, or PLC).<br>
-            • <strong>Open Commercial BOM:</strong> Standard part numbers (Festo, Rexroth, SKF, Siemens) for direct purchasing.<br>
-            • <strong>Zero Lock-in:</strong> Avoids 400% OEM distributor markups on commodity components.
-          </div>
-        </article>
-      </div>
-
-      <!-- Authentic Engineering Report Sample (Based on technical_report_en.md) -->
-      <div class="report-sample-sheet" aria-label="Field Inspection Closeout Sample">
-        <div class="report-sheet-header">
-          <div style="display: flex; align-items: center; gap: 0.65rem;">
-            <span class="report-folio-tag">#T-261007-8F2B</span>
-            <strong style="font-size: 0.95rem;">Technical Closeout Report & Root-Cause Audit</strong>
-          </div>
-          <span class="report-sheet-meta">High-Speed Rotary Blower / Isometric Filler</span>
-        </div>
-        <div class="report-telemetry-box">
-          • Measured Telemetry: Blowing manifold pressure <strong>38 bar (Actual)</strong> vs. <strong>40 bar (Nominal)</strong>.<br>
-          • Deterministic Finding: Dynamic seal blow-by on distributor carousel and thermal varnish spool lock on Rexroth servo-proportional valve.
-        </div>
-        <div class="report-bom-table-wrapper">
-          <table class="report-bom-table">
-            <thead>
-              <tr>
-                <th>Priority</th>
-                <th>Failed Component</th>
-                <th>Open Standard Cross-Reference</th>
-                <th>Manufacturer</th>
-                <th>Sourcing</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="badge-urgency inmediata">🔴 IMMEDIATE</span></td>
-                <td>Servo-proportional valve NG10</td>
-                <td><code>4WRPE10-W6-50L-2X/G24K0/A1M</code></td>
-                <td>Bosch Rexroth</td>
-                <td>Local distributor stock</td>
-              </tr>
-              <tr>
-                <td><span class="badge-urgency inmediata">🔴 IMMEDIATE</span></td>
-                <td>10µm high-pressure filter element</td>
-                <td><code>0240D010BN4HC</code></td>
-                <td>Hydac</td>
-                <td>Off-the-shelf industrial</td>
-              </tr>
-              <tr>
-                <td><span class="badge-urgency preventiva">🟡 PREVENTIVE (30d)</span></td>
-                <td>High-temp Viton seal overhaul kit</td>
-                <td><code>V8388-75 Parker O-Ring Kit</code></td>
-                <td>Parker Hannifin</td>
-                <td>5-day lead time</td>
-              </tr>
-              <tr>
-                <td><span class="badge-urgency stock">🟢 ON-SITE SPARE</span></td>
-                <td>Synchronous blowing carousel motor</td>
-                <td><code>1FK7060-2AC71-1QA0</code></td>
-                <td>Siemens</td>
-                <td>Verified in plant inventory</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </section>
@@ -387,9 +341,124 @@
       </div>
     </section>
 
+    <!-- Deliverables Viewer -->
+    <section class="deliverables-section" aria-label="Deliverables Overview">
+      <div class="deliverables-header">
+        <h2>Formal Engineering Deliverables Backing Your Purchase Order</h2>
+        <p>Predictable fixed-scope interventions and guaranteed deliverables prior to dispatch:</p>
+      </div>
+
+      <div class="deliverables-grid">
+        <article class="deliverable-card">
+          <div class="deliverable-badge">Deliverable 1: Ex-Ante</div>
+          <h4>Fixed-Scope Statement of Work (SOW)</h4>
+          <p>Agreed and executed before mobilization to your plant. Zero cost surprises.</p>
+          <div class="spec-sheet">
+            • <strong>Included Scope:</strong> Static checks, p/Q loop validation, root-cause identification, and guided recovery.<br>
+            • <strong>Explicit Exclusions:</strong> No civil works, no captive parts bundling.<br>
+            • <strong>Fixed Fee:</strong> Predictable single-event price ($1,500 – $2,500 USD) below discretionary MRO PO thresholds.<br>
+            • <strong>Travel & Logistics:</strong> Invoiced at transparent audited cost (zero markup) or coordinated directly through plant logistics.
+          </div>
+        </article>
+
+        <article class="deliverable-card">
+          <div class="deliverable-badge">Deliverable 2: Ex-Post</div>
+          <h4>Technical Closeout Report & Open BOM</h4>
+          <p>Structured diagnostic documentation with photos, sensor readings, and unbundled replacement parts.</p>
+          <div class="spec-sheet">
+            • <strong>Deterministic Root-Cause:</strong> Physical analysis of failure mode (mechanical, hydraulic, or PLC).<br>
+            • <strong>Open Commercial BOM:</strong> Standard part numbers (Festo, Rexroth, SKF, Siemens) for direct purchasing.<br>
+            • <strong>Zero Lock-in:</strong> Avoids 400% OEM distributor markups on commodity components.
+          </div>
+        </article>
+      </div>
+
+      <!-- Authentic Engineering Report Sample (Based on technical_report_en.md) -->
+      <div class="report-sample-sheet" aria-label="Field Inspection Closeout Sample">
+        <div class="report-sheet-header">
+          <div style="display: flex; align-items: center; gap: 0.65rem;">
+            <span class="report-folio-tag">#T-261007-8F2B</span>
+            <strong style="font-size: 0.95rem;">Technical Closeout Report & Root-Cause Audit</strong>
+          </div>
+          <span class="report-sheet-meta">High-Speed Rotary Blower / Isometric Filler</span>
+        </div>
+
+        <!-- Interactive BOM Tabs (Telemetry vs Open Parts) -->
+        <div class="bom-tabs-nav" role="tablist">
+          <button type="button" class="bom-tab-btn active" id="tabBtnTelemetry" role="tab" aria-selected="true" data-tab="tabTelemetry">
+            📊 Telemetry & Root Cause
+          </button>
+          <button type="button" class="bom-tab-btn" id="tabBtnParts" role="tab" aria-selected="false" data-tab="tabParts">
+            📋 Open Commercial BOM (Zero Lock-in)
+          </button>
+        </div>
+
+        <div class="bom-tab-pane active" id="tabTelemetry" role="tabpanel">
+          <div class="report-telemetry-box">
+            • <strong>Measured Critical Variable:</strong> Blowing manifold pressure <strong>38 bar (Actual)</strong> vs. <strong>40 bar (Nominal)</strong>.<br>
+            • <strong>Deterministic Finding:</strong> Dynamic seal blow-by on rotary distributor carousel and thermal varnish spool lock on Rexroth servo-proportional valve.<br>
+            • <strong>Executed Protocol:</strong> In-situ disassembly, ultrasonic spool flushing, primary distributor seal renewal, and closed-loop p/Q retuning.
+          </div>
+        </div>
+
+        <div class="bom-tab-pane" id="tabParts" role="tabpanel">
+          <div class="report-bom-table-wrapper">
+            <table class="report-bom-table">
+              <thead>
+                <tr>
+                  <th>Priority</th>
+                  <th>Failed Component</th>
+                  <th>Open Standard Cross-Reference</th>
+                  <th>Manufacturer</th>
+                  <th>Sourcing</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-urgency inmediata">🔴 IMMEDIATE</span></td>
+                  <td>Servo-proportional valve NG10</td>
+                  <td><code>4WRPE10-W6-50L-2X/G24K0/A1M</code></td>
+                  <td>Bosch Rexroth</td>
+                  <td>Local distributor stock</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-urgency inmediata">🔴 IMMEDIATE</span></td>
+                  <td>10µm high-pressure filter element</td>
+                  <td><code>0240D010BN4HC</code></td>
+                  <td>Hydac</td>
+                  <td>Off-the-shelf industrial</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-urgency preventiva">🟡 PREVENTIVE (30d)</span></td>
+                  <td>High-temp Viton seal overhaul kit</td>
+                  <td><code>V8388-75 Parker O-Ring Kit</code></td>
+                  <td>Parker Hannifin</td>
+                  <td>5-day lead time</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-urgency stock">🟢 ON-SITE SPARE</span></td>
+                  <td>Synchronous blowing carousel motor</td>
+                  <td><code>1FK7060-2AC71-1QA0</code></td>
+                  <td>Siemens</td>
+                  <td>Verified in plant inventory</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Intake Section -->
     <section class="intake-section" id="intakeSection" aria-label="Technical Scope Request">
       <div class="intake-header">
+        <!-- Live Active Docket Indicator -->
+        <div>
+          <div class="active-docket-badge" id="activeDocketBadge">
+            <span class="active-docket-dot"></span>
+            <span>ACTIVE DOCKET: <strong id="docketFolioDisplay">#T-YYMMDD-XXXX</strong></span>
+          </div>
+        </div>
         <h2 class="intake-title">Submit Field Engineering Scope</h2>
         <p class="intake-desc">Describe the observable line issue. David personally reviews every inquiry during his next operational window to verify feasibility and issue a fixed SOW.</p>
       </div>
@@ -399,6 +468,18 @@
         <input type="hidden" name="folio" id="fieldFolioHidden" value="">
         <input type="hidden" name="subject" value="[TECHNICAL INQUIRY] Field Engineering Scope Request">
         <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+        <!-- iOS Emergency Switch for Plant Downtime -->
+        <div class="ios-switch-container" id="urgentSwitchContainer">
+          <div class="ios-switch-label">
+            <strong>🚨 Critical Production Line Stoppage</strong>
+            <span>Enables emergency priority mobilization in under 24–48 hours</span>
+          </div>
+          <label class="ios-switch" for="fieldUrgentStop">
+            <input type="checkbox" id="fieldUrgentStop" name="urgent_line_stop" value="true">
+            <span class="ios-slider"></span>
+          </label>
+        </div>
 
         <div class="form-group">
           <label class="form-label" for="fieldPlant">1. Plant Location & Manufacturing Facility *</label>
@@ -413,13 +494,6 @@
         <div class="form-group">
           <label class="form-label" for="fieldSymptom">3. Observable Symptom or Alarm Code *</label>
           <textarea class="form-textarea" id="fieldSymptom" name="symptom" required placeholder="e.g. E-402 drive fault on HMI panel, sudden hydraulic pressure drop on downstroke, cylinder rod seal leak..."></textarea>
-        </div>
-
-        <div class="form-group" style="margin-top: 0.25rem; margin-bottom: 0.75rem;">
-          <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-size: 0.92rem; font-weight: 700;">
-            <input type="checkbox" id="fieldUrgentStop" name="urgent_line_stop" value="true" style="width: 20px; height: 20px; cursor: pointer;">
-            <span>Critical unplanned line stoppage? (Highest dispatch priority)</span>
-          </label>
         </div>
 
         <div class="btn-group">
@@ -473,22 +547,6 @@
       </details>
     </section>
 
-    <!-- Regional Travel Matrix -->
-    <section class="travel-matrix" aria-label="Coverage & Travel Policy">
-      <h2 style="font-size: 1.25rem; margin-bottom: 0.4rem;">Geographic Coverage & Transparent Travel Policy</h2>
-      <p style="font-size: 0.92rem;">Operational base with rapid flight and ground mobilization across North American manufacturing corridors:</p>
-      <div class="travel-grid">
-        <div class="travel-col">
-          <div class="travel-col-title">North America Cross-Border (US & Canada)</div>
-          <p style="font-size: 0.88rem;">Immediate flight mobilization to US hubs (Texas, California, Midwest, Southeast). Direct international contractor billing (W-8BEN) with airfare and lodging at actual audited cost.</p>
-        </div>
-        <div class="travel-col">
-          <div class="travel-col-title">Mexico Manufacturing Hubs (Northern & Bajío)</div>
-          <p style="font-size: 0.88rem;">Durango, Monterrey, Saltillo, Bajío (Silao, Querétaro, SLP), Guadalajara, and Mexico City. Ground or regional flight dispatch with transparent fixed travel fees.</p>
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <footer class="footer">
@@ -498,7 +556,7 @@
         <p>Independent Mechatronics Field Service Engineer | US & Mexico Coverage.</p>
       </div>
       <div class="footer-meta-links">
-        <a href="../">Versión en Español</a>
+        <a href="../" hreflang="es">Versión en Español</a>
         <a href="../llms.txt">llms.txt</a>
         <a href="../robots.txt">robots.txt</a>
         <a href="../sitemap.xml">sitemap.xml</a>
