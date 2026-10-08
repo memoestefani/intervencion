@@ -1,99 +1,72 @@
 /* ==========================================================================
-   SISTEMA DE DISEÑO SOBERANO INDUSTRIAL MONOCROMÁTICO (BLANCO Y NEGRO)
-   Estética Suiza de Máxima Precisión (Strict High-Contrast Monochrome)
-   Criterio: Cero tinte azul / Cero saturación / Tipografía y contraste puro
+   SISTEMA DE DISEÑO SOBERANO INDUSTRIAL MINERAL SUIZO (SWISS PRECISION)
+   Inspirado en Dieter Rams, Teenage Engineering & Criterio Krones / Oxford
+   Paleta Mineral Noble: Cuarzo (#FAF9F6), Grafito (#111113) y Titanio (#71717A)
+   Cero tintes azules / Contraste WCAG AAA (>= 7:1) / Cero Dependencias JS
    ========================================================================== */
 
 :root {
-  /* Escala de Grises Monocromática Pura */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F7F7F7;
+  /* Paleta Mineral de Alta Precisión */
+  --bg-page: #FAF9F6;
   --bg-surface: #FFFFFF;
+  --bg-subtle: #F2F1ED;
   --bg-surface-elevated: #FFFFFF;
-  --bg-surface-hover: #F2F2F2;
+  --bg-hover: #ECEAE4;
   
-  --text-primary: #000000;
-  --text-secondary: #333333;
-  --text-muted: #666666;
+  --text-primary: #111113;
+  --text-secondary: #48484E;
+  --text-muted: #74747C;
   --text-inverse: #FFFFFF;
   
-  --border-subtle: #E0E0E0;
-  --border-medium: #888888;
-  --border-strong: #000000;
-  --border-focus: #000000;
+  --border-subtle: #E4E2D8;
+  --border-medium: #A8A69E;
+  --border-strong: #111113;
+  --border-focus: #111113;
 
-  /* Constantes Monocromáticas (Reemplazo estricto sin color) */
-  --accent-black: #000000;
-  --accent-black-hover: #222222;
-  --accent-gray-light: #F4F4F4;
-  --accent-gray-subtle: #FAFAFA;
-  --accent-gray-border: #CCCCCC;
+  /* Micro-Acentos de Ingeniería */
+  --accent-titanium: #71717A;
+  --accent-charcoal: #18181B;
 
-  /* Aliases para compatibilidad sin tintes de color */
-  --accent-navy: #000000;
-  --accent-navy-hover: #222222;
-  --accent-navy-subtle: #F4F4F4;
-
-  --accent-stps-green: #000000;
-  --accent-stps-subtle: #F4F4F4;
-  --accent-stps-border: #000000;
-
-  --accent-alert-amber: #000000;
-  --accent-alert-subtle: #F4F4F4;
-
-  --accent-critical-red: #000000;
-  --accent-critical-subtle: #F4F4F4;
+  /* Aliases para compatibilidad sin tintes */
+  --bg-primary: var(--bg-page);
+  --bg-secondary: var(--bg-subtle);
 
   /* Tipografía */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
-  /* Curvas y Transiciones Hápticas */
+  /* Curvas Hápticas y Sombras de Precisión */
   --radius-card: 10px;
   --radius-sm: 6px;
   --radius-pill: 9999px;
   --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
-  --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 1px 3px rgba(17, 17, 19, 0.04), 0 6px 16px -4px rgba(17, 17, 19, 0.03);
+  --shadow-hover: 0 4px 16px rgba(17, 17, 19, 0.08);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-primary: #000000;
-    --bg-secondary: #0D0D0D;
-    --bg-surface: #141414;
-    --bg-surface-elevated: #1C1C1C;
-    --bg-surface-hover: #262626;
+    --bg-page: #0C0C0E;
+    --bg-surface: #141416;
+    --bg-subtle: #1C1C1E;
+    --bg-surface-elevated: #222224;
+    --bg-hover: #262628;
 
-    --text-primary: #FFFFFF;
-    --text-secondary: #B0B0B0;
-    --text-muted: #808080;
-    --text-inverse: #000000;
+    --text-primary: #F5F5F7;
+    --text-secondary: #A1A1A6;
+    --text-muted: #6E6E73;
+    --text-inverse: #0C0C0E;
 
-    --border-subtle: #262626;
-    --border-medium: #555555;
-    --border-strong: #FFFFFF;
-    --border-focus: #FFFFFF;
+    --border-subtle: #242426;
+    --border-medium: #48484A;
+    --border-strong: #F5F5F7;
+    --border-focus: #F5F5F7;
 
-    --accent-black: #FFFFFF;
-    --accent-black-hover: #E0E0E0;
-    --accent-gray-light: #1A1A1A;
-    --accent-gray-subtle: #121212;
-    --accent-gray-border: #444444;
+    --accent-titanium: #A1A1A6;
+    --accent-charcoal: #F5F5F7;
 
-    --accent-navy: #FFFFFF;
-    --accent-navy-hover: #E0E0E0;
-    --accent-navy-subtle: #1A1A1A;
-
-    --accent-stps-green: #FFFFFF;
-    --accent-stps-subtle: #1A1A1A;
-    --accent-stps-border: #FFFFFF;
-
-    --accent-alert-amber: #FFFFFF;
-    --accent-alert-subtle: #1A1A1A;
-
-    --accent-critical-red: #FFFFFF;
-    --accent-critical-subtle: #1A1A1A;
+    --bg-primary: var(--bg-page);
+    --bg-secondary: var(--bg-subtle);
   }
 }
 
@@ -111,7 +84,7 @@ html {
 }
 
 body {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-page);
   color: var(--text-primary);
   font-family: var(--font-sans);
   line-height: 1.55;
@@ -120,7 +93,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Tipografía y Códigos Numéricos */
+/* Tipografía */
 h1, h2, h3, h4 {
   color: var(--text-primary);
   font-weight: 800;
@@ -146,7 +119,7 @@ p {
 /* Barra Superior Institucional */
 .top-bar {
   background-color: var(--bg-surface);
-  border-bottom: 1.5px solid var(--border-subtle);
+  border-bottom: 1.25px solid var(--border-subtle);
   padding: 0.65rem 1.25rem;
   font-size: 0.78rem;
   font-weight: 800;
@@ -188,7 +161,7 @@ p {
   text-decoration: underline;
 }
 
-/* Layout Container */
+/* Contenedor Principal */
 .container {
   max-width: 1040px;
   margin: 0 auto;
@@ -197,17 +170,19 @@ p {
 
 /* Hero Section */
 .hero {
-  padding: 3rem 0 2.25rem;
+  padding: 2.75rem 0 2rem;
 }
 
 .kicker {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   font-size: 0.76rem;
   font-weight: 800;
   color: var(--text-primary);
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-subtle);
   border: 1.5px solid var(--border-strong);
-  padding: 0.25rem 0.65rem;
+  padding: 0.3rem 0.75rem;
   border-radius: var(--radius-pill);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -224,20 +199,170 @@ p {
   font-size: clamp(1.05rem, 2vw, 1.22rem);
   color: var(--text-secondary);
   max-width: 840px;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
   line-height: 1.5;
 }
 
-/* Barra de Marcas / Ecosistema Técnico */
+/* Banda Dual de Acción Inmediata (Above-the-Fold Thumb Zone) */
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+@media (min-width: 640px) {
+  .hero-actions {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.btn-hero-primary {
+  min-height: 48px;
+  background-color: var(--text-primary);
+  color: var(--bg-surface);
+  border: 1.5px solid var(--text-primary);
+  padding: 0.85rem 1.45rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-apple), background-color 150ms ease;
+}
+
+.btn-hero-primary:hover {
+  background-color: #27272A;
+  color: #FFFFFF;
+}
+
+.btn-hero-primary:active {
+  transform: translateY(2px) scale(0.98);
+}
+
+.btn-hero-wa {
+  min-height: 48px;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-strong);
+  padding: 0.85rem 1.45rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-apple), background-color 150ms ease;
+}
+
+.btn-hero-wa:hover {
+  background-color: var(--bg-subtle);
+}
+
+.btn-hero-wa:active {
+  transform: translateY(2px) scale(0.98);
+}
+
+/* Cajón Plegable Nativo de Compliance y Descargo de Marcas (Cero JS) */
+.compliance-drawer {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  margin-bottom: 2rem;
+  transition: border-color 150ms ease;
+}
+
+.compliance-drawer[open] {
+  border-color: var(--border-strong);
+}
+
+.compliance-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.compliance-summary::-webkit-details-marker {
+  display: none;
+}
+
+.compliance-summary::after {
+  content: "▾";
+  font-size: 0.9rem;
+  transition: transform 200ms ease;
+}
+
+.compliance-drawer[open] .compliance-summary::after {
+  transform: rotate(180deg);
+}
+
+.compliance-content {
+  padding: 0 1.25rem 1.25rem;
+  font-size: 0.86rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1rem;
+}
+
+.compliance-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .compliance-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.compliance-item {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+}
+
+.compliance-item-title {
+  font-weight: 800;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
+  color: var(--text-primary);
+}
+
+.disclaimer-box {
+  background-color: var(--bg-subtle);
+  border: 1px dashed var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+/* Barra de Marcas / Chips Interactivos de Maquinaria */
 .brands-strip {
   background-color: var(--bg-surface);
   border: 1.5px solid var(--border-subtle);
   border-radius: var(--radius-card);
-  padding: 1rem 1.25rem;
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  padding: 1.15rem 1.25rem;
+  margin-bottom: 2.25rem;
 }
 
 .brands-label {
@@ -246,6 +371,7 @@ p {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-muted);
+  margin-bottom: 0.6rem;
 }
 
 .brands-grid {
@@ -254,28 +380,59 @@ p {
   gap: 0.65rem;
 }
 
-.brand-badge {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-  padding: 0.35rem 0.75rem;
+.brand-chip {
+  min-height: 48px;
+  background-color: var(--bg-subtle);
+  border: 1.5px solid var(--border-subtle);
+  padding: 0.45rem 0.95rem;
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-size: 0.84rem;
   font-weight: 700;
   color: var(--text-primary);
-  transition: border-color 150ms ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: border-color 150ms ease, background-color 150ms ease, transform 160ms var(--ease-apple);
 }
 
-.brand-badge:hover {
+.brand-chip:hover {
   border-color: var(--border-strong);
+  background-color: var(--bg-hover);
 }
 
-/* Grid Dual: Confianza y Compliance */
+.brand-chip:active {
+  transform: scale(0.97);
+}
+
+.brand-chip.selected {
+  border-color: var(--border-strong);
+  background-color: var(--text-primary);
+  color: var(--bg-surface);
+}
+
+.machine-diag-box {
+  display: none;
+  margin-top: 0.85rem;
+  padding: 0.85rem 1rem;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  animation: fadeIn 200ms var(--ease-apple);
+}
+
+.machine-diag-box.visible {
+  display: block;
+}
+
+/* Tarjetas Informativas */
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
 }
 
 @media (min-width: 768px) {
@@ -284,7 +441,6 @@ p {
   }
 }
 
-/* Tarjetas */
 .card {
   background-color: var(--bg-surface);
   border: 1.5px solid var(--border-subtle);
@@ -313,19 +469,19 @@ p {
 }
 
 .card-badge.stps {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-subtle);
   color: var(--text-primary);
   border: 1.5px solid var(--border-strong);
 }
 
 .card-badge.tax {
   background-color: var(--text-primary);
-  color: var(--bg-primary);
+  color: var(--bg-surface);
   border: 1.5px solid var(--text-primary);
 }
 
 .card-badge.case {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-subtle);
   color: var(--text-primary);
   border: 1.5px dashed var(--border-strong);
 }
@@ -358,33 +514,113 @@ p {
   line-height: 1.2;
 }
 
-/* Muestra Real Anonimizada */
-.case-box {
-  background-color: var(--bg-secondary);
-  border: 1.5px dashed var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: 1rem;
-  margin-top: 0.75rem;
-  font-size: 0.88rem;
-  line-height: 1.5;
+/* Visor de Entregables Reales (SOW y Reporte Técnico) */
+.deliverables-section {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: 1.75rem 1.5rem;
+  margin-bottom: 2.25rem;
 }
 
-.case-row {
+.deliverables-header {
+  margin-bottom: 1.25rem;
+}
+
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .deliverables-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.deliverable-card {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+}
+
+.deliverable-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  margin-bottom: 0.65rem;
+}
+
+.deliverable-card h4 {
+  font-size: 1rem;
   margin-bottom: 0.45rem;
 }
 
-.case-label {
-  font-weight: 800;
-  color: var(--text-primary);
-}
-
-.case-code {
+.spec-sheet {
   font-family: var(--font-mono);
+  font-size: 0.8rem;
   background-color: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  padding: 0.1rem 0.35rem;
   border-radius: 4px;
+  padding: 0.75rem;
+  margin-top: 0.65rem;
+  line-height: 1.45;
+}
+
+/* Matriz Asimétrica de ROI vs. OEM */
+.roi-section {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: 1.75rem 1.5rem;
+  margin-bottom: 2.25rem;
+}
+
+.roi-table-wrapper {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.roi-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.roi-table th, .roi-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.roi-table th {
+  font-weight: 800;
+  background-color: var(--bg-subtle);
   font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.roi-table td:nth-child(3) {
+  font-weight: 800;
+  background-color: var(--bg-subtle);
+}
+
+.roi-highlight-box {
+  background-color: var(--bg-subtle);
+  border-left: 3px solid var(--border-strong);
+  padding: 0.85rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
 }
 
 /* Sección de Formulario de Admisión (Intake) */
@@ -394,7 +630,7 @@ p {
   border-radius: var(--radius-card);
   padding: 2rem 1.5rem;
   margin: 2rem 0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(17, 17, 19, 0.06);
 }
 
 .intake-header {
@@ -427,13 +663,9 @@ p {
   color: var(--text-primary);
 }
 
-.form-hint {
-  font-size: 0.76rem;
-  color: var(--text-muted);
-}
-
 .form-input, .form-textarea {
-  background-color: var(--bg-primary);
+  min-height: 48px;
+  background-color: var(--bg-page);
   border: 1.5px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 0.75rem 0.95rem;
@@ -451,7 +683,7 @@ p {
 }
 
 .form-textarea {
-  min-height: 88px;
+  min-height: 96px;
   resize: vertical;
 }
 
@@ -470,6 +702,7 @@ p {
 }
 
 .btn {
+  min-height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -482,7 +715,7 @@ p {
   text-decoration: none;
   cursor: pointer;
   border: 1.5px solid transparent;
-  transition: transform 160ms var(--ease-apple), background-color 150ms ease, color 150ms ease;
+  transition: transform 160ms var(--ease-apple), background-color 150ms ease;
 }
 
 .btn:active {
@@ -491,13 +724,12 @@ p {
 
 .btn-primary {
   background-color: var(--text-primary);
-  color: var(--bg-primary);
+  color: var(--bg-surface);
   border: 1.5px solid var(--text-primary);
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-black-hover);
-  color: var(--bg-primary);
+  background-color: #27272A;
 }
 
 .btn-whatsapp {
@@ -507,10 +739,10 @@ p {
 }
 
 .btn-whatsapp:hover {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-subtle);
 }
 
-/* Tarjeta Dinámica de Acuse Técnico */
+/* Tarjeta Dinámica de Acuse Técnico Inmediato */
 .ack-card {
   display: none;
   background-color: var(--bg-surface);
@@ -534,7 +766,7 @@ p {
   font-family: var(--font-mono);
   font-size: 1.35rem;
   font-weight: 900;
-  color: var(--bg-primary);
+  color: var(--bg-surface);
   background-color: var(--text-primary);
   margin-bottom: 0.75rem;
   display: inline-block;
@@ -544,7 +776,7 @@ p {
 }
 
 .ack-checklist {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 1rem;
@@ -559,7 +791,7 @@ p {
   margin-bottom: 0.5rem;
 }
 
-/* Matriz de Zonas Industriales y Viáticos */
+/* Matriz de Cobertura y Viáticos */
 .travel-matrix {
   background-color: var(--bg-surface);
   border: 1.5px solid var(--border-subtle);
@@ -582,7 +814,7 @@ p {
 }
 
 .travel-col {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 1rem;
@@ -599,7 +831,7 @@ p {
 .footer {
   border-top: 1.5px solid var(--border-subtle);
   padding: 2.5rem 0 3.5rem;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
 }
 
@@ -619,7 +851,18 @@ p {
 
 .footer-legal {
   font-size: 0.8rem;
-  line-height: 1.4;
+  line-height: 1.45;
+}
+
+.footer-meta-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-left: 0.85rem;
+}
+
+.footer-meta-links a:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
 }
 
 .hidden {

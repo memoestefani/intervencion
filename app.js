@@ -1,7 +1,7 @@
 /**
- * app.js -- Lógica Client-Side Resiliente del Portal Público
- * Protocolo de Admisión, Generación de Folio #T-XXXX, Web3Forms y Acuse Háptico
- * Preparado para mapeo 1:1 con backend en Rust (IntakePayload struct)
+ * app.js -- Lógica Client-Side Soberana y Resiliente (Swiss Precision)
+ * Protocolo de Admisión, Folios Deterministas #T-XXXX, Web3Forms y Chips Hápticos
+ * Mapeo 1:1 con backend en Rust (IntakePayload struct)
  */
 
 (function () {
@@ -18,22 +18,31 @@
   }
 
   // 2. Construcción de Enlace Profundo (Deeplink) a WhatsApp
-  function updateWhatsAppDeeplink(folio, plant, equipment, symptom) {
+  function updateWhatsAppDeeplink(folio, plant, equipment, symptom, isEnglish) {
     const waBtn = document.getElementById('btnWhatsAppDirect');
-    if (!waBtn) return;
-
+    const heroWaBtn = document.querySelector('.btn-hero-wa');
     const baseWaUrl = "https://wa.me/526181062487"; // David Estefani - WhatsApp Operativo
-    const defaultText = `Hola, solicitud técnica de planta.\n` +
-      `Folio: ${folio || 'PENDIENTE'}\n` +
-      `Planta: ${plant || 'No especificada'}\n` +
-      `Equipo: ${equipment || 'No especificado'}\n` +
-      `Síntoma: ${symptom || 'Falla en línea de producción'}`;
 
-    waBtn.href = `${baseWaUrl}?text=${encodeURIComponent(defaultText)}`;
+    const text = isEnglish
+      ? `Hello David, plant service request.\n` +
+        `Folio: ${folio || 'PENDING'}\n` +
+        `Plant: ${plant || 'Not specified'}\n` +
+        `System: ${equipment || 'Not specified'}\n` +
+        `Symptom: ${symptom || 'Unplanned line downtime'}`
+      : `Hola David, solicitud de intervención técnica en planta.\n` +
+        `Folio: ${folio || 'PENDIENTE'}\n` +
+        `Planta: ${plant || 'No especificada'}\n` +
+        `Equipo: ${equipment || 'No especificado'}\n` +
+        `Síntoma: ${symptom || 'Falla en línea de producción'}`;
+
+    const finalUrl = `${baseWaUrl}?text=${encodeURIComponent(text)}`;
+    if (waBtn) waBtn.href = finalUrl;
+    if (heroWaBtn) heroWaBtn.href = finalUrl;
   }
 
   // 3. Inicialización del DOM
   document.addEventListener('DOMContentLoaded', () => {
+    const isEnglish = document.documentElement.lang === 'en';
     const intakeForm = document.getElementById('intakeForm');
     const ackCard = document.getElementById('ackCard');
     const ackFolioDisplay = document.getElementById('ackFolioDisplay');
@@ -41,6 +50,9 @@
     const equipmentInput = document.getElementById('fieldEquipment');
     const symptomInput = document.getElementById('fieldSymptom');
     const submitBtn = document.getElementById('btnSubmitIntake');
+    const machineDiagBox = document.getElementById('machineDiagBox');
+    const machineDiagTitle = document.getElementById('machineDiagTitle');
+    const machineDiagText = document.getElementById('machineDiagText');
 
     // Generar un folio base para la sesión
     const sessionFolio = generateTechnicalFolio();
@@ -52,7 +64,7 @@
       const p = plantInput ? plantInput.value.trim() : '';
       const eq = equipmentInput ? equipmentInput.value.trim() : '';
       const s = symptomInput ? symptomInput.value.trim() : '';
-      updateWhatsAppDeeplink(sessionFolio, p, eq, s);
+      updateWhatsAppDeeplink(sessionFolio, p, eq, s, isEnglish);
     }
 
     if (plantInput) plantInput.addEventListener('input', syncInputsToWhatsApp);
@@ -62,7 +74,34 @@
     // Configuración inicial de WhatsApp
     syncInputsToWhatsApp();
 
-    // 4. Manejo de Envío Asíncrono con Web3Forms y Honeypot Anti-Bot
+    // 4. Lógica de Chips Interactivos de Maquinaria
+    const brandChips = document.querySelectorAll('.brand-chip');
+    brandChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        brandChips.forEach(c => c.classList.remove('selected'));
+        chip.classList.add('selected');
+
+        const machineName = chip.getAttribute('data-machine');
+        const diagInfo = chip.getAttribute('data-diag');
+
+        if (equipmentInput && machineName) {
+          equipmentInput.value = machineName;
+          syncInputsToWhatsApp();
+        }
+
+        if (machineDiagBox && machineDiagText && diagInfo) {
+          if (machineDiagTitle) {
+            machineDiagTitle.textContent = isEnglish
+              ? `Diagnostic Scope for: ${machineName}`
+              : `Alcance de Diagnóstico para: ${machineName}`;
+          }
+          machineDiagText.textContent = diagInfo;
+          machineDiagBox.classList.add('visible');
+        }
+      });
+    });
+
+    // 5. Manejo de Envío Asíncrono con Web3Forms y Honeypot Anti-Bot
     if (intakeForm) {
       intakeForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -79,18 +118,19 @@
         const symVal = symptomInput ? symptomInput.value.trim() : '';
 
         if (!plantVal || !eqVal || !symVal) {
-          alert("Por favor completa los tres campos para evaluar la viabilidad técnica.");
+          alert(isEnglish 
+            ? "Please complete all fields to evaluate technical feasibility." 
+            : "Por favor completa los tres campos para evaluar la viabilidad técnica.");
           return;
         }
 
         // Estado visual de carga
         if (submitBtn) {
           submitBtn.disabled = true;
-          submitBtn.innerHTML = `<span>Procesando Folio...</span>`;
+          submitBtn.innerHTML = `<span>${isEnglish ? "Processing Folio..." : "Procesando Folio..."}</span>`;
         }
 
         const formData = new FormData(intakeForm);
-        // Inyectar datos estructurados (mapeables 1:1 a Rust IntakePayload struct)
         const timestamp_utc = Math.floor(Date.now() / 1000);
         const urgentStopEl = document.getElementById('fieldUrgentStop');
         const urgent_line_stop = urgentStopEl ? urgentStopEl.checked : false;
@@ -138,7 +178,7 @@
         } finally {
           if (submitBtn) {
             submitBtn.disabled = false;
-            submitBtn.innerHTML = `<span>Registrar Solicitud Técnica</span>`;
+            submitBtn.innerHTML = `<span>${isEnglish ? "Submit Technical Scope" : "Registrar Solicitud Técnica"}</span>`;
           }
         }
       });
