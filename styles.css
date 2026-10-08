@@ -1,83 +1,99 @@
 /* ==========================================================================
-   SISTEMA DE DISEÑO MINERAL INDUSTRIAL SOBERANO
-   Inspirado en Krene & A_wbb (Criterio Krones / Oxford Precision Engineering)
+   SISTEMA DE DISEÑO SOBERANO INDUSTRIAL MONOCROMÁTICO (BLANCO Y NEGRO)
+   Estética Suiza de Máxima Precisión (Strict High-Contrast Monochrome)
+   Criterio: Cero tinte azul / Cero saturación / Tipografía y contraste puro
    ========================================================================== */
 
 :root {
-  /* Paleta Mineral Noble (GOLD-039 / Krene / A_wbb) */
-  --bg-primary: #FAF8F5;
-  --bg-secondary: #F4EFE6;
+  /* Escala de Grises Monocromática Pura */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F7F7F7;
   --bg-surface: #FFFFFF;
   --bg-surface-elevated: #FFFFFF;
-  --bg-surface-hover: #F8F6F0;
+  --bg-surface-hover: #F2F2F2;
   
-  --text-primary: #141C24;
-  --text-secondary: #5A6676;
-  --text-muted: #8492A6;
-  --text-inverse: #FAF8F5;
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+  --text-inverse: #FFFFFF;
   
-  --border-subtle: #D8D1C5;
-  --border-strong: #141C24;
-  --border-focus: #0C3542;
+  --border-subtle: #E0E0E0;
+  --border-medium: #888888;
+  --border-strong: #000000;
+  --border-focus: #000000;
 
-  /* Acentos de Ingeniería Industrial */
-  --accent-navy: #0C3542;       /* Autoridad y Títulos (Azul Krones/Oxford) */
-  --accent-navy-hover: #08242D;
-  --accent-navy-subtle: #E1EEF2;
+  /* Constantes Monocromáticas (Reemplazo estricto sin color) */
+  --accent-black: #000000;
+  --accent-black-hover: #222222;
+  --accent-gray-light: #F4F4F4;
+  --accent-gray-subtle: #FAFAFA;
+  --accent-gray-border: #CCCCCC;
 
-  --accent-stps-green: #125436; /* Seguridad STPS & Compliance */
-  --accent-stps-subtle: #E4F2EB;
-  --accent-stps-border: #1E6B4A;
+  /* Aliases para compatibilidad sin tintes de color */
+  --accent-navy: #000000;
+  --accent-navy-hover: #222222;
+  --accent-navy-subtle: #F4F4F4;
 
-  --accent-alert-amber: #B45309;/* Alerta de Paro & Diagnóstico */
-  --accent-alert-subtle: #FAF3E6;
+  --accent-stps-green: #000000;
+  --accent-stps-subtle: #F4F4F4;
+  --accent-stps-border: #000000;
 
-  --accent-critical-red: #B4432C;/* Paro Total de Línea */
-  --accent-critical-subtle: #FAECE8;
+  --accent-alert-amber: #000000;
+  --accent-alert-subtle: #F4F4F4;
+
+  --accent-critical-red: #000000;
+  --accent-critical-subtle: #F4F4F4;
 
   /* Tipografía */
   --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
   /* Curvas y Transiciones Hápticas */
-  --radius-card: 14px;
-  --radius-sm: 8px;
+  --radius-card: 10px;
+  --radius-sm: 6px;
   --radius-pill: 9999px;
   --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
-  --shadow-card: 0 1px 3px rgba(20, 28, 36, 0.04), 0 6px 16px -4px rgba(20, 28, 36, 0.03);
-  --shadow-hover: 0 4px 12px rgba(20, 28, 36, 0.08);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-primary: #0A0F1D;
-    --bg-secondary: #101626;
-    --bg-surface: #161F33;
-    --bg-surface-elevated: #1E293B;
-    --bg-surface-hover: #233047;
+    --bg-primary: #000000;
+    --bg-secondary: #0D0D0D;
+    --bg-surface: #141414;
+    --bg-surface-elevated: #1C1C1C;
+    --bg-surface-hover: #262626;
 
-    --text-primary: #F1F5F9;
-    --text-secondary: #94A3B8;
-    --text-muted: #64748B;
-    --text-inverse: #0A0F1D;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0B0B0;
+    --text-muted: #808080;
+    --text-inverse: #000000;
 
-    --border-subtle: #2A364F;
-    --border-strong: #94A3B8;
-    --border-focus: #38BDF8;
+    --border-subtle: #262626;
+    --border-medium: #555555;
+    --border-strong: #FFFFFF;
+    --border-focus: #FFFFFF;
 
-    --accent-navy: #38BDF8;
-    --accent-navy-hover: #7DD3FC;
-    --accent-navy-subtle: rgba(56, 189, 248, 0.12);
+    --accent-black: #FFFFFF;
+    --accent-black-hover: #E0E0E0;
+    --accent-gray-light: #1A1A1A;
+    --accent-gray-subtle: #121212;
+    --accent-gray-border: #444444;
 
-    --accent-stps-green: #10B981;
-    --accent-stps-subtle: rgba(16, 185, 129, 0.12);
-    --accent-stps-border: #059669;
+    --accent-navy: #FFFFFF;
+    --accent-navy-hover: #E0E0E0;
+    --accent-navy-subtle: #1A1A1A;
 
-    --accent-alert-amber: #F59E0B;
-    --accent-alert-subtle: rgba(245, 158, 11, 0.12);
+    --accent-stps-green: #FFFFFF;
+    --accent-stps-subtle: #1A1A1A;
+    --accent-stps-border: #FFFFFF;
 
-    --accent-critical-red: #F87171;
-    --accent-critical-subtle: rgba(239, 68, 68, 0.12);
+    --accent-alert-amber: #FFFFFF;
+    --accent-alert-subtle: #1A1A1A;
+
+    --accent-critical-red: #FFFFFF;
+    --accent-critical-subtle: #1A1A1A;
   }
 }
 
@@ -109,11 +125,11 @@ h1, h2, h3, h4 {
   color: var(--text-primary);
   font-weight: 800;
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 h1 { font-size: clamp(1.85rem, 4vw, 2.65rem); }
-h2 { font-size: clamp(1.4rem, 3vw, 1.95rem); }
+h2 { font-size: clamp(1.35rem, 3vw, 1.85rem); }
 h3 { font-size: 1.15rem; }
 
 p {
@@ -131,9 +147,9 @@ p {
 .top-bar {
   background-color: var(--bg-surface);
   border-bottom: 1.5px solid var(--border-subtle);
-  padding: 0.6rem 1.25rem;
+  padding: 0.65rem 1.25rem;
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   display: flex;
@@ -147,27 +163,29 @@ p {
 .top-bar-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  color: var(--accent-stps-green);
+  gap: 0.5rem;
+  color: var(--text-primary);
 }
 
 .top-bar-dot {
   width: 8px;
   height: 8px;
-  background-color: var(--accent-stps-green);
+  background-color: var(--text-primary);
   border-radius: var(--radius-pill);
-  box-shadow: 0 0 0 2px var(--accent-stps-subtle);
+  box-shadow: 0 0 0 2px var(--border-subtle);
 }
 
 .top-bar-links a {
   color: var(--text-secondary);
   text-decoration: none;
-  margin-left: 1rem;
+  margin-left: 1.25rem;
   transition: color 150ms ease;
+  font-weight: 700;
 }
 
 .top-bar-links a:hover {
   color: var(--text-primary);
+  text-decoration: underline;
 }
 
 /* Layout Container */
@@ -184,21 +202,22 @@ p {
 
 .kicker {
   display: inline-block;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 800;
-  color: var(--accent-navy);
-  background-color: var(--accent-navy-subtle);
-  border: 1px solid var(--accent-navy);
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  border: 1.5px solid var(--border-strong);
   padding: 0.25rem 0.65rem;
   border-radius: var(--radius-pill);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 1rem;
+  margin-bottom: 1.15rem;
 }
 
 .hero-title {
   margin-bottom: 1.15rem;
   max-width: 900px;
+  letter-spacing: -0.03em;
 }
 
 .hero-subtitle {
@@ -236,7 +255,7 @@ p {
 }
 
 .brand-badge {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
   padding: 0.35rem 0.75rem;
   border-radius: var(--radius-sm);
@@ -244,6 +263,11 @@ p {
   font-size: 0.84rem;
   font-weight: 700;
   color: var(--text-primary);
+  transition: border-color 150ms ease;
+}
+
+.brand-badge:hover {
+  border-color: var(--border-strong);
 }
 
 /* Grid Dual: Confianza y Compliance */
@@ -283,27 +307,27 @@ p {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 0.2rem 0.55rem;
-  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
   margin-bottom: 0.75rem;
 }
 
 .card-badge.stps {
-  background-color: var(--accent-stps-subtle);
-  color: var(--accent-stps-green);
-  border: 1px solid var(--accent-stps-border);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-strong);
 }
 
 .card-badge.tax {
-  background-color: var(--accent-navy-subtle);
-  color: var(--accent-navy);
-  border: 1px solid var(--accent-navy);
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border: 1.5px solid var(--text-primary);
 }
 
 .card-badge.case {
-  background-color: var(--accent-alert-subtle);
-  color: var(--accent-alert-amber);
-  border: 1px solid var(--accent-alert-amber);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1.5px dashed var(--border-strong);
 }
 
 .card-title {
@@ -327,15 +351,16 @@ p {
 }
 
 .card-list li::before {
-  content: "✓";
-  color: var(--accent-stps-green);
-  font-weight: 800;
-  font-size: 0.95rem;
+  content: "—";
+  color: var(--text-primary);
+  font-weight: 900;
+  font-size: 1rem;
+  line-height: 1.2;
 }
 
 /* Muestra Real Anonimizada */
 .case-box {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   border: 1.5px dashed var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 1rem;
@@ -365,11 +390,11 @@ p {
 /* Sección de Formulario de Admisión (Intake) */
 .intake-section {
   background-color: var(--bg-surface);
-  border: 2px solid var(--accent-navy);
+  border: 2px solid var(--border-strong);
   border-radius: var(--radius-card);
   padding: 2rem 1.5rem;
   margin: 2rem 0;
-  box-shadow: 0 4px 20px rgba(12, 53, 66, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .intake-header {
@@ -398,7 +423,7 @@ p {
 
 .form-label {
   font-size: 0.86rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
 }
 
@@ -421,8 +446,8 @@ p {
 
 .form-input:focus, .form-textarea:focus {
   outline: none;
-  border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px var(--accent-navy-subtle);
+  border-color: var(--border-strong);
+  box-shadow: 0 0 0 2px var(--text-primary);
 }
 
 .form-textarea {
@@ -457,7 +482,7 @@ p {
   text-decoration: none;
   cursor: pointer;
   border: 1.5px solid transparent;
-  transition: transform 160ms var(--ease-apple), background-color 150ms ease;
+  transition: transform 160ms var(--ease-apple), background-color 150ms ease, color 150ms ease;
 }
 
 .btn:active {
@@ -465,28 +490,31 @@ p {
 }
 
 .btn-primary {
-  background-color: var(--accent-navy);
-  color: #FFFFFF;
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border: 1.5px solid var(--text-primary);
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-navy-hover);
+  background-color: var(--accent-black-hover);
+  color: var(--bg-primary);
 }
 
 .btn-whatsapp {
-  background-color: var(--accent-stps-green);
-  color: #FFFFFF;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-strong);
 }
 
 .btn-whatsapp:hover {
-  background-color: var(--accent-stps-border);
+  background-color: var(--bg-secondary);
 }
 
 /* Tarjeta Dinámica de Acuse Técnico */
 .ack-card {
   display: none;
   background-color: var(--bg-surface);
-  border: 2px solid var(--accent-stps-green);
+  border: 2px solid var(--border-strong);
   border-radius: var(--radius-card);
   padding: 2rem;
   text-align: left;
@@ -506,16 +534,17 @@ p {
   font-family: var(--font-mono);
   font-size: 1.35rem;
   font-weight: 900;
-  color: var(--accent-navy);
+  color: var(--bg-primary);
+  background-color: var(--text-primary);
   margin-bottom: 0.75rem;
   display: inline-block;
-  padding: 0.25rem 0.65rem;
-  background-color: var(--accent-navy-subtle);
+  padding: 0.3rem 0.75rem;
   border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
 }
 
 .ack-checklist {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 1rem;
@@ -553,7 +582,7 @@ p {
 }
 
 .travel-col {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 1rem;
@@ -562,7 +591,7 @@ p {
 .travel-col-title {
   font-size: 0.88rem;
   font-weight: 800;
-  color: var(--accent-navy);
+  color: var(--text-primary);
   margin-bottom: 0.4rem;
 }
 
