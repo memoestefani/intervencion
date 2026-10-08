@@ -20,7 +20,7 @@
         "@type": "ProfessionalService",
         "@id": "https://memoestefani.github.io/intervencion/en/#provider",
         "name": "David Estefani — Industrial Mechatronics Specialist",
-        "description": "Independent mechatronics field engineering services for root-cause diagnosis, commissioning, and operational recovery across continuous presses, heavy stamping, die casting, and continuous bottling lines.",
+        "description": "Independent mechatronics field engineering services for root-cause diagnosis, commissioning, and operational recovery across continuous presses, heavy stamping, die casting, continuous bottling, and polymer extrusion lines.",
         "telephone": "+52-618-106-2487",
         "email": "da.alejandro@gmail.com",
         "areaServed": [
@@ -35,7 +35,7 @@
         "provider": {
           "@id": "https://memoestefani.github.io/intervencion/en/#provider"
         },
-        "serviceType": "Root-Cause Diagnostics and Recovery for Continuous Presses, Heavy Stamping, Die Casting, and Bottling Lines",
+        "serviceType": "Root-Cause Diagnostics and Recovery for Continuous Presses, Heavy Stamping, Die Casting, Bottling, and Extrusion Lines",
         "termsOfService": "Fixed-fee statement of work before dispatch. W-8BEN compliant USD invoicing via international wire."
       },
       {
@@ -164,8 +164,14 @@
         <button type="button" class="machine-chip-btn" id="chipSidel" data-target="specSidel" data-topology="Envasado">
           <span>🧴 Continuous Bottling (Krones / Sidel)</span>
         </button>
+        <button type="button" class="machine-chip-btn" id="chipExtrusion" data-target="specExtrusion" data-topology="Extrusion">
+          <span>🏭 High-Tonnage Injection &amp; Corrugating (Battenfeld / KraussMaffei / BHS)</span>
+        </button>
       </div>
       <div class="brands-grid" role="group" aria-label="Industrial machinery systems">
+        <span class="brand-chip" tabindex="0" data-machine="High-Tonnage Injection &amp; Corrugating (Battenfeld / KraussMaffei / BHS)" data-diag="High-tonnage injection and heavy corrugating: Rexroth 4WRPEH 10 plastification servo valves, clamp force asymmetry, and A4VSO pumps.">
+          <span>Battenfeld / KraussMaffei / BHS</span>
+        </span>
         <span class="brand-chip" tabindex="0" data-machine="Dieffenbacher CPS / Siempelkamp Continuous Presses" data-diag="Heavy continuous board presses: thermal misalignment, hydraulic frame pressure imbalance, and proportional valve calibration.">
           <span>Dieffenbacher CPS / Siempelkamp</span>
         </span>
@@ -481,6 +487,15 @@
         </div>
 
         <div class="bom-tab-pane" id="tabParts" role="tabpanel">
+          <div class="cots-search-container">
+            <div class="cots-search-header">
+              <label for="filterCrossReference" class="cots-search-label">
+                <span>🔍 Instant COTS Spare Cross-Reference Search (Parker, Rexroth, Moog, Hydac, Festo):</span>
+              </label>
+              <span class="cots-search-badge">⚡ 0 ms Latency • In-Memory Lookup</span>
+            </div>
+            <input type="text" id="filterCrossReference" class="cots-search-input" placeholder="Type OEM part code, commercial model (e.g. 4WRPEH, D633, A4VSO, BTL) or brand..." autocomplete="off">
+          </div>
           <div class="report-bom-table-wrapper" id="bomPartsContent">
             <table class="report-bom-table">
               <thead>
@@ -562,6 +577,7 @@
           </div>
         </div>
         <div class="sheet-actions">
+          <button type="button" class="btn btn-outline btn-print-sow" id="btnPrintSow">Print / PDF</button>
           <button type="button" class="btn btn-secondary" id="btnDismissSowPreview">Close Preview</button>
         </div>
       </div>

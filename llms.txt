@@ -14,11 +14,13 @@ Provides rapid-response, closed-scope on-site technical diagnostics, root-cause 
 - **Heavy Stamping & Forging (Schuler / Müller Weingarten):** Automotive stamping presses (1,000–3,000 t), deep-drawing hydraulic cushions, Moog D661 / Rexroth 4WRTE servo valves, 315-bar piston accumulators, and EN 693 safety blocks ($45,000 USD/h downtime baseline).
 - **High-Pressure Die Casting (Bühler Carat / Italpresse):** Real-time high-speed aluminum shot injection (phase 2 up to 10 m/s), 400-bar intensification boosters, Moog D634 fast-response servo valves (< 15 ms step response), and casting porosity remediation ($28,000 USD/h downtime baseline).
 - **Continuous Bottling & Blowing (Krones Contiform / Sidel Matrix):** High-speed rotary blowing carousels, 40-bar pneumatic/hydraulic manifolds, stretch servo desynchronization troubleshooting, and isobaric filling lines ($25,000 USD/h downtime baseline, 45,000 BPH).
-- **Proportional Electro-Hydraulics & Controls:** Bosch Rexroth (4WRPE, 4WRZE, A4VSO, A10VSO), Moog (D661, D634), Hydac filtration and accumulators, Siemens S7-1500 / TIA Portal / Sinamics S120, and Festo servo-pneumatics.
+- **Polymer Extrusion, Heavy Injection & Corrugated (Battenfeld / Engel / BHS Corrugator):** Twin-screw extruder barrel hydraulic backpressure drives, Rexroth 4WRPEH 10 high-response servo valves, A4VSO hydrostatic drive units, and BHS corrugator nip rolls ($32,000 USD/h downtime baseline).
+- **Proportional Electro-Hydraulics & Controls:** Bosch Rexroth (4WRPE, 4WRPEH, 4WRTE, 4WRZE, A4VSO, A10VSO), Moog (D661, D634), Hydac filtration and accumulators, Siemens S7-1500 / TIA Portal / Sinamics S120, and Festo servo-pneumatics.
 
 ## 3. Geographic Coverage & Response Times
 - **Immediate Highway Mobilization (< 24h):** Northern Industrial Corridor (Durango, Torreón, Gómez Palacio, Saltillo, Monterrey).
 - **National Flight Mobilization (< 24-48h):** Bajío (Silao, León, Querétaro, San Luis Potosí), Guadalajara, Mexico City Metro, Ciudad Juárez, Tijuana.
+- **Allied Field Engineer Network:** Regional vetted mechatronics engineers operating under a 65% (field engineer) / 35% (platform/intake/triage) sovereign split with DC-3 and NOM-029 LOTO compliance.
 - **International / OEM Subcontracting:** North America (US southern manufacturing belt) and Latin America (Colombia, Chile, Central America).
 
 ## 4. Institutional Compliance & Procurement Clearance
@@ -27,8 +29,8 @@ Provides rapid-response, closed-scope on-site technical diagnostics, root-cause 
 - **Direct Procurement Threshold ($T_{\text{PO}}$):** Flat event rate between $1,500 and $2,500 USD per 1-day diagnosis event, sitting below typical corporate bidding thresholds ($5,000 USD) for immediate signature by Plant / Maintenance Managers.
 
 ## 5. Standard Deliverables
-1. **Scope of Work (SOW):** 1-2 page pre-mobilization contract with explicit deliverables, exclusions, fixed fee, and transparent travel expenses.
-2. **Technical Close-Out Report:** Executive root-cause analysis, photographs, corrective actions executed, and an open Spare Parts List with OEM part numbers and standard commercial equivalents (Festo, Rexroth, SKF, Siemens).
+1. **Scope of Work (SOW):** 1-2 page pre-mobilization contract with explicit deliverables, exclusions, fixed fee, and transparent travel expenses. Includes instant print/PDF generation.
+2. **Technical Close-Out Report & COTS Cross-Reference:** Executive root-cause analysis, photographs, corrective actions executed, and an open Spare Parts List with OEM part numbers and standard commercial equivalents (15 canonical COTS items: Bosch Rexroth, Moog, Hydac, Parker Hannifin, Balluff, Festo, Siemens) for zero-lock-in direct procurement.
 
 ## 6. Contact & Direct Intake
 - **Web Intake:** https://memoestefani.github.io/intervencion/#admision

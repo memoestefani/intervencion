@@ -1849,6 +1849,90 @@ dialog.focus-sheet::backdrop {
   justify-content: flex-end;
   gap: 0.75rem;
   padding-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   BUSCADOR INSTANTÁNEO DE REFACCIONES COTS (Decisión 4 / cmdk pattern)
+   ========================================================================== */
+.cots-search-container {
+  margin: 0.75rem 0 1.25rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: 0.85rem 1.15rem;
+}
+
+.cots-search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.cots-search-label {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cots-search-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-emerald);
+  background-color: rgba(16, 185, 129, 0.1);
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.cots-search-input {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.88rem;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: inherit;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  box-sizing: border-box;
+}
+
+.cots-search-input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.btn-print-sow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.15rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  background-color: #0F172A;
+  border: 1px solid #334155;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 100ms ease;
+  text-decoration: none;
+}
+
+.btn-print-sow:hover {
+  background-color: #1E293B;
+}
+
+.btn-print-sow:active {
+  transform: translateY(1px);
 }
 
 /* ==========================================================================
@@ -1881,6 +1965,8 @@ dialog.focus-sheet::backdrop {
   .machine-segmenter,
   .hero-modality-toggle,
   .roi-unit-toggle,
+  .cots-search-container,
+  .btn-print-sow,
   dialog.focus-sheet,
   #copyToastFeedback {
     display: none !important;

@@ -20,7 +20,7 @@
         "@type": "ProfessionalService",
         "@id": "https://memoestefani.github.io/intervencion/#provider",
         "name": "David Estefani — Especialista Mecatrónico Industrial",
-        "description": "Servicios profesionales independientes de ingeniería de campo, diagnóstico de causa raíz y restablecimiento en prensas continuas, estampado pesado, inyección die casting y líneas de envasado.",
+        "description": "Servicios profesionales independientes de ingeniería de campo, diagnóstico de causa raíz y restablecimiento en prensas continuas, estampado pesado, inyección die casting, líneas de envasado y extrusión de polímeros.",
         "telephone": "+52-618-106-2487",
         "email": "da.alejandro@gmail.com",
         "areaServed": [
@@ -35,7 +35,7 @@
         "provider": {
           "@id": "https://memoestefani.github.io/intervencion/#provider"
         },
-        "serviceType": "Diagnóstico de Causa Raíz y Restablecimiento en Prensas Continuas, Estampado Pesado, Die Casting y Envasado",
+        "serviceType": "Diagnóstico de Causa Raíz y Restablecimiento en Prensas Continuas, Estampado Pesado, Die Casting, Envasado y Extrusión",
         "termsOfService": "Alcance y costo cerrados antes de movilización. Facturación vía Persona Moral SAT 32-D."
       },
       {
@@ -164,8 +164,14 @@
         <button type="button" class="machine-chip-btn" id="chipSidel" data-target="specSidel" data-topology="Envasado">
           <span>🧴 Líneas de Envasado (Krones / Sidel)</span>
         </button>
+        <button type="button" class="machine-chip-btn" id="chipExtrusion" data-target="specExtrusion" data-topology="Extrusion">
+          <span>🏭 Inyección, Extrusión &amp; Corrugado (Battenfeld / KraussMaffei / BHS)</span>
+        </button>
       </div>
       <div class="brands-grid" role="group" aria-label="Sistemas industriales">
+        <span class="brand-chip" tabindex="0" data-machine="Inyección de Gran Tonelaje y Corrugado Battenfeld / KraussMaffei / BHS" data-diag="Inyección y corrugado pesado: servoválvulas proporcionales Rexroth 4WRPEH 10 de plastificación, desbalance de fuerza de cierre y bombas A4VSO.">
+          <span>Battenfeld / KraussMaffei / BHS</span>
+        </span>
         <span class="brand-chip" tabindex="0" data-machine="Prensas Continuas Dieffenbacher CPS / Siempelkamp" data-diag="Prensas continuas: desalineación térmica, desbalance de presiones en marcos y retorno electrohidráulico.">
           <span>Dieffenbacher CPS / Siempelkamp</span>
         </span>
@@ -481,6 +487,15 @@
         </div>
 
         <div class="bom-tab-pane" id="tabParts" role="tabpanel">
+          <div class="cots-search-container">
+            <div class="cots-search-header">
+              <label for="filterCrossReference" class="cots-search-label">
+                <span>🔍 Buscador Instantáneo de Refacciones Cruzadas COTS (Parker, Rexroth, Moog, Hydac, Festo):</span>
+              </label>
+              <span class="cots-search-badge">⚡ 0 ms Latencia • Base Local</span>
+            </div>
+            <input type="text" id="filterCrossReference" class="cots-search-input" placeholder="Escribe código OEM, modelo comercial (ej. 4WRPEH, D633, A4VSO, BTL) o fabricante..." autocomplete="off">
+          </div>
           <div class="report-bom-table-wrapper" id="bomPartsContent">
             <table class="report-bom-table">
               <thead>
@@ -562,6 +577,9 @@
           </div>
         </div>
         <div class="sheet-actions">
+          <button type="button" class="btn-print-sow" id="btnPrintSow">
+            <span>🖨️ Imprimir / Guardar SOW para Aprobación SAP</span>
+          </button>
           <button type="button" class="btn btn-secondary" id="btnDismissSowPreview">Cerrar Vista Previa</button>
         </div>
       </div>

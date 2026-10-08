@@ -41,19 +41,26 @@ A diferencia de consultores individuales informales, este servicio opera institu
 - Ajuste de presiones de soplado (aire comprimido a 40 bar) y calibración de servoválvulas proporcionales de estirado.
 - Detección de micro-fugas en juntas rotativas distribuidoras y diagnóstico de alarmas en HMI.
 
-### 2.5 Potencia Fluida y Servohidráulica Proporcional Universal
+### 2.5 Extrusión Continua de Polímeros, Inyección Pesada y Corrugadoras (Battenfeld / Engel / BHS Corrugated)
+- Diagnóstico de contrapresión hidráulica en husillos gemelos de extrusor y desbalance de presión de fundido (> 15 bar delta).
+- Sintonización dinámica de servoválvulas directas Bosch Rexroth 4WRPEH 10 y reguladoras proporcionales de caudal 2FRE16.
+- Recalibración de transmisiones hidrostáticas A4VSO y recarga de nitrógeno en acumuladores Hydac para corrugadoras de alta velocidad.
+
+### 2.6 Potencia Fluida, Servohidráulica Proporcional y Catálogo COTS Abierto
 - Bombas de pistones axiales de caudal variable (Bosch Rexroth A10VSO, A4VSO, Vickers PVH).
 - Bloques de manifolds hidráulicos, servoválvulas proporcionales con retroalimentación electrónica integrada (OBE).
+- Catálogo de cruce de refacciones comerciales estándar (15 componentes COTS clave: Rexroth, Moog, Parker Hannifin, Hydac, Festo, Balluff, Siemens).
 - Análisis de contaminación de fluido, cavitación y cálculo de filtración ISO 4406 con Hydac / Pall.
 
 ---
 
-## 3. Protocolo de Atención y Triage
+## 3. Protocolo de Atención, Red Aliada y Triage
 1. **Intake de Fricción Mínima:** El cliente proporciona únicamente la ubicación de la planta, el equipo detenido y el síntoma observable. No se le exige pre-diagnosticar la falla.
-2. **Acuse de Infraestructura Inmediato:** El sistema genera un folio técnico determinista (#T-XXXX) en pantalla y notifica que David está en máquina y evaluará el caso en su siguiente ventana operativa, indicando al cliente que reúna fotografías de placa y de alarmas de HMI.
-3. **Emisión de Alcance Cerrado (SOW):** Documento formal de 1 a 2 páginas con tarifa fija, exclusiones explícitas, viáticos transparentes y cláusulas STPS/REPSE.
-4. **Intervención en Sitio:** Ejecución bajo protocolo de seguridad LOTO NOM-029 y EPP normado NOM-017.
-5. **Cierre:** Entrega de Reporte Técnico Ejecutivo formal con causa raíz demostrada y Lista de Partes con referencias OEM y equivalencias comerciales en México (Festo, Rexroth, SKF, Siemens, SMC).
+2. **Acuse de Infraestructura Inmediato:** El sistema genera un folio técnico determinista (#T-XXXX) en pantalla y notifica que David o el ingeniero mecatrónico asignado evaluará el caso en su siguiente ventana operativa.
+3. **Red de Ingenieros Mecatrónicos Aliados:** Despliegue regional con modelo de compensación soberana 65% ingeniero de campo / 35% plataforma bajo homologación DC-3 y NOM-029 LOTO.
+4. **Emisión de Alcance Cerrado (SOW):** Documento formal de 1 a 2 páginas con tarifa fija, exclusiones explícitas, viáticos transparentes y cláusulas STPS/REPSE, con generador de impresión y PDF.
+5. **Intervención en Sitio:** Ejecución bajo protocolo de seguridad LOTO NOM-029 y EPP normado NOM-017.
+6. **Cierre:** Entrega de Reporte Técnico Ejecutivo formal con causa raíz demostrada y Lista de Partes con referencias OEM y equivalencias comerciales COTS en México (Festo, Rexroth, SKF, Siemens, SMC).
 
 ---
 

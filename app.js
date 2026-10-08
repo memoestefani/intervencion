@@ -24,7 +24,7 @@
       return { totalLoss: 0, amortizationMinutes: 0 };
     }
     const totalLoss = downtimeHours * hourlyCostRate;
-    const amortizationMinutes = Math.max(0, Math.round((fixedInterventionFee / totalLoss) * 60));
+    const amortizationMinutes = Math.max(1, Math.round((fixedInterventionFee / hourlyCostRate) * 60));
     return {
       totalLoss: totalLoss,
       amortizationMinutes: amortizationMinutes
@@ -229,6 +229,25 @@
         sowObjective: isEnglish
           ? "Proportional pressure regulator dynamic flow audit, valve terminal timing tune, and pneumatic seal integrity inspection."
           : "Auditoría de caudal dinámico en reguladores proporcionales, sintonización de terminales de válvulas y verificación de sellos."
+      },
+      "Extrusion": {
+        title: isEnglish ? "Battenfeld / Engel / BHS Corrugator & Extrusion Lines" : "Líneas de Extrusión Battenfeld / Engel y Corrugadoras BHS",
+        badge: isEnglish ? "Continuous Polymer Extrusion & Injection (500–4000T)" : "Extrusión Continua de Polímeros & Inyección Pesada (500–4000T)",
+        subsys: isEnglish
+          ? "Twin-screw extruder barrel hydraulic backpressure drives, Rexroth 4WRPEH 10 servo valves, A4VSO hydrostatic drive units, and BHS corrugator nip rolls."
+          : "Unidades hidráulicas de contrapresión en husillos gemelos, servoválvulas Rexroth 4WRPEH 10, transmisiones hidrostáticas A4VSO y rodillos corrugadores BHS.",
+        failure: isEnglish
+          ? "Melt pressure fluctuation (> 15 bar delta) causing thickness out-of-spec, barrel drive servo instability, and hydraulic accumulator nitrogen leakage."
+          : "Fluctuación en presión de fundido (> 15 bar) causando merma dimensional, inestabilidad de servoválvula en husillo y pérdida de nitrógeno en acumuladores.",
+        protocol: isEnglish
+          ? "In-situ frequency response audit of 4WRPEH servo spool, high-frequency pressure ripple profiling, and proportional flow valve zero-overlap tune."
+          : "Auditoría de respuesta en frecuencia de servoválvula 4WRPEH, perfilado de ondulación de presión y calibración de solape cero en válvula de caudal.",
+        rate: "$1,800 – $2,500 USD",
+        lossPerHour: 32000,
+        bomKey: "Extrusion",
+        sowObjective: isEnglish
+          ? "On-site hydraulic extruder drive inspection, 4WRPEH servo valve dynamic tuning, and melt pressure stability recovery (< 2 bar delta)."
+          : "Inspección de accionamiento hidráulico de extrusión, calibración dinámica de servoválvula 4WRPEH y estabilización de presión de fundido (< 2 bar)."
       }
     };
 
@@ -236,6 +255,10 @@
     machineProfiles["Sidel"] = machineProfiles["Envasado"];
     machineProfiles["Dieffenbacher"] = machineProfiles["Prensas"];
     machineProfiles["Rexroth"] = machineProfiles["Estampado"];
+    machineProfiles["Battenfeld"] = machineProfiles["Extrusion"];
+    machineProfiles["Engel"] = machineProfiles["Extrusion"];
+    machineProfiles["BHS"] = machineProfiles["Extrusion"];
+    machineProfiles["Corrugadoras"] = machineProfiles["Extrusion"];
 
     // 4. Generación Inmediata de Folio en Vivo (Docket Activo)
     const sessionFolio = generateTechnicalFolio();
@@ -339,6 +362,22 @@
           { prio: "preventiva", label: isEnglish ? "🟡 PREVENTIVE (30d)" : "🟡 PREVENTIVA (30d)", comp: isEnglish ? "Viton high-temp seal kit" : "Juego de sellos Vitón alta temperatura", part: "V8388-75 Parker O-Ring Kit", mfr: "Parker Hannifin", avail: isEnglish ? "5-day lead time" : "Tiempo entrega 5 días" },
           { prio: "stock", label: isEnglish ? "🟢 PLANT SPARE" : "🟢 STOCK PLANTA", comp: isEnglish ? "Blowing axis synchronous servo" : "Servomotor sincrónico eje soplado", part: "1FK7060-2AC71-1QA0", mfr: "Siemens", avail: isEnglish ? "On-site customer warehouse" : "Existente en almacén cliente" }
         ]
+      },
+      "Extrusion": {
+        subtitle: isEnglish ? "High-Output Polymer Extrusion & BHS Corrugated Line" : "Extrusión Continua de Polímeros y Corrugadoras BHS de Alta Capacidad",
+        telemetry: isEnglish
+          ? `• <strong>Critical Variable Measured:</strong> Extruder backpressure <strong>140 bar</strong> vs. <strong>185 bar setpoint</strong>; melt pressure ripple ±18 bar.<br>` +
+            `• <strong>Deterministic Root Cause:</strong> Spool stiction in Rexroth 4WRPEH 10 high-response valve and damaged seal in 2FRE16 flow control block.<br>` +
+            `• <strong>Action Executed:</strong> Replacement with direct-operated 4WRPEH servo valve, proportional flow curve recalibration, and accumulator precharge.`
+          : `• <strong>Variable Crítica Medida:</strong> Contrapresión de extrusor <strong>140 bar</strong> vs. <strong>185 bar consigna</strong>; oscilación de presión ±18 bar.<br>` +
+            `• <strong>Hallazgo Determinista:</strong> Adherencia en corredera de servoválvula Rexroth 4WRPEH 10 y desgaste en empaque primario de reguladora 2FRE16.<br>` +
+            `• <strong>Acción Ejecutada:</strong> Sustitución de válvula servoproporcional 4WRPEH, recalibración de curva de caudal y recarga de acumulador a 110 bar.`,
+        parts: [
+          { prio: "inmediata", label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA", comp: isEnglish ? "High-response directional servo valve" : "Válvula servoproporcional alta dinámica NG10", part: "4WRPEH10-C3-B100L-2X/G24K0/A1M", mfr: "Bosch Rexroth", avail: isEnglish ? "Open commercial catalog / direct Mty" : "Catálogo abierto comercial / Mty stock" },
+          { prio: "inmediata", label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA", comp: isEnglish ? "2-way proportional flow control valve" : "Válvula reguladora proporcional de caudal 2 vías", part: "2FRE16-4X/160LBK4M", mfr: "Bosch Rexroth", avail: isEnglish ? "Authorized distribution Gdl / Qro" : "Distribución autorizada Gdl / Qro" },
+          { prio: "preventiva", label: isEnglish ? "🟡 PREVENTIVE (30d)" : "🟡 PREVENTIVA (30d)", comp: isEnglish ? "Electronic pressure sensor 0-250 bar" : "Transmisor electrónico de presión 0-250 bar", part: "PN7000 (0-250 bar 4-20mA)", mfr: "ifm efector", avail: isEnglish ? "Immediate express delivery" : "Entrega express inmediata" },
+          { prio: "stock", label: isEnglish ? "🟢 PLANT SPARE" : "🟢 STOCK PLANTA", comp: isEnglish ? "High-temp hydraulic cylinder seal kit" : "Kit sellos para cilindro alta temperatura", part: "Parker PolyPak B7-8500", mfr: "Parker Hannifin", avail: isEnglish ? "On-site customer warehouse" : "Existente en almacén cliente" }
+        ]
       }
     };
 
@@ -346,42 +385,218 @@
     machineBoms["Sidel"] = machineBoms["Envasado"];
     machineBoms["Dieffenbacher"] = machineBoms["Prensas"];
     machineBoms["Rexroth"] = machineBoms["Estampado"];
+    machineBoms["Battenfeld"] = machineBoms["Extrusion"];
+    machineBoms["Engel"] = machineBoms["Extrusion"];
+    machineBoms["BHS"] = machineBoms["Extrusion"];
+    machineBoms["Corrugadoras"] = machineBoms["Extrusion"];
+
+    // Catálogo Maestro Homologado COTS (15 Refacciones Universales sin Cautiverio)
+    const COTS_CROSS_REFERENCE_CATALOG = [
+      {
+        part: "4WRPE10-W6-50L-2X/G24K0/A1M",
+        mfr: "Bosch Rexroth",
+        comp: isEnglish ? "Servo-proportional valve NG10" : "Válvula servoproporcional NG10",
+        prio: "inmediata",
+        label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA",
+        avail: isEnglish ? "Open commercial catalog / direct Mty" : "Catálogo comercial abierto / Mty"
+      },
+      {
+        part: "4WRPEH10-C3-B100L-2X/G24K0/A1M",
+        mfr: "Bosch Rexroth",
+        comp: isEnglish ? "High-response directional servo valve" : "Válvula servoproporcional alta dinámica NG10",
+        prio: "inmediata",
+        label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA",
+        avail: isEnglish ? "Direct distribution Monterrey / Saltillo" : "Distribución directa Monterrey / Saltillo"
+      },
+      {
+        part: "4WRTE16V200L-4X/6EG24ETK31/F1M",
+        mfr: "Bosch Rexroth",
+        comp: isEnglish ? "Directional proportional valve with OBE" : "Válvula direccional proporcional con OBE",
+        prio: "inmediata",
+        label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA",
+        avail: isEnglish ? "In-stock authorized distributor" : "En stock distribuidor autorizado"
+      },
+      {
+        part: "4WRZE16W8-150-7X/6EG24N9K4/M",
+        mfr: "Bosch Rexroth",
+        comp: isEnglish ? "Two-stage proportional directional valve" : "Válvula direccional proporcional bi-etapa",
+        prio: "preventiva",
+        label: isEnglish ? "🟡 PREVENTIVE (30d)" : "🟡 PREVENTIVA (30d)",
+        avail: isEnglish ? "Open commercial catalog" : "Catálogo abierto comercial"
+      },
+      {
+        part: "A4VSO180DR/30R-PPB13N00",
+        mfr: "Bosch Rexroth",
+        comp: isEnglish ? "Axial piston pump rotary group" : "Grupo rotativo bomba pistones axiales",
+        prio: "inmediata",
+        label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA",
+        avail: isEnglish ? "Rexroth Dallas / Mty branch" : "Sucursal Rexroth Dallas / Mty"
+      },
+      {
+        part: "2FRM10-3X/50LB",
+        mfr: "Bosch Rexroth",
+        comp: isEnglish ? "2-way flow control regulator valve" : "Válvula reguladora de caudal de 2 vías",
+        prio: "preventiva",
+        label: isEnglish ? "🟡 PREVENTIVE (30d)" : "🟡 PREVENTIVA (30d)",
+        avail: isEnglish ? "Open commercial catalog" : "Catálogo abierto comercial"
+      },
+      {
+        part: "2FRE16-4X/160LBK4M",
+        mfr: "Bosch Rexroth",
+        comp: isEnglish ? "2-way proportional flow control valve" : "Válvula reguladora proporcional de caudal 2 vías",
+        prio: "inmediata",
+        label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA",
+        avail: isEnglish ? "Authorized distribution Gdl / Qro" : "Distribución autorizada Gdl / Qro"
+      },
+      {
+        part: "D661-4651 / G35JOAA6VSX2HA",
+        mfr: "Moog",
+        comp: isEnglish ? "High-response proportional servo valve" : "Servoválvula proporcional de alta dinámica",
+        prio: "inmediata",
+        label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA",
+        avail: isEnglish ? "Direct regional distribution Mty / Qro" : "Distribución directa Monterrey / Querétaro"
+      },
+      {
+        part: "D634-319C / R40KO2M0NSS2",
+        mfr: "Moog",
+        comp: isEnglish ? "Ultra-fast injection servo valve (< 12 ms)" : "Servoválvula de inyección ultra-rápida (< 12 ms)",
+        prio: "inmediata",
+        label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA",
+        avail: isEnglish ? "Express branch Gdl / Qro" : "Sucursal Express Guadalajara / Querétaro"
+      },
+      {
+        part: "BTL5-E10-M0450-P-S32",
+        mfr: "Balluff",
+        comp: isEnglish ? "Magnetostrictive position transducer" : "Transductor de posición magnetostrictivo analógico",
+        prio: "inmediata",
+        label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA",
+        avail: isEnglish ? "Distributor in-stock" : "En stock distribuidor"
+      },
+      {
+        part: "BTL7-P511-M0600-P-S32",
+        mfr: "Balluff",
+        comp: isEnglish ? "High-speed shot position transducer" : "Transductor de posición perfil rápido",
+        prio: "inmediata",
+        label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA",
+        avail: isEnglish ? "National in-stock distributor" : "Distribuidor en stock nacional"
+      },
+      {
+        part: "0660R010BN4HC",
+        mfr: "Hydac",
+        comp: isEnglish ? "Hydraulic return filter cartridge Betamicron" : "Cartucho de filtro de retorno Betamicron 10µm",
+        prio: "stock",
+        label: isEnglish ? "🟢 PLANT SPARE" : "🟢 STOCK PLANTA",
+        avail: isEnglish ? "Plant inventory" : "Existente en almacén cliente"
+      },
+      {
+        part: "0240D010BN4HC",
+        mfr: "Hydac",
+        comp: isEnglish ? "High-pressure filter element 10µm" : "Elemento filtrante alta presión 10µm",
+        prio: "inmediata",
+        label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA",
+        avail: isEnglish ? "Distributor in-stock" : "En stock distribuidor"
+      },
+      {
+        part: "SK350-20/2112U-350A",
+        mfr: "Hydac",
+        comp: isEnglish ? "High-pressure piston accumulator 20L 350 bar" : "Acumulador de pistón de alta presión 20L 350 bar",
+        prio: "preventiva",
+        label: isEnglish ? "🟡 PREVENTIVE (30d)" : "🟡 PREVENTIVA (30d)",
+        avail: isEnglish ? "4-day lead time" : "Tiempo de entrega 4 días"
+      },
+      {
+        part: "HDA4745-A-400-000",
+        mfr: "Hydac",
+        comp: isEnglish ? "Impact pressure transmitter 0-400 bar 4-20mA" : "Transmisor de presión de impacto 0-400 bar 4-20mA",
+        prio: "stock",
+        label: isEnglish ? "🟢 PLANT SPARE" : "🟢 STOCK PLANTA",
+        avail: isEnglish ? "On-site customer warehouse" : "Existente en almacén cliente"
+      }
+    ];
 
     const bomMachineSubtitle = document.getElementById('bomMachineSubtitle');
     const bomTelemetryContent = document.getElementById('bomTelemetryContent');
     const bomPartsContent = document.getElementById('bomPartsContent');
+    const filterCrossReference = document.getElementById('filterCrossReference');
+    let currentActiveTopology = "Prensas";
+
+    function renderBomTable(partsList) {
+      if (!bomPartsContent) return;
+      const rows = partsList.map(p => `
+        <tr>
+          <td><span class="badge-urgency ${p.prio}">${p.label}</span></td>
+          <td>${p.comp}</td>
+          <td><code>${p.part}</code></td>
+          <td>${p.mfr}</td>
+          <td>${p.avail}</td>
+        </tr>
+      `).join('');
+      bomPartsContent.innerHTML = `
+        <table class="report-bom-table">
+          <thead>
+            <tr>
+              <th>${isEnglish ? "Priority" : "Prioridad"}</th>
+              <th>${isEnglish ? "Failed Component" : "Componente de Falla"}</th>
+              <th>${isEnglish ? "Open Equivalent Spare" : "Refacción Homologada Abierta"}</th>
+              <th>${isEnglish ? "Manufacturer" : "Fabricante"}</th>
+              <th>${isEnglish ? "Availability" : "Disponibilidad"}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows}
+          </tbody>
+        </table>
+      `;
+    }
 
     function updateBomView(key) {
+      currentActiveTopology = key;
       const bomData = machineBoms[key] || machineBoms["Prensas"] || machineBoms["Envasado"];
       if (bomMachineSubtitle) bomMachineSubtitle.textContent = bomData.subtitle;
       if (bomTelemetryContent) bomTelemetryContent.innerHTML = bomData.telemetry;
-      if (bomPartsContent) {
-        const rows = bomData.parts.map(p => `
-          <tr>
-            <td><span class="badge-urgency ${p.prio}">${p.label}</span></td>
-            <td>${p.comp}</td>
-            <td><code>${p.part}</code></td>
-            <td>${p.mfr}</td>
-            <td>${p.avail}</td>
-          </tr>
-        `).join('');
-        bomPartsContent.innerHTML = `
-          <table class="report-bom-table">
-            <thead>
-              <tr>
-                <th>${isEnglish ? "Priority" : "Prioridad"}</th>
-                <th>${isEnglish ? "Failed Component" : "Componente de Falla"}</th>
-                <th>${isEnglish ? "Open Equivalent Spare" : "Refacción Homologada Abierta"}</th>
-                <th>${isEnglish ? "Manufacturer" : "Fabricante"}</th>
-                <th>${isEnglish ? "Availability" : "Disponibilidad"}</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${rows}
-            </tbody>
-          </table>
-        `;
+
+      // Si el buscador COTS tiene texto, filtrar según la consulta; si no, renderizar lista por defecto
+      if (filterCrossReference && filterCrossReference.value.trim().length > 0) {
+        filterCotsCatalog(filterCrossReference.value.trim());
+      } else {
+        renderBomTable(bomData.parts);
       }
+    }
+
+    function filterCotsCatalog(rawQuery) {
+      const q = rawQuery.toLowerCase();
+      const matches = COTS_CROSS_REFERENCE_CATALOG.filter(item =>
+        item.part.toLowerCase().includes(q) ||
+        item.mfr.toLowerCase().includes(q) ||
+        item.comp.toLowerCase().includes(q) ||
+        item.avail.toLowerCase().includes(q)
+      );
+
+      if (!bomPartsContent) return;
+
+      if (matches.length === 0) {
+        bomPartsContent.innerHTML = `
+          <div style="padding: 1.75rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem; background: var(--bg-card); border: 1px dashed var(--border-subtle); border-radius: 6px; margin-top: 0.75rem;">
+            ${isEnglish 
+              ? `No cross-reference components found for "<strong>${rawQuery}</strong>". Contact engineering for custom COTS equivalent.` 
+              : `No se encontraron refacciones homologadas para "<strong>${rawQuery}</strong>". Contáctanos directamente para cruce técnico a medida.`}
+          </div>
+        `;
+      } else {
+        renderBomTable(matches);
+      }
+    }
+
+    if (filterCrossReference) {
+      filterCrossReference.addEventListener('input', () => {
+        const query = filterCrossReference.value.trim();
+        if (query.length === 0) {
+          const bomData = machineBoms[currentActiveTopology] || machineBoms["Prensas"];
+          renderBomTable(bomData.parts);
+        } else {
+          filterCotsCatalog(query);
+        }
+      });
     }
 
     let currentHourlyLossRate = 35000;
@@ -426,12 +641,13 @@
       }
     }
 
-    // Segmentador de Máquinas (Botones Principales en Hero - 4 Topologías)
+    // Segmentador de Máquinas (Botones Principales en Hero - 5 Topologías)
     const chipDieff = document.getElementById('chipDieff');
     const chipRexroth = document.getElementById('chipRexroth');
     const chipDieCasting = document.getElementById('chipDieCasting');
     const chipSidel = document.getElementById('chipSidel');
-    const allSegmenterBtns = [chipDieff, chipRexroth, chipDieCasting, chipSidel].filter(Boolean);
+    const chipExtrusion = document.getElementById('chipExtrusion');
+    const allSegmenterBtns = [chipDieff, chipRexroth, chipDieCasting, chipSidel, chipExtrusion].filter(Boolean);
 
     allSegmenterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -449,12 +665,16 @@
           setMachineProfile("DieCasting");
         } else if (btn.id === 'chipSidel') {
           setMachineProfile("Envasado");
+        } else if (btn.id === 'chipExtrusion') {
+          setMachineProfile("Extrusion");
         }
 
         if (machineSpecCard) {
           machineSpecCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       });
+    });
+
     // Chips Secundarios de Ecosistema Técnico (Brands Strip)
     const brandChips = document.querySelectorAll('.brand-chip');
     brandChips.forEach(chip => {
@@ -467,6 +687,7 @@
         if (machineName.includes("Dieffenbacher") || machineName.includes("Prensas") || machineName.includes("Siempelkamp")) profileKey = "Prensas";
         else if (machineName.includes("Estampado") || machineName.includes("Schuler") || machineName.includes("Müller") || machineName.includes("Rexroth")) profileKey = "Estampado";
         else if (machineName.includes("Die Casting") || machineName.includes("Bühler") || machineName.includes("Italpresse")) profileKey = "DieCasting";
+        else if (machineName.includes("Extrusión") || machineName.includes("Extrusion") || machineName.includes("Battenfeld") || machineName.includes("Engel") || machineName.includes("BHS") || machineName.includes("Corrugadoras")) profileKey = "Extrusion";
         else if (machineName.includes("Sidel") || machineName.includes("Envasado") || machineName.includes("Krones")) profileKey = "Envasado";
         else if (machineName.includes("Siemens")) profileKey = "Siemens";
         else if (machineName.includes("Festo")) profileKey = "Festo";
@@ -543,6 +764,13 @@
     if (sowPreviewDialog) {
       sowPreviewDialog.addEventListener('click', (e) => {
         if (e.target === sowPreviewDialog) closeSowModal();
+      });
+    }
+
+    const btnPrintSow = document.getElementById('btnPrintSow');
+    if (btnPrintSow) {
+      btnPrintSow.addEventListener('click', () => {
+        window.print();
       });
     }
 
