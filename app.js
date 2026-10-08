@@ -33,10 +33,19 @@
     };
   }
 
+  // 2b. Función Matemática Pura: Cálculo de Botellas No Producidas (BPH)
+  function calculateBottlesLost(downtimeHours, bottlesPerHour) {
+    if (downtimeHours <= 0 || bottlesPerHour <= 0) {
+      return 0;
+    }
+    return Math.round(downtimeHours * bottlesPerHour);
+  }
+
   // 3. Construcción de Enlace Profundo (Deeplink) a WhatsApp
   function updateWhatsAppDeeplink(folio, plant, equipment, symptom, isUrgent, isEnglish) {
     const waBtn = document.getElementById('btnWhatsAppDirect');
     const heroWaBtn = document.querySelector('.btn-hero-wa');
+    const modalWaBtn = document.getElementById('btnWhatsAppModal');
     const baseWaUrl = "https://wa.me/526181062487"; // David Estefani - WhatsApp Operativo
 
     const urgencyHeader = isUrgent
@@ -58,6 +67,7 @@
     const finalUrl = `${baseWaUrl}?text=${encodeURIComponent(text)}`;
     if (waBtn) waBtn.href = finalUrl;
     if (heroWaBtn) heroWaBtn.href = finalUrl;
+    if (modalWaBtn) modalWaBtn.href = finalUrl;
   }
 
 
@@ -74,6 +84,21 @@
     const urgentStopEl = document.getElementById('fieldUrgentStop');
     const urgentSwitchContainer = document.getElementById('urgentSwitchContainer');
     const submitBtn = document.getElementById('btnSubmitIntake');
+
+    // Elementos de la Ficha Modal de Admisión (Focus Sheet)
+    const intakeSheet = document.getElementById('intakeSheet');
+    const btnOpenIntake = document.getElementById('btnOpenIntake');
+    const btnHeroIntake = document.getElementById('btnHeroIntake');
+    const btnCloseIntakeSheet = document.getElementById('btnCloseIntakeSheet');
+
+    // Conmutadores de Modalidad y Unidades de ROI
+    const btnModalUrgent = document.getElementById('btnModalUrgent');
+    const btnModalPreventive = document.getElementById('btnModalPreventive');
+    const btnUnitUsd = document.getElementById('btnUnitUsd');
+    const btnUnitBottles = document.getElementById('btnUnitBottles');
+    const roiLossLabel = document.getElementById('roiLossLabel');
+    const roiLossSubtext = document.getElementById('roiLossSubtext');
+    let currentRoiUnit = 'usd';
 
     // Elementos de la Ficha Técnica de Telemetría
     const machineSpecCard = document.getElementById('machineSpecCard');
@@ -348,13 +373,139 @@
       });
     });
 
+    // Controladores de Diálogo Modal (Focus Sheet)
+    function openIntakeModal() {
+      if (intakeSheet) {
+        if (typeof intakeSheet.showModal === 'function') {
+          intakeSheet.showModal();
+        } else {
+          intakeSheet.setAttribute('open', '');
+        }
+        if (plantInput) setTimeout(() => plantInput.focus(), 60);
+      }
+    }
+
+    function closeIntakeModal() {
+      if (intakeSheet) {
+        if (typeof intakeSheet.close === 'function') {
+          intakeSheet.close();
+        } else {
+          intakeSheet.removeAttribute('open');
+        }
+      }
+    }
+
+    if (btnOpenIntake) btnOpenIntake.addEventListener('click', openIntakeModal);
+    if (btnHeroIntake) {
+      btnHeroIntake.addEventListener('click', (e) => {
+        e.preventDefault();
+        openIntakeModal();
+      });
+    }
+    if (btnCloseIntakeSheet) btnCloseIntakeSheet.addEventListener('click', closeIntakeModal);
+    if (intakeSheet) {
+      intakeSheet.addEventListener('click', (e) => {
+        if (e.target === intakeSheet) closeIntakeModal();
+      });
+    }
+
+    // Controladores de Diálogo Modal SOW (Section 6.3 PRD)
+    const btnOpenSowPreview = document.getElementById('btnOpenSowPreview');
+    const sowPreviewDialog = document.getElementById('sowPreviewDialog');
+    const btnCloseSowPreview = document.getElementById('btnCloseSowPreview');
+    const btnDismissSowPreview = document.getElementById('btnDismissSowPreview');
+
+    function openSowModal() {
+      if (sowPreviewDialog) {
+        if (typeof sowPreviewDialog.showModal === 'function') {
+          sowPreviewDialog.showModal();
+        } else {
+          sowPreviewDialog.setAttribute('open', '');
+        }
+      }
+    }
+
+    function closeSowModal() {
+      if (sowPreviewDialog) {
+        if (typeof sowPreviewDialog.close === 'function') {
+          sowPreviewDialog.close();
+        } else {
+          sowPreviewDialog.removeAttribute('open');
+        }
+      }
+    }
+
+    if (btnOpenSowPreview) btnOpenSowPreview.addEventListener('click', openSowModal);
+    if (btnCloseSowPreview) btnCloseSowPreview.addEventListener('click', closeSowModal);
+    if (btnDismissSowPreview) btnDismissSowPreview.addEventListener('click', closeSowModal);
+    if (sowPreviewDialog) {
+      sowPreviewDialog.addEventListener('click', (e) => {
+        if (e.target === sowPreviewDialog) closeSowModal();
+      });
+    }
+
+    // Conmutador de Modalidad en Hero (Paro Crítico vs Preventivo)
+    if (btnModalUrgent && btnModalPreventive) {
+      btnModalUrgent.addEventListener('click', () => {
+        btnModalUrgent.classList.add('active', 'urgent');
+        btnModalPreventive.classList.remove('active');
+        if (urgentStopEl) {
+          urgentStopEl.checked = true;
+          urgentStopEl.dispatchEvent(new Event('change'));
+        }
+        openIntakeModal();
+      });
+
+      btnModalPreventive.addEventListener('click', () => {
+        btnModalPreventive.classList.add('active');
+        btnModalUrgent.classList.remove('active', 'urgent');
+        if (urgentStopEl) {
+          urgentStopEl.checked = false;
+          urgentStopEl.dispatchEvent(new Event('change'));
+        }
+        openIntakeModal();
+      });
+    }
+
     // Botón de Acción en Ficha Reactiva
     if (btnMachineSpecAction) {
-      btnMachineSpecAction.addEventListener('click', () => {
-        if (symptomInput) {
-          symptomInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          symptomInput.focus();
+      btnMachineSpecAction.addEventListener('click', (e) => {
+        e.preventDefault();
+        openIntakeModal();
+        if (symptomInput) setTimeout(() => symptomInput.focus(), 60);
+      });
+    }
+
+    // Selector de Unidades de ROI ($ USD vs Botellas BPH)
+    if (btnUnitUsd && btnUnitBottles) {
+      btnUnitUsd.addEventListener('click', () => {
+        currentRoiUnit = 'usd';
+        btnUnitUsd.classList.add('active');
+        btnUnitBottles.classList.remove('active');
+        if (roiLossLabel) {
+          roiLossLabel.textContent = isEnglish ? "Cumulative Production Loss" : "Pérdida en Producción Acumulada";
         }
+        if (roiLossSubtext) {
+          roiLossSubtext.textContent = isEnglish
+            ? "Calculated at baseline $25,000 USD/h on bottling / press line."
+            : "Calculado a tasa base de $25,000 USD/hora en línea de envasado / prensa.";
+        }
+        updateRoiCalculations();
+      });
+
+      btnUnitBottles.addEventListener('click', () => {
+        currentRoiUnit = 'bottles';
+        btnUnitBottles.classList.add('active');
+        btnUnitUsd.classList.remove('active');
+        if (roiLossLabel) {
+          roiLossLabel.textContent = isEnglish ? "Bottles Not Produced (BPH Loss)" : "Botellas No Producidas (BPH)";
+        }
+        if (roiLossSubtext) {
+          roiLossSubtext.textContent = isEnglish
+            ? "Calculated at 45,000 Bottles Per Hour (Sidel Matrix nominal speed)."
+            : "Calculado a 45,000 Botellas/Hora (velocidad nominal Sidel Matrix).";
+        }
+        updateRoiCalculations();
       });
     }
 
@@ -372,7 +523,12 @@
       }
       const metrics = calculateRoiMetrics(hours, 25000, 2000);
       if (roiLossDisplay) {
-        roiLossDisplay.textContent = `$${metrics.totalLoss.toLocaleString('en-US')} USD`;
+        if (currentRoiUnit === 'bottles') {
+          const bottles = calculateBottlesLost(hours, 45000);
+          roiLossDisplay.textContent = `${bottles.toLocaleString('en-US')} ${isEnglish ? "Bottles" : "Botellas"}`;
+        } else {
+          roiLossDisplay.textContent = `$${metrics.totalLoss.toLocaleString('en-US')} USD`;
+        }
       }
       if (roiAmortizationDisplay) {
         roiAmortizationDisplay.textContent = `${metrics.amortizationMinutes} min`;
