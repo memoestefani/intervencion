@@ -20,7 +20,7 @@
         "@type": "ProfessionalService",
         "@id": "https://memoestefani.github.io/intervencion/en/#provider",
         "name": "David Estefani — Industrial Mechatronics Specialist",
-        "description": "Independent mechatronics field engineering services for root-cause diagnosis, commissioning, and electro-hydraulic troubleshooting.",
+        "description": "Independent mechatronics field engineering services for root-cause diagnosis, commissioning, and operational recovery across continuous presses, heavy stamping, die casting, and continuous bottling lines.",
         "telephone": "+52-618-106-2487",
         "email": "da.alejandro@gmail.com",
         "areaServed": [
@@ -35,7 +35,7 @@
         "provider": {
           "@id": "https://memoestefani.github.io/intervencion/en/#provider"
         },
-        "serviceType": "Industrial Machinery Troubleshooting & Root Cause Analysis",
+        "serviceType": "Root-Cause Diagnostics and Recovery for Continuous Presses, Heavy Stamping, Die Casting, and Bottling Lines",
         "termsOfService": "Fixed-fee statement of work before dispatch. W-8BEN compliant USD invoicing via international wire."
       },
       {
@@ -96,11 +96,11 @@
       </div>
       
       <h1 class="hero-title">
-        Field Engineering for Blow Molding &amp; Critical Hydraulics. On-Site Diagnostics in &lt; 24–48 h.
+        Field Engineering for Critical Machinery &amp; Proportional Hydraulics. On-Site Diagnostics in &lt; 24–48 h.
       </h1>
 
       <p class="hero-subtitle">
-        Independent root-cause diagnostics, machine recovery, and unbundled open bill of materials for critical bottling and press lines in North America and Mexico. Fixed fee, zero OEM markup.
+        Independent root-cause diagnostics, operational recovery, and open parts lists for continuous presses, heavy stamping, die casting injection, and bottling lines across North America and Mexico. Fixed scope, zero OEM markups.
       </p>
 
       <!-- Fiduciary Guarantee Badges (Apple-Grade Grid 2x2 with Subtitles) -->
@@ -150,24 +150,33 @@
     <section class="brands-strip" aria-label="Supported Systems">
       <div class="brands-label">SELECT YOUR CRITICAL INDUSTRIAL SYSTEM (LIVE TELEMETRY):</div>
 
-      <!-- Industrial Machinery Touch Segmenter (Unified with Spec Card for Spatial Locality INV-10) -->
+      <!-- Industrial Machinery Touch Segmenter (Unified with Spec Card for Spatial Locality INV-10 - 4 Topologies) -->
       <div class="machine-segmenter" role="group" aria-label="Machinery Segmenter">
-        <button type="button" class="machine-chip-btn active" id="chipSidel" data-target="specSidel">
-          <span>🧴 Bottling Lines (Sidel / Krones)</span>
-        </button>
-        <button type="button" class="machine-chip-btn" id="chipDieff" data-target="specDieff">
+        <button type="button" class="machine-chip-btn active" id="chipDieff" data-target="specDieff" data-topology="Prensas">
           <span>🪵 Continuous Presses (Dieffenbacher / Siempelkamp)</span>
         </button>
-        <button type="button" class="machine-chip-btn" id="chipRexroth" data-target="specRexroth">
-          <span>⚙️ Proportional Hydraulics (Rexroth / Moog)</span>
+        <button type="button" class="machine-chip-btn" id="chipRexroth" data-target="specRexroth" data-topology="Estampado">
+          <span>⚡ Heavy Stamping &amp; Forging (Schuler / Müller)</span>
+        </button>
+        <button type="button" class="machine-chip-btn" id="chipDieCasting" data-target="specDieCasting" data-topology="DieCasting">
+          <span>🔥 Die Casting &amp; High-Pressure Injection (Bühler / Italpresse)</span>
+        </button>
+        <button type="button" class="machine-chip-btn" id="chipSidel" data-target="specSidel" data-topology="Envasado">
+          <span>🧴 Continuous Bottling (Krones / Sidel)</span>
         </button>
       </div>
       <div class="brands-grid" role="group" aria-label="Industrial machinery systems">
-        <span class="brand-chip" tabindex="0" data-machine="Sidel Matrix / Combi Bottling Lines" data-diag="High-speed blow-fill lines: servo axis desynchronization, 40-bar blowing pressure drops, and carousel rotary joint seal leaks.">
-          <span>Sidel Matrix / Combi</span>
+        <span class="brand-chip" tabindex="0" data-machine="Dieffenbacher CPS / Siempelkamp Continuous Presses" data-diag="Heavy continuous board presses: thermal misalignment, hydraulic frame pressure imbalance, and proportional valve calibration.">
+          <span>Dieffenbacher CPS / Siempelkamp</span>
         </span>
-        <span class="brand-chip" tabindex="0" data-machine="Dieffenbacher CPS Continuous Presses" data-diag="Heavy continuous board presses: thermal misalignment, hydraulic frame pressure imbalance, and proportional valve calibration.">
-          <span>Dieffenbacher CPS</span>
+        <span class="brand-chip" tabindex="0" data-machine="Schuler / Müller Weingarten Heavy Stamping Presses" data-diag="Heavy stamping presses: deep-drawing cushion, Moog D661 servo valves, and 315-bar hydraulic impact stabilization.">
+          <span>Schuler / Müller Weingarten</span>
+        </span>
+        <span class="brand-chip" tabindex="0" data-machine="Bühler Carat / Italpresse High-Pressure Die Casting" data-diag="Die casting cells: real-time shot phase 2 (10 m/s), 400-bar intensification boosters, and Moog D634 valves.">
+          <span>Bühler Carat / Italpresse</span>
+        </span>
+        <span class="brand-chip" tabindex="0" data-machine="Krones Contiform / Sidel Matrix Bottling Lines" data-diag="High-speed blow-fill lines: servo axis desynchronization, 40-bar blowing pressure drops, and carousel rotary joint seal leaks.">
+          <span>Krones Contiform / Sidel Matrix</span>
         </span>
         <span class="brand-chip" tabindex="0" data-machine="Bosch Rexroth Electro-Hydraulic Systems (A4VSO / 4WRPE)" data-diag="Proportional directional valves and piston pumps: cavitation diagnosis, spool response lag, and closed-loop p/Q tuning.">
           <span>Bosch Rexroth A4VSO / 4WRPE</span>
@@ -183,26 +192,26 @@
       <!-- Reactive Technical Spec Card in Viewport -->
       <div class="machine-spec-card" id="machineSpecCard">
         <div class="machine-spec-header">
-          <div class="machine-spec-title" id="machineSpecTitle">Sidel Matrix / Combi Bottling Lines</div>
-          <span class="machine-spec-badge" id="machineSpecBadge">High-Pressure p/Q (40 bar)</span>
+          <div class="machine-spec-title" id="machineSpecTitle">Dieffenbacher CPS / Siempelkamp Continuous Presses</div>
+          <span class="machine-spec-badge" id="machineSpecBadge">Continuous Press Hydraulics (40-70 m)</span>
         </div>
         <div class="spec-grid-3col">
           <div class="spec-col-item">
             <div class="spec-col-label">Critical Subsystems</div>
-            <div class="spec-col-val" id="machineSpecSubsys">Rotary blowing carousel, 40-bar manifold, proportional servo valves and stretch servos.</div>
+            <div class="spec-col-val" id="machineSpecSubsys">Multi-cylinder heating platen frames, Rexroth A4VSO pumps, synchronization manifolds, and 220°C thermal platens.</div>
           </div>
           <div class="spec-col-item">
             <div class="spec-col-label">Failure Modes Resolved</div>
-            <div class="spec-col-val" id="machineSpecFailure">Angular axis desynchronization, rotary joint seal micro-leakage and mold depressurization.</div>
+            <div class="spec-col-val" id="machineSpecFailure">Thermal parallelism drift across frames (&gt; 0.1 mm), multi-frame pressure imbalance, and thermal varnish buildup in servo spools.</div>
           </div>
           <div class="spec-col-item">
             <div class="spec-col-label">Intervention Protocol</div>
-            <div class="spec-col-val" id="machineSpecProtocol">Dynamic 40-bar manifold telemetry, Profinet bus jitter analysis and closed-loop servo calibration.</div>
+            <div class="spec-col-val" id="machineSpecProtocol">Proportional spool deadband compensation, swashplate ripple profiling, laser parallelism realignment, and hydraulic aeration purge.</div>
           </div>
         </div>
         <div class="machine-spec-footer">
           <div class="machine-spec-rate">
-            Estimated Fee: <strong id="machineSpecRate">$1,500 – $2,500 USD</strong> (Predictable fixed cost)
+            Estimated Fee: <strong id="machineSpecRate">$1,800 – $2,500 USD</strong> (Predictable fixed cost)
           </div>
           <a class="machine-spec-btn" href="#fieldSymptom" id="btnMachineSpecAction">
             <span>Request Scope for this Machine</span>
@@ -529,7 +538,7 @@
         <div class="sow-preview-doc">
           <div class="sow-doc-header">
             <span class="sow-doc-tag">EX-ANTE CONTRACTUAL</span>
-            <span class="sow-doc-folio">FOLIO: #SOW-261008-SIDEL</span>
+            <span class="sow-doc-folio" id="sowDocFolio">FOLIO: #SOW-261008-PRENSAS</span>
           </div>
           <div class="sow-doc-title">Statement of Work / Field Intervention Proforma</div>
           <div class="sow-doc-meta">
@@ -538,7 +547,7 @@
           <hr class="sow-divider">
           <div class="sow-section">
             <h5>1. Scoped Engineering Objective</h5>
-            <p>Mechatronic inspection of rotary blowing wheel, proportional servovalve tuning, and restoration of nominal 40-bar system pressure.</p>
+            <p id="sowObjectiveText">On-site mechatronic press frame inspection, laser platen alignment, and Rexroth A4VSO proportional servo valve calibration.</p>
           </div>
           <div class="sow-section">
             <h5>2. Explicit Exclusions (Zero Hidden Surprises)</h5>

@@ -10,11 +10,11 @@
 Provides rapid-response, closed-scope on-site technical diagnostics, root-cause troubleshooting, and spare part definition for critical plant machinery in Mexico and North America. Designed specifically for plant downtime emergencies and planned maintenance stops when international OEMs have weeks of delay.
 
 ## 2. Core Machine Architectures & Controls
-- **Sidel:** Matrix blow molding, Combi fillers, labeling, and conveying systems.
-- **Dieffenbacher:** Continuous presses (CPS), hydraulic power units, alignment, and forming lines.
-- **Bosch Rexroth:** Proportional valves (4WRPE, 4WRA), axial piston pumps (A4VSO, A10VSO), high-pressure manifolds (> 210 bar).
-- **Siemens Automation:** S7-1500 / S7-1200 / S7-300 PLCs, TIA Portal diagnostics, drive commissioning (Sinamics S120).
-- **Pneumatics & Fluid Power:** Festo proportional valves, Hydac filtration systems, Parker seals.
+- **Continuous Presses (Dieffenbacher CPS / Siempelkamp ContiRoll):** Continuous wood and composite board presses, multi-cylinder hydraulic frames, Rexroth A4VSO axial piston pumps, laser parallelism realignment, and thermal varnish de-sticking ($35,000 USD/h downtime baseline).
+- **Heavy Stamping & Forging (Schuler / Müller Weingarten):** Automotive stamping presses (1,000–3,000 t), deep-drawing hydraulic cushions, Moog D661 / Rexroth 4WRTE servo valves, 315-bar piston accumulators, and EN 693 safety blocks ($45,000 USD/h downtime baseline).
+- **High-Pressure Die Casting (Bühler Carat / Italpresse):** Real-time high-speed aluminum shot injection (phase 2 up to 10 m/s), 400-bar intensification boosters, Moog D634 fast-response servo valves (< 15 ms step response), and casting porosity remediation ($28,000 USD/h downtime baseline).
+- **Continuous Bottling & Blowing (Krones Contiform / Sidel Matrix):** High-speed rotary blowing carousels, 40-bar pneumatic/hydraulic manifolds, stretch servo desynchronization troubleshooting, and isobaric filling lines ($25,000 USD/h downtime baseline, 45,000 BPH).
+- **Proportional Electro-Hydraulics & Controls:** Bosch Rexroth (4WRPE, 4WRZE, A4VSO, A10VSO), Moog (D661, D634), Hydac filtration and accumulators, Siemens S7-1500 / TIA Portal / Sinamics S120, and Festo servo-pneumatics.
 
 ## 3. Geographic Coverage & Response Times
 - **Immediate Highway Mobilization (< 24h):** Northern Industrial Corridor (Durango, Torreón, Gómez Palacio, Saltillo, Monterrey).

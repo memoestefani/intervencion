@@ -18,21 +18,33 @@ A diferencia de consultores individuales informales, este servicio opera institu
 
 ## 2. Competencias Técnicas Verificables en Campo
 
-### 2.1 Prensas Continuas y Tableros (Dieffenbacher CPS)
-- Diagnóstico de circuitos hidráulicos de alta presión (bombas Rexroth A4VSO y válvulas servoproporcionales 4WRPE).
-- Calibración de presiones de prensado, alineación de cadenas y rodillos de avance.
-- Verificación de enclavamientos de seguridad mecánicos e hidráulicos.
+### 2.1 Prensas Continuas de Tableros y Metales (Dieffenbacher CPS / Siempelkamp ContiRoll)
+- Diagnóstico de circuitos hidráulicos de alta presión (bombas Rexroth A4VSO y servoválvulas proporcionales 4WRZE / 4WRPE).
+- Calibración de paralelismo láser entre marcos de prensado (< 0.1 mm) y balanceo térmico a 220°C.
+- Compensación de banda muerta en correderas de servoválvulas y purga de aireación.
 - Troubleshooting de PLC Siemens S7-1500 y comunicación Profinet / Profibus.
 
-### 2.2 Líneas de Envasado, Soplado y Llenado (Sidel Matrix / Combi)
-- Diagnóstico de sincronicidad mecánica y servomotores en transferencias rotativas de alta velocidad.
-- Ajuste de presiones de soplado (aire comprimido a 40 bar) y calibración de válvulas proporcionales de estirado.
-- Detección de fallas térmicas en hornos de preformas y diagnóstico de alarmas en HMI.
+### 2.2 Prensas de Estampado Pesado y Forja Automotriz (Schuler / Müller Weingarten)
+- Calibración dinámica de curvas de embutición profunda en cojines hidráulicos (1,000–3,000 t).
+- Verificación en milisegundos de servoválvulas de alta dinámica Moog D661 / Rexroth 4WRTE.
+- Presurización de acumuladores de pistón N2 Hydac a 315 bar y bloques de seguridad EN 693.
+- Corrección de asimetría de fuerza de cojín para eliminación de arrugas en chapa automotriz.
 
-### 2.3 Potencia Fluida e Hidráulica Industrial
+### 2.3 Celda de Fundición Inyectada Die Casting & Servohidráulica (Bühler Carat / Italpresse)
+- Diagnóstico oscilográfico de curvas de disparo en tiempo real (fase 2 a 10 m/s).
+- Sintonización de servoválvulas de inyección ultra-rápidas Moog D634 (< 15 ms de respuesta escalón).
+- Verificación de estanqueidad y tiempos de conmutación en multiplicadores de presión a 400 bar.
+- Eliminación de micro-porosidad en piezas fundidas de aluminio y magnesio.
+
+### 2.4 Líneas de Envasado, Soplado y Llenado (Krones Contiform / Sidel Matrix)
+- Diagnóstico de sincronicidad mecánica y servomotores en transferencias rotativas de alta velocidad.
+- Ajuste de presiones de soplado (aire comprimido a 40 bar) y calibración de servoválvulas proporcionales de estirado.
+- Detección de micro-fugas en juntas rotativas distribuidoras y diagnóstico de alarmas en HMI.
+
+### 2.5 Potencia Fluida y Servohidráulica Proporcional Universal
 - Bombas de pistones axiales de caudal variable (Bosch Rexroth A10VSO, A4VSO, Vickers PVH).
-- Bloques de manifolds hidráulicos, servoválvulas proporcionales con retroalimentación electrónica integrada.
-- Análisis de contaminación de aceite, cavitación y cálculo de filtración ISO 4406 con Hydac / Pall.
+- Bloques de manifolds hidráulicos, servoválvulas proporcionales con retroalimentación electrónica integrada (OBE).
+- Análisis de contaminación de fluido, cavitación y cálculo de filtración ISO 4406 con Hydac / Pall.
 
 ---
 

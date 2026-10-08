@@ -24,12 +24,10 @@
       return { totalLoss: 0, amortizationMinutes: 0 };
     }
     const totalLoss = downtimeHours * hourlyCostRate;
-    const amortizationMinutes = fixedInterventionFee > 0
-      ? (fixedInterventionFee / hourlyCostRate) * 60
-      : 0;
+    const amortizationMinutes = Math.max(0, Math.round((fixedInterventionFee / totalLoss) * 60));
     return {
-      totalLoss: Math.round(totalLoss),
-      amortizationMinutes: Number(amortizationMinutes.toFixed(1))
+      totalLoss: totalLoss,
+      amortizationMinutes: amortizationMinutes
     };
   }
 
@@ -116,49 +114,83 @@
     const tabTelemetry = document.getElementById('tabTelemetry');
     const tabParts = document.getElementById('tabParts');
 
-    // Perfiles técnicos estructurados para la Ficha Reactiva de Telemetría
+    // Perfiles técnicos estructurados para la Ficha Reactiva de Telemetría (4 Topologías Críticas en México)
     const machineProfiles = {
-      "Sidel": {
-        title: isEnglish ? "Sidel Matrix / Combi Bottling Lines" : "Líneas de Envasado Sidel Matrix / Combi",
+      "Prensas": {
+        title: isEnglish ? "Dieffenbacher CPS / Siempelkamp Continuous Presses" : "Prensas Continuas Dieffenbacher CPS / Siempelkamp",
+        badge: isEnglish ? "Continuous Press Hydraulics (40-70 m)" : "Hidráulica de Prensas Continuas (40-70 m)",
+        subsys: isEnglish
+          ? "Multi-cylinder heating platen frames, Rexroth A4VSO pumps, synchronization manifolds, and 220°C thermal platens."
+          : "Marcos de cilindros de prensado, bombas Rexroth A4VSO, manifolds de sincronización y platos térmicos a 220°C.",
+        failure: isEnglish
+          ? "Thermal parallelism drift across frames (> 0.1 mm), multi-frame pressure imbalance, and thermal varnish buildup in servo spools."
+          : "Deriva térmica de paralelismo entre marcos (> 0.1 mm), desbalance de presiones y saturación por barniz térmico en servoválvulas.",
+        protocol: isEnglish
+          ? "Proportional spool deadband compensation, swashplate ripple profiling, laser parallelism realignment, and hydraulic aeration purge."
+          : "Compensación de banda muerta en correderas, perfilado de ondulación de bomba, alineación láser y purga de aireación.",
+        rate: "$1,800 – $2,500 USD",
+        lossPerHour: 35000,
+        bomKey: "Prensas",
+        sowObjective: isEnglish
+          ? "On-site mechatronic press frame inspection, laser platen alignment, and Rexroth A4VSO proportional servo valve calibration."
+          : "Inspección mecatrónica de marcos de prensado continuo, compensación de banda muerta en servoválvulas Rexroth y calibración láser de paralelismo."
+      },
+      "Estampado": {
+        title: isEnglish ? "Schuler / Müller Weingarten Heavy Stamping Presses" : "Prensas de Estampado Pesado Schuler / Müller Weingarten",
+        badge: isEnglish ? "Heavy Stamping & Forging (1,000–3,000 t)" : "Estampado Pesado & Forja (1,000–3,000 t)",
+        subsys: isEnglish
+          ? "Deep drawing hydraulic cushions, Moog D661 / Rexroth 4WRTE servo valves, 315-bar piston accumulators, and EN 693 press safety blocks."
+          : "Cojines hidráulicos de embutición profunda, servoválvulas Moog D661/Rexroth 4WRTE, acumuladores de pistón 315 bar y bloques de seguridad EN 693.",
+        failure: isEnglish
+          ? "Pre-fill pressure drops during press impact stroke, automotive sheet wrinkling from cushion force asymmetry, and dynamic instability at stroke reversal."
+          : "Caídas de presión en pre-llenado durante golpe de prensa, arrugas en chapa por asimetría de fuerza de cojín e inestabilidad en retorno.",
+        protocol: isEnglish
+          ? "Millisecond p/Q deep-drawing profile tuning, N2 accumulator precharge audit, and cushion cylinder synchrony realignment."
+          : "Calibración dinámica de curvas de embutición p/Q en milisegundos, presurización de acumuladores N2 y sincronía de cilindros de cojín.",
+        rate: "$1,800 – $2,500 USD",
+        lossPerHour: 45000,
+        bomKey: "Estampado",
+        sowObjective: isEnglish
+          ? "Dynamic deep-drawing cushion tuning, Moog D661 servo response audit, and 315-bar hydraulic impact stabilization."
+          : "Calibración dinámica de cojín de embutición profunda, auditoría de respuesta en servoválvula Moog D661 y estabilización hidráulica de impacto."
+      },
+      "DieCasting": {
+        title: isEnglish ? "Bühler Carat / Italpresse High-Pressure Die Casting" : "Inyección de Aluminio Die Casting Bühler Carat / Italpresse",
+        badge: isEnglish ? "High-Speed Die Casting (Phase 2 at 10 m/s)" : "Die Casting & Inyección Rápida (Fase 2 a 10 m/s)",
+        subsys: isEnglish
+          ? "Real-time high-speed shot cylinder (phase 2 up to 10 m/s), 400-bar intensification boosters, Moog D634 / Rexroth servo valves, and accumulators."
+          : "Unidad de inyección en tiempo real de alta velocidad (fase 2 a 10 m/s), multiplicadores de presión 400 bar, servoválvulas Moog D634 y acumuladores.",
+        failure: isEnglish
+          ? "Final squeeze phase delay in intensifier switching, casting micro-porosity from hydraulic cavitation, and shot deceleration pressure spikes."
+          : "Retardo en conmutación de multiplicador de compactación, micro-porosidad en piezas fundidas por cavitación y choque hidráulico en frenado.",
+        protocol: isEnglish
+          ? "Oscillographic shot p/Q profile analysis, step-response timing calibration (< 15 ms), and pilot check valve seating verification."
+          : "Análisis oscilográfico de la curva p/Q de inyección, ajuste de tiempo de respuesta escalón (< 15 ms) y estanqueidad en válvulas de retención.",
+        rate: "$1,500 – $2,500 USD",
+        lossPerHour: 28000,
+        bomKey: "DieCasting",
+        sowObjective: isEnglish
+          ? "Real-time shot cylinder profile calibration (< 15 ms step response), 400-bar intensifier verification, and casting porosity elimination."
+          : "Calibración en tiempo real de curva de inyección (< 15 ms de respuesta escalón), verificación de multiplicador 400 bar y eliminación de porosidad."
+      },
+      "Envasado": {
+        title: isEnglish ? "Krones Contiform / Sidel Matrix Bottling Lines" : "Líneas de Envasado Krones Contiform / Sidel Matrix",
         badge: isEnglish ? "High-Pressure p/Q (40 bar)" : "Inspección p/Q (40 bar)",
         subsys: isEnglish
           ? "Rotary blowing carousel, 40-bar manifold, proportional servo valves and stretch servos."
           : "Carrusel de soplado, manifold de 40 bar, servoválvulas proporcionales y servos de estirado.",
         failure: isEnglish
-          ? "Angular axis desynchronization, rotary joint seal micro-leakage and mold depressurization."
-          : "Desincronización angular, micro-fugas en juntas rotativas y despresurización de molde.",
+          ? "Angular axis desynchronization, rotary joint seal micro-leakage and mold cavity depressurization."
+          : "Desincronización angular, micro-fugas en juntas rotativas y despresurización de molde en ciclo rápido.",
         protocol: isEnglish
           ? "Dynamic 40-bar manifold telemetry, Profinet bus jitter analysis and closed-loop servo calibration."
           : "Medición dinámica p/Q en manifold, análisis de bus Profinet y calibración de lazo de servoválvula.",
-        rate: "$1,500 – $2,500 USD"
-      },
-      "Dieffenbacher": {
-        title: isEnglish ? "Dieffenbacher CPS Continuous Presses" : "Prensas Continuas Dieffenbacher CPS",
-        badge: isEnglish ? "Continuous Press Hydraulics" : "Hidráulica de Prensado",
-        subsys: isEnglish
-          ? "Multi-cylinder heating platen frames, Rexroth A4VSO pumps and closed-loop proportional manifolds."
-          : "Marcos de cilindros de prensado, bombas Rexroth A4VSO y manifolds proporcionales en lazo cerrado.",
-        failure: isEnglish
-          ? "Thermal platen alignment delta, hydraulic pressure frame imbalance and return line varnish buildup."
-          : "Alineación térmica de placas, desbalance de presiones en marcos y saturación por barniz térmico.",
-        protocol: isEnglish
-          ? "Proportional spool deadband compensation, swashplate ripple profiling and hydraulic aeration purge."
-          : "Compensación de banda muerta en correderas, perfil de ondulación de bomba y purga de aireación.",
-        rate: "$1,800 – $2,500 USD"
-      },
-      "Rexroth": {
-        title: isEnglish ? "Bosch Rexroth A4VSO / 4WRPE Electro-Hydraulics" : "Sistemas Electrohidráulicos Bosch Rexroth A4VSO / 4WRPE",
-        badge: isEnglish ? "Servo-Proportional Control" : "Control Servoproporcional",
-        subsys: isEnglish
-          ? "Variable axial piston pumps, onboard electronics (OBE) servo valves and inline pressure sensors."
-          : "Bombas de pistones axiales de caudal variable, servoválvulas OBE con electrónica integrada y transductores.",
-        failure: isEnglish
-          ? "Cavitation noise, sluggish spool transient response and ISO 4406 particulate fluid contamination."
-          : "Cavitación hidráulica, respuesta transitoria lenta de corredera y contaminación de fluido ISO 4406.",
-        protocol: isEnglish
-          ? "NPSH margin verification, step-response spool audit and high-pressure filtration element renewal."
-          : "Verificación de margen NPSH, prueba de respuesta escalón en servoválvula y reemplazo de filtros 10µm.",
-        rate: "$1,500 – $2,200 USD"
+        rate: "$1,500 – $2,500 USD",
+        lossPerHour: 25000,
+        bomKey: "Envasado",
+        sowObjective: isEnglish
+          ? "Mechatronic rotary blowing carousel inspection, proportional servo valve calibration, and 40-bar nominal pressure recovery."
+          : "Inspección mecatrónica de carrusel rotativo de soplado, calibración de servoválvulas proporcionales y restablecimiento de presión nominal (40 bar)."
       },
       "Siemens": {
         title: isEnglish ? "Siemens S7-1500 / TIA Portal Automation" : "Autómatas Siemens S7-1500 / TIA Portal",
@@ -172,7 +204,12 @@
         protocol: isEnglish
           ? "Profinet packet jitter logging, safety interlock chain trace and servo encoder signal diagnostic."
           : "Registro de jitter en bus, rastreo de enclavamientos de seguridad y diagnóstico de encoders de eje.",
-        rate: "$1,500 – $2,200 USD"
+        rate: "$1,500 – $2,200 USD",
+        lossPerHour: 25000,
+        bomKey: "Envasado",
+        sowObjective: isEnglish
+          ? "Profinet bus jitter diagnostic, Sinamics drive fault trace, and F-CPU safety program audit."
+          : "Diagnóstico de jitter en bus Profinet, rastreo de fallos en variadores Sinamics y auditoría de programa de seguridad F-CPU."
       },
       "Festo": {
         title: isEnglish ? "Festo Proportional Pneumatics" : "Neumática Proporcional Festo",
@@ -186,9 +223,19 @@
         protocol: isEnglish
           ? "Dynamic flow capacity audit, servo-pneumatic positioning tune and seal integrity verification."
           : "Auditoría de caudal dinámico, sintonización de posicionamiento servo-neumático y cambio de empaques.",
-        rate: "$1,500 – $2,000 USD"
+        rate: "$1,500 – $2,000 USD",
+        lossPerHour: 25000,
+        bomKey: "Envasado",
+        sowObjective: isEnglish
+          ? "Proportional pressure regulator dynamic flow audit, valve terminal timing tune, and pneumatic seal integrity inspection."
+          : "Auditoría de caudal dinámico en reguladores proporcionales, sintonización de terminales de válvulas y verificación de sellos."
       }
     };
+
+    // Aliases canónicos para retrocompatibilidad total
+    machineProfiles["Sidel"] = machineProfiles["Envasado"];
+    machineProfiles["Dieffenbacher"] = machineProfiles["Prensas"];
+    machineProfiles["Rexroth"] = machineProfiles["Estampado"];
 
     // 4. Generación Inmediata de Folio en Vivo (Docket Activo)
     const sessionFolio = generateTechnicalFolio();
@@ -227,10 +274,58 @@
     // Configuración inicial de WhatsApp
     syncInputsToWhatsApp();
 
-    // Base de datos de Muestras de BOM Reactiva Multi-Máquina (Decisión 8)
+    // Base de datos de Muestras de BOM Reactiva Multi-Máquina (Decisión 8 - 4 Topologías)
     const machineBoms = {
-      "Sidel": {
-        subtitle: isEnglish ? "Rotary Blowing / Isobaric Filling" : "Sopladora Rotativa / Llenadora Isométrica",
+      "Prensas": {
+        subtitle: isEnglish ? "Continuous Wood/Steel Press CPS / Multi-Opening" : "Prensa Continua de Madera/Acero CPS / Multialbertura",
+        telemetry: isEnglish
+          ? `• <strong>Critical Variable Measured:</strong> Frame delta pressure <strong>185 bar</strong> vs. <strong>240 bar setpoint</strong>; platen parallelism drift 0.14 mm.<br>` +
+            `• <strong>Deterministic Root Cause:</strong> Cavitation pitting on Rexroth A4VSO pump port plate and thermal sensor drift on frame 4.<br>` +
+            `• <strong>Action Executed:</strong> A4VSO rotary group replacement, laser parallelism recalibration, and proportional spool deadband compensation.`
+          : `• <strong>Variable Crítica Medida:</strong> Presión en marco diferencial <strong>185 bar</strong> vs. <strong>240 bar consigna</strong> en rampa; deriva de paralelismo 0.14 mm.<br>` +
+            `• <strong>Hallazgo Determinista:</strong> Cavitación y picadura en placa de distribución de bomba Rexroth A4VSO y descalibración térmica en transductor del marco 4.<br>` +
+            `• <strong>Acción Ejecutada:</strong> Sustitución de grupo rotativo en bomba A4VSO, recalibración láser de paralelismo y compensación de banda muerta en servoválvulas.`,
+        parts: [
+          { prio: "inmediata", label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA", comp: isEnglish ? "Axial piston pump rotary group" : "Grupo rotativo bomba pistones axiales", part: "A4VSO180DR/30R-PPB13N00", mfr: "Bosch Rexroth", avail: isEnglish ? "Rexroth Dallas / Mty branch" : "Sucursal Rexroth Dallas / Mty" },
+          { prio: "inmediata", label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA", comp: isEnglish ? "Magnetostrictive position transducer" : "Transductor de posición magnetostrictivo", part: "BTL5-E10-M0450-P-S32", mfr: "Balluff", avail: isEnglish ? "Distributor in-stock" : "En stock distribuidor" },
+          { prio: "preventiva", label: isEnglish ? "🟡 PREVENTIVE (30d)" : "🟡 PREVENTIVA (30d)", comp: isEnglish ? "Proportional directional valve" : "Válvula direccional proporcional", part: "4WRZE16W8-150-7X/6EG24N9K4/M", mfr: "Bosch Rexroth", avail: isEnglish ? "Open commercial catalog" : "Catálogo abierto comercial" },
+          { prio: "stock", label: isEnglish ? "🟢 PLANT SPARE" : "🟢 STOCK PLANTA", comp: isEnglish ? "Hydraulic return filter cartridge" : "Cartucho de filtro de retorno alta capacidad", part: "0660R010BN4HC", mfr: "Hydac", avail: isEnglish ? "Plant inventory" : "Existente en almacén cliente" }
+        ]
+      },
+      "Estampado": {
+        subtitle: isEnglish ? "Heavy Stamping Press & Automotive Forging (1,000–3,000 t)" : "Prensa de Estampado Pesado & Forja Automotriz (1,000–3,000 t)",
+        telemetry: isEnglish
+          ? `• <strong>Critical Variable Measured:</strong> Deep-drawing cushion pressure <strong>165 bar</strong> vs. <strong>210 bar nominal</strong>; dynamic ripple at impact.<br>` +
+            `• <strong>Deterministic Root Cause:</strong> Pilot seal fatigue on Moog D661 proportional valve and internal bypass on Rexroth pre-fill check valve.<br>` +
+            `• <strong>Action Executed:</strong> Closed-loop Moog servo valve replacement, N2 accumulator precharge to 130 bar, and cushion deceleration profile retuning.`
+          : `• <strong>Variable Crítica Medida:</strong> Presión de cojín de embutición <strong>165 bar</strong> vs. <strong>210 bar nominal</strong>; fluctuación en golpe.<br>` +
+            `• <strong>Hallazgo Determinista:</strong> Desgaste por fatiga en anillo de pilotaje de válvula Moog D661 y fuga interna en válvula de prellenado Rexroth.<br>` +
+            `• <strong>Acción Ejecutada:</strong> Reemplazo de servoválvula Moog en lazo cerrado, recarga de nitrógeno N2 a 130 bar en acumuladores Hydac y ajuste de rampa.`,
+        parts: [
+          { prio: "inmediata", label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA", comp: isEnglish ? "High-response proportional servo valve" : "Servoválvula proporcional de alta dinámica", part: "D661-4651 / G35JOAA6VSX2HA", mfr: "Moog", avail: isEnglish ? "Direct regional distribution Mty / Qro" : "Distribución directa Monterrey / Querétaro" },
+          { prio: "inmediata", label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA", comp: isEnglish ? "Directional proportional valve with OBE" : "Válvula direccional proporcional con OBE", part: "4WRTE16V200L-4X/6EG24ETK31/F1M", mfr: "Bosch Rexroth", avail: isEnglish ? "In-stock authorized distributor" : "En stock distribuidor autorizado" },
+          { prio: "preventiva", label: isEnglish ? "🟡 PREVENTIVE (30d)" : "🟡 PREVENTIVA (30d)", comp: isEnglish ? "High-pressure piston accumulator 20L" : "Acumulador de pistón de alta presión 20L", part: "SK350-20/2112U-350A", mfr: "Hydac", avail: isEnglish ? "4-day lead time" : "Tiempo de entrega 4 días" },
+          { prio: "stock", label: isEnglish ? "🟢 PLANT SPARE" : "🟢 STOCK PLANTA", comp: isEnglish ? "Impact pressure transmitter 0-400 bar" : "Transmisor de presión de impacto 0-400 bar", part: "HDA4745-A-400-000", mfr: "Hydac", avail: isEnglish ? "On-site customer warehouse" : "Existente en almacén cliente" }
+        ]
+      },
+      "DieCasting": {
+        subtitle: isEnglish ? "High-Pressure Die Casting & Servo-Hydraulic Cell" : "Celda de Fundición Inyectada Die Casting & Servohidráulica",
+        telemetry: isEnglish
+          ? `• <strong>Critical Variable Measured:</strong> Shot phase 2 speed <strong>6.8 m/s</strong> vs. <strong>9.5 m/s command</strong>; intensification delay 38 ms.<br>` +
+            `• <strong>Deterministic Root Cause:</strong> Balluff fast shot transducer signal drift and pilot restriction in 400-bar intensification multiplier block.<br>` +
+            `• <strong>Action Executed:</strong> Moog D634 servo valve replacement, rod transducer zero recalibration, and shot deceleration braking valve re-tuning.`
+          : `• <strong>Variable Crítica Medida:</strong> Velocidad de disparo fase 2 <strong>6.8 m/s</strong> vs. <strong>9.5 m/s consigna</strong>; retardo de intensificación 38 ms.<br>` +
+            `• <strong>Hallazgo Determinista:</strong> Deriva en transductor magnetostrictivo Balluff de disparo rápido y micro-estricción en bloque multiplicador de presión 400 bar.<br>` +
+            `• <strong>Acción Ejecutada:</strong> Sustitución de servoválvula Moog D634, calibración de cero en transductor de vástago y reajuste de válvula de frenado dinámico.`,
+        parts: [
+          { prio: "inmediata", label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA", comp: isEnglish ? "Ultra-fast injection servo valve (< 12 ms)" : "Servoválvula de inyección ultra-rápida (< 12 ms)", part: "D634-319C / R40KO2M0NSS2", mfr: "Moog", avail: isEnglish ? "Express branch Gdl / Qro" : "Sucursal Express Guadalajara / Querétaro" },
+          { prio: "inmediata", label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA", comp: isEnglish ? "High-speed shot position transducer" : "Transductor de posición de disparo de alta velocidad", part: "BTL7-P511-M0600-P-S32", mfr: "Balluff", avail: isEnglish ? "National in-stock distributor" : "Distribuidor en stock nacional" },
+          { prio: "preventiva", label: isEnglish ? "🟡 PREVENTIVE (30d)" : "🟡 PREVENTIVA (30d)", comp: isEnglish ? "2-way flow control regulator valve" : "Válvula reguladora de caudal de 2 vías", part: "2FRM10-3X/50LB", mfr: "Bosch Rexroth", avail: isEnglish ? "Open commercial catalog" : "Catálogo abierto comercial" },
+          { prio: "stock", label: isEnglish ? "🟢 PLANT SPARE" : "🟢 STOCK PLANTA", comp: isEnglish ? "High-temp shot piston seal kit" : "Kit de sellos para pistón de disparo alta temp.", part: "Parker PolyPak HP-8400", mfr: "Parker Hannifin", avail: isEnglish ? "On-site customer warehouse" : "Existente en almacén cliente" }
+        ]
+      },
+      "Envasado": {
+        subtitle: isEnglish ? "Continuous Bottling & Rotary Blowing (40 bar)" : "Líneas de Envasado & Soplado Rotativo (40 bar)",
         telemetry: isEnglish
           ? `• <strong>Critical Variable Measured:</strong> Blowing manifold pressure <strong>38 bar (Actual)</strong> vs. <strong>40 bar (Nominal)</strong>.<br>` +
             `• <strong>Deterministic Root Cause:</strong> Dynamic blow-by in rotary distributor manifold and servo-proportional spool sticking from thermal varnish.<br>` +
@@ -244,47 +339,20 @@
           { prio: "preventiva", label: isEnglish ? "🟡 PREVENTIVE (30d)" : "🟡 PREVENTIVA (30d)", comp: isEnglish ? "Viton high-temp seal kit" : "Juego de sellos Vitón alta temperatura", part: "V8388-75 Parker O-Ring Kit", mfr: "Parker Hannifin", avail: isEnglish ? "5-day lead time" : "Tiempo entrega 5 días" },
           { prio: "stock", label: isEnglish ? "🟢 PLANT SPARE" : "🟢 STOCK PLANTA", comp: isEnglish ? "Blowing axis synchronous servo" : "Servomotor sincrónico eje soplado", part: "1FK7060-2AC71-1QA0", mfr: "Siemens", avail: isEnglish ? "On-site customer warehouse" : "Existente en almacén cliente" }
         ]
-      },
-      "Dieffenbacher": {
-        subtitle: isEnglish ? "Continuous Wood Press CPS / Multi-Opening" : "Prensa Continua de Madera CPS / Multialbertura",
-        telemetry: isEnglish
-          ? `• <strong>Critical Variable Measured:</strong> Frame delta pressure <strong>185 bar</strong> vs. <strong>240 bar command</strong> during pressing ramp.<br>` +
-            `• <strong>Deterministic Root Cause:</strong> Cavitation pitting on Rexroth A4VSO pump port plate and thermal elongation sensor drift on frame 4.<br>` +
-            `• <strong>Action Executed:</strong> Pump port plate replacement, zero-point laser recalibration and swashplate proportional valve tuning.`
-          : `• <strong>Variable Crítica Medida:</strong> Presión en marco diferencial <strong>185 bar</strong> vs. <strong>240 bar consigna</strong> en rampa de prensado.<br>` +
-            `• <strong>Hallazgo Determinista:</strong> Cavitación y picadura en placa de distribución de bomba Rexroth A4VSO y deriva en sensor de elongación térmica del marco 4.<br>` +
-            `• <strong>Acción Ejecutada:</strong> Sustitución de placa de distribución, recalibración de cero con láser y ajuste de válvula proporcional de plato oscilante.`,
-        parts: [
-          { prio: "inmediata", label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA", comp: isEnglish ? "Axial piston pump rotary group" : "Grupo rotativo bomba pistones axiales", part: "A4VSO180DR/30R-PPB13N00", mfr: "Bosch Rexroth", avail: isEnglish ? "Rexroth Dallas / Mty branch" : "Sucursal Rexroth Dallas / Mty" },
-          { prio: "inmediata", label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA", comp: isEnglish ? "Magnetostrictive position transducer" : "Transductor de posición magnetostrictivo", part: "BTL5-E10-M0450-P-S32", mfr: "Balluff", avail: isEnglish ? "Distributor in-stock" : "En stock distribuidor" },
-          { prio: "preventiva", label: isEnglish ? "🟡 PREVENTIVE (30d)" : "🟡 PREVENTIVA (30d)", comp: isEnglish ? "Proportional directional valve" : "Válvula direccional proporcional", part: "4WRZE16W8-150-7X/6EG24N9K4/M", mfr: "Bosch Rexroth", avail: isEnglish ? "Open commercial catalog" : "Catálogo abierto comercial" },
-          { prio: "stock", label: isEnglish ? "🟢 PLANT SPARE" : "🟢 STOCK PLANTA", comp: isEnglish ? "Hydraulic return filter cartridge" : "Cartucho de filtro de retorno", part: "0660R010BN4HC", mfr: "Hydac", avail: isEnglish ? "Plant inventory" : "Existente en almacén cliente" }
-        ]
-      },
-      "Rexroth": {
-        subtitle: isEnglish ? "Proportional Servo-Hydraulics & Manifolds" : "Servohidráulica Proporcional y Manifolds de Potencia",
-        telemetry: isEnglish
-          ? `• <strong>Critical Variable Measured:</strong> Step response <strong>92 ms</strong> vs. <strong>22 ms nominal</strong>; spool oscillation at null.<br>` +
-            `• <strong>Deterministic Root Cause:</strong> LVDT feedback coil drift on 4WRPE valve and contaminated pilot orifice clogging.<br>` +
-            `• <strong>Action Executed:</strong> Pilot flushing, OBE electronics null-bias realignment and filter replacement.`
-          : `• <strong>Variable Crítica Medida:</strong> Respuesta escalón en servoválvula <strong>92 ms</strong> vs. <strong>22 ms nominal</strong>; oscilación en banda cero.<br>` +
-            `• <strong>Hallazgo Determinista:</strong> Deriva en bobina LVDT de realimentación en válvula 4WRPE y obturación por micro-partículas en orificio piloto.<br>` +
-            `• <strong>Acción Ejecutada:</strong> Flushing de pilotaje, reajuste de bias cero en electrónica integrada OBE y cambio de filtro de presión.`,
-        parts: [
-          { prio: "inmediata", label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA", comp: isEnglish ? "Servo-solenoid valve with OBE" : "Válvula servoproporcional con OBE", part: "4WRPEH6-C3-B24L-2X/G24K0/A1M", mfr: "Bosch Rexroth", avail: isEnglish ? "Express distribution" : "Distribución express 24h" },
-          { prio: "inmediata", label: isEnglish ? "🔴 IMMEDIATE" : "🔴 INMEDIATA", comp: isEnglish ? "Pressure transmitter 0-315 bar" : "Transmisor de presión 0-315 bar", part: "HM20-2X/400-C-K35", mfr: "Bosch Rexroth", avail: isEnglish ? "In stock" : "En stock comercial" },
-          { prio: "preventiva", label: isEnglish ? "🟡 PREVENTIVE (30d)" : "🟡 PREVENTIVA (30d)", comp: isEnglish ? "Accumulator bladder kit 10L" : "Vejiga para acumulador 10L 330 bar", part: "SB330-10A1/112A9-330A", mfr: "Hydac", avail: isEnglish ? "Local branch" : "Distribuidor local" },
-          { prio: "stock", label: isEnglish ? "🟢 PLANT SPARE" : "🟢 STOCK PLANTA", comp: isEnglish ? "Proportional amplifier Eurocard" : "Amplificador proporcional analógico", part: "VT-VRPA1-100-1X/V0/0", mfr: "Bosch Rexroth", avail: isEnglish ? "Plant shelf stock" : "Almacén de planta" }
-        ]
       }
     };
+
+    // Aliases canónicos para retrocompatibilidad
+    machineBoms["Sidel"] = machineBoms["Envasado"];
+    machineBoms["Dieffenbacher"] = machineBoms["Prensas"];
+    machineBoms["Rexroth"] = machineBoms["Estampado"];
 
     const bomMachineSubtitle = document.getElementById('bomMachineSubtitle');
     const bomTelemetryContent = document.getElementById('bomTelemetryContent');
     const bomPartsContent = document.getElementById('bomPartsContent');
 
     function updateBomView(key) {
-      const bomData = machineBoms[key] || machineBoms["Sidel"];
+      const bomData = machineBoms[key] || machineBoms["Prensas"] || machineBoms["Envasado"];
       if (bomMachineSubtitle) bomMachineSubtitle.textContent = bomData.subtitle;
       if (bomTelemetryContent) bomTelemetryContent.innerHTML = bomData.telemetry;
       if (bomPartsContent) {
@@ -316,9 +384,11 @@
       }
     }
 
+    let currentHourlyLossRate = 35000;
+
     // 5. Función de Actualización de la Ficha de Telemetría y BOM Reactiva
     function setMachineProfile(key) {
-      const profile = machineProfiles[key] || machineProfiles["Sidel"];
+      const profile = machineProfiles[key] || machineProfiles["Prensas"] || machineProfiles["Envasado"];
       if (machineSpecTitle) machineSpecTitle.textContent = profile.title;
       if (machineSpecBadge) machineSpecBadge.textContent = profile.badge;
       if (machineSpecSubsys) machineSpecSubsys.textContent = profile.subsys;
@@ -329,32 +399,62 @@
         equipmentInput.value = profile.title;
         syncInputsToWhatsApp();
       }
-      if (machineBoms[key]) {
-        updateBomView(key);
+
+      // Actualizar tasa horaria de ROI y recálculo
+      if (profile.lossPerHour) {
+        currentHourlyLossRate = profile.lossPerHour;
+        if (currentRoiUnit === 'usd' && roiLossSubtext) {
+          const shortTitle = profile.title.split('/')[0].trim();
+          roiLossSubtext.textContent = isEnglish
+            ? `Calculated at $${currentHourlyLossRate.toLocaleString('en-US')} USD/h on ${shortTitle}.`
+            : `Calculado a tasa base de $${currentHourlyLossRate.toLocaleString('en-US')} USD/h en ${shortTitle}.`;
+        }
+        updateRoiCalculations();
+      }
+
+      // Actualizar Proforma SOW Dinámica
+      const sowFolioEl = document.getElementById('sowDocFolio');
+      const sowObjEl = document.getElementById('sowObjectiveText');
+      if (sowFolioEl) sowFolioEl.textContent = `FOLIO: #SOW-261008-${key.toUpperCase()}`;
+      if (sowObjEl && profile.sowObjective) {
+        sowObjEl.textContent = profile.sowObjective;
+      }
+
+      const bomTarget = profile.bomKey || key;
+      if (machineBoms[bomTarget]) {
+        updateBomView(bomTarget);
       }
     }
 
-    // Segmentador de Máquinas (Botones Principales en Hero)
-    const chipSidel = document.getElementById('chipSidel');
+    // Segmentador de Máquinas (Botones Principales en Hero - 4 Topologías)
     const chipDieff = document.getElementById('chipDieff');
     const chipRexroth = document.getElementById('chipRexroth');
-    const allSegmenterBtns = [chipSidel, chipDieff, chipRexroth].filter(Boolean);
+    const chipDieCasting = document.getElementById('chipDieCasting');
+    const chipSidel = document.getElementById('chipSidel');
+    const allSegmenterBtns = [chipDieff, chipRexroth, chipDieCasting, chipSidel].filter(Boolean);
 
     allSegmenterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         allSegmenterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
-        if (btn.id === 'chipSidel') setMachineProfile("Sidel");
-        else if (btn.id === 'chipDieff') setMachineProfile("Dieffenbacher");
-        else if (btn.id === 'chipRexroth') setMachineProfile("Rexroth");
+        const topology = btn.getAttribute('data-topology');
+        if (topology) {
+          setMachineProfile(topology);
+        } else if (btn.id === 'chipDieff') {
+          setMachineProfile("Prensas");
+        } else if (btn.id === 'chipRexroth') {
+          setMachineProfile("Estampado");
+        } else if (btn.id === 'chipDieCasting') {
+          setMachineProfile("DieCasting");
+        } else if (btn.id === 'chipSidel') {
+          setMachineProfile("Envasado");
+        }
 
         if (machineSpecCard) {
           machineSpecCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       });
-    });
-
     // Chips Secundarios de Ecosistema Técnico (Brands Strip)
     const brandChips = document.querySelectorAll('.brand-chip');
     brandChips.forEach(chip => {
@@ -363,9 +463,11 @@
         chip.classList.add('selected');
 
         const machineName = chip.getAttribute('data-machine') || '';
-        let profileKey = "Sidel";
-        if (machineName.includes("Dieffenbacher")) profileKey = "Dieffenbacher";
-        else if (machineName.includes("Rexroth")) profileKey = "Rexroth";
+        let profileKey = "Envasado";
+        if (machineName.includes("Dieffenbacher") || machineName.includes("Prensas") || machineName.includes("Siempelkamp")) profileKey = "Prensas";
+        else if (machineName.includes("Estampado") || machineName.includes("Schuler") || machineName.includes("Müller") || machineName.includes("Rexroth")) profileKey = "Estampado";
+        else if (machineName.includes("Die Casting") || machineName.includes("Bühler") || machineName.includes("Italpresse")) profileKey = "DieCasting";
+        else if (machineName.includes("Sidel") || machineName.includes("Envasado") || machineName.includes("Krones")) profileKey = "Envasado";
         else if (machineName.includes("Siemens")) profileKey = "Siemens";
         else if (machineName.includes("Festo")) profileKey = "Festo";
 
@@ -487,8 +589,8 @@
         }
         if (roiLossSubtext) {
           roiLossSubtext.textContent = isEnglish
-            ? "Calculated at baseline $25,000 USD/h on bottling / press line."
-            : "Calculado a tasa base de $25,000 USD/hora en línea de envasado / prensa.";
+            ? `Calculated at baseline $${currentHourlyLossRate.toLocaleString('en-US')} USD/h on critical industrial machinery.`
+            : `Calculado a tasa base de $${currentHourlyLossRate.toLocaleString('en-US')} USD/hora en maquinaria industrial crítica.`;
         }
         updateRoiCalculations();
       });
@@ -502,8 +604,8 @@
         }
         if (roiLossSubtext) {
           roiLossSubtext.textContent = isEnglish
-            ? "Calculated at 45,000 Bottles Per Hour (Sidel Matrix nominal speed)."
-            : "Calculado a 45,000 Botellas/Hora (velocidad nominal Sidel Matrix).";
+            ? "Calculated at 45,000 Bottles Per Hour (Sidel Matrix / Krones nominal speed)."
+            : "Calculado a 45,000 Botellas/Hora (velocidad nominal Sidel Matrix / Krones).";
         }
         updateRoiCalculations();
       });
@@ -521,7 +623,7 @@
       if (sliderHoursDisplay) {
         sliderHoursDisplay.innerHTML = `<strong>${hours.toFixed(1)} h</strong>`;
       }
-      const metrics = calculateRoiMetrics(hours, 25000, 2000);
+      const metrics = calculateRoiMetrics(hours, currentHourlyLossRate, 2000);
       if (roiLossDisplay) {
         if (currentRoiUnit === 'bottles') {
           const bottles = calculateBottlesLost(hours, 45000);

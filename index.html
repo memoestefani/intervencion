@@ -20,7 +20,7 @@
         "@type": "ProfessionalService",
         "@id": "https://memoestefani.github.io/intervencion/#provider",
         "name": "David Estefani — Especialista Mecatrónico Industrial",
-        "description": "Servicios profesionales independientes de diagnóstico de causa raíz y restablecimiento operativo en líneas continuas de manufactura.",
+        "description": "Servicios profesionales independientes de ingeniería de campo, diagnóstico de causa raíz y restablecimiento en prensas continuas, estampado pesado, inyección die casting y líneas de envasado.",
         "telephone": "+52-618-106-2487",
         "email": "da.alejandro@gmail.com",
         "areaServed": [
@@ -35,7 +35,7 @@
         "provider": {
           "@id": "https://memoestefani.github.io/intervencion/#provider"
         },
-        "serviceType": "Diagnóstico de Causa Raíz y Restablecimiento de Maquinaria Industrial",
+        "serviceType": "Diagnóstico de Causa Raíz y Restablecimiento en Prensas Continuas, Estampado Pesado, Die Casting y Envasado",
         "termsOfService": "Alcance y costo cerrados antes de movilización. Facturación vía Persona Moral SAT 32-D."
       },
       {
@@ -96,11 +96,11 @@
       </div>
       
       <h1 class="hero-title">
-        Ingeniería de Campo en Soplado &amp; Hidráulica Crítica. Diagnóstico en Sitio en &lt; 24–48 h.
+        Ingeniería de Campo en Maquinaria Crítica &amp; Hidráulica Proporcional. Diagnóstico en Sitio en &lt; 24–48 h.
       </h1>
 
       <p class="hero-subtitle">
-        Diagnóstico de causa raíz independiente, restablecimiento y despiece abierto para maquinaria crítica de envasado y prensas industriales en México y Norteamérica. Alcance cerrado, sin sobreprecios de OEM.
+        Diagnóstico de causa raíz independiente, restablecimiento y despiece abierto para prensas continuas, estampado pesado, inyección die casting y líneas de envasado en México y Norteamérica. Alcance cerrado, sin sobreprecios de OEM.
       </p>
 
       <!-- Micro-Pastillas de Garantía Fiduciaria (Grid 2x2 Corregido con Subtítulos) -->
@@ -150,24 +150,33 @@
     <section class="brands-strip" aria-label="Ecosistema Técnico Soportado">
       <div class="brands-label">SELECCIONA TU SISTEMA INDUSTRIAL CRÍTICO (TELEMETRÍA EN VIVO):</div>
 
-      <!-- Segmentador Táctil de Maquinaria Industrial (Unificado con Ficha para Foveal Continuity INV-10) -->
+      <!-- Segmentador Táctil de Maquinaria Industrial (Unificado con Ficha para Foveal Continuity INV-10 - 4 Topologías) -->
       <div class="machine-segmenter" role="group" aria-label="Segmentador de Maquinaria">
-        <button type="button" class="machine-chip-btn active" id="chipSidel" data-target="specSidel">
-          <span>🧴 Líneas de Envasado (Sidel / Krones)</span>
-        </button>
-        <button type="button" class="machine-chip-btn" id="chipDieff" data-target="specDieff">
+        <button type="button" class="machine-chip-btn active" id="chipDieff" data-target="specDieff" data-topology="Prensas">
           <span>🪵 Prensas Continuas (Dieffenbacher / Siempelkamp)</span>
         </button>
-        <button type="button" class="machine-chip-btn" id="chipRexroth" data-target="specRexroth">
-          <span>⚙️ Hidráulica Proporcional (Rexroth / Moog)</span>
+        <button type="button" class="machine-chip-btn" id="chipRexroth" data-target="specRexroth" data-topology="Estampado">
+          <span>⚡ Estampado Pesado &amp; Forja (Schuler / Müller)</span>
+        </button>
+        <button type="button" class="machine-chip-btn" id="chipDieCasting" data-target="specDieCasting" data-topology="DieCasting">
+          <span>🔥 Inyección Die Casting (Bühler / Italpresse)</span>
+        </button>
+        <button type="button" class="machine-chip-btn" id="chipSidel" data-target="specSidel" data-topology="Envasado">
+          <span>🧴 Líneas de Envasado (Krones / Sidel)</span>
         </button>
       </div>
       <div class="brands-grid" role="group" aria-label="Sistemas industriales">
-        <span class="brand-chip" tabindex="0" data-machine="Líneas de Envasado Sidel Matrix / Combi" data-diag="Soplado y llenado continuo: desincronización de servomotores, presurización de molde 40 bar y micro-fugas en carrusel.">
-          <span>Sidel Matrix / Combi</span>
+        <span class="brand-chip" tabindex="0" data-machine="Prensas Continuas Dieffenbacher CPS / Siempelkamp" data-diag="Prensas continuas: desalineación térmica, desbalance de presiones en marcos y retorno electrohidráulico.">
+          <span>Dieffenbacher CPS / Siempelkamp</span>
         </span>
-        <span class="brand-chip" tabindex="0" data-machine="Prensas Continuas Dieffenbacher CPS" data-diag="Prensas continuas: desalineación térmica, desbalance de presiones en marcos y retorno electrohidráulico.">
-          <span>Dieffenbacher CPS</span>
+        <span class="brand-chip" tabindex="0" data-machine="Prensas de Estampado Pesado Schuler / Müller Weingarten" data-diag="Prensas de estampado: cojín de embutición, servoválvulas Moog D661 y estabilización 315 bar.">
+          <span>Schuler / Müller Weingarten</span>
+        </span>
+        <span class="brand-chip" tabindex="0" data-machine="Inyección de Aluminio Die Casting Bühler Carat / Italpresse" data-diag="Celdas die casting: velocidad de disparo fase 2 (10 m/s), multiplicadores 400 bar y válvulas Moog D634.">
+          <span>Bühler Carat / Italpresse</span>
+        </span>
+        <span class="brand-chip" tabindex="0" data-machine="Líneas de Envasado Krones Contiform / Sidel Matrix" data-diag="Soplado y llenado continuo: desincronización de servomotores, presurización de molde 40 bar y micro-fugas en carrusel.">
+          <span>Krones Contiform / Sidel Matrix</span>
         </span>
         <span class="brand-chip" tabindex="0" data-machine="Sistemas Electrohidráulicos Bosch Rexroth A4VSO / 4WRPE" data-diag="Válvulas proporcionales y bombas de pistones: cavitación, respuesta lenta de corredera y calibración p/Q.">
           <span>Bosch Rexroth A4VSO / 4WRPE</span>
@@ -183,26 +192,26 @@
       <!-- Ficha Técnica Reactiva en el Mismo Viewport -->
       <div class="machine-spec-card" id="machineSpecCard">
         <div class="machine-spec-header">
-          <div class="machine-spec-title" id="machineSpecTitle">Líneas de Envasado Sidel Matrix / Combi</div>
-          <span class="machine-spec-badge" id="machineSpecBadge">Inspección p/Q</span>
+          <div class="machine-spec-title" id="machineSpecTitle">Prensas Continuas Dieffenbacher CPS / Siempelkamp</div>
+          <span class="machine-spec-badge" id="machineSpecBadge">Hidráulica de Prensas Continuas (40-70 m)</span>
         </div>
         <div class="spec-grid-3col">
           <div class="spec-col-item">
             <div class="spec-col-label">Subsistemas Críticos</div>
-            <div class="spec-col-val" id="machineSpecSubsys">Carrusel de soplado, manifold de 40 bar, servoválvulas proporcionales y servos de estirado.</div>
+            <div class="spec-col-val" id="machineSpecSubsys">Marcos de cilindros de prensado, bombas Rexroth A4VSO, manifolds de sincronización y platos térmicos a 220°C.</div>
           </div>
           <div class="spec-col-item">
             <div class="spec-col-label">Modo de Falla Resuelto</div>
-            <div class="spec-col-val" id="machineSpecFailure">Desincronización angular, micro-fugas en juntas rotativas y despresurización de molde.</div>
+            <div class="spec-col-val" id="machineSpecFailure">Deriva térmica de paralelismo entre marcos (&gt; 0.1 mm), desbalance de presiones y saturación por barniz térmico en servoválvulas.</div>
           </div>
           <div class="spec-col-item">
             <div class="spec-col-label">Protocolo de Intervención</div>
-            <div class="spec-col-val" id="machineSpecProtocol">Medición dinámica p/Q en manifold, análisis de bus Profinet y calibración de lazo de servoválvula.</div>
+            <div class="spec-col-val" id="machineSpecProtocol">Compensación de banda muerta en correderas, perfilado de ondulación de bomba, alineación láser y purga de aireación.</div>
           </div>
         </div>
         <div class="machine-spec-footer">
           <div class="machine-spec-rate">
-            Tarifa estimada: <strong id="machineSpecRate">$1,500 – $2,500 USD</strong> (Costo fijo cerrado)
+            Tarifa estimada: <strong id="machineSpecRate">$1,800 – $2,500 USD</strong> (Costo fijo cerrado)
           </div>
           <a class="machine-spec-btn" href="#fieldSymptom" id="btnMachineSpecAction">
             <span>Solicitar Diagnóstico para este Equipo</span>
@@ -529,7 +538,7 @@
         <div class="sow-preview-doc">
           <div class="sow-doc-header">
             <span class="sow-doc-tag">EX-ANTE CONTRACTUAL</span>
-            <span class="sow-doc-folio">FOLIO: #SOW-261008-SIDEL</span>
+            <span class="sow-doc-folio" id="sowDocFolio">FOLIO: #SOW-261008-PRENSAS</span>
           </div>
           <div class="sow-doc-title">Statement of Work / Proforma de Intervención Técnica</div>
           <div class="sow-doc-meta">
@@ -538,7 +547,7 @@
           <hr class="sow-divider">
           <div class="sow-section">
             <h5>1. Objetivo Técnico Delimitado</h5>
-            <p>Inspección mecatrónica de carrusel rotativo de soplado, calibración de servoválvulas proporcionales y restablecimiento de presión de trabajo nominal (40 bar).</p>
+            <p id="sowObjectiveText">Inspección mecatrónica de marcos de prensado continuo, compensación de banda muerta en servoválvulas Rexroth y calibración láser de paralelismo.</p>
           </div>
           <div class="sow-section">
             <h5>2. Exclusiones Explícitas (Cero Sorpresas)</h5>
