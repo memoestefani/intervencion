@@ -287,8 +287,40 @@
         </article>
       </div>
 
-      <div class="roi-highlight-box">
-        Ecuación de Retorno Inmediato: Una línea de embotellado o prensa detenida cuesta típicamente entre $15,000 y $50,000 USD/hora. Una intervención de costo cerrado ($1,500 a $2,500 USD) se amortiza en los primeros 6 a 10 minutos de producción restablecida.
+      <!-- Dial Táctil Háptico de ROI en Vivo (Decisión 4 / Arbitraje 14) -->
+      <div class="roi-dial-card" id="roiDialCard">
+        <div class="roi-dial-header">
+          <div class="roi-dial-title">
+            <span>⏱️ Calculadora de Paro de Línea en Vivo (ROI)</span>
+          </div>
+          <span class="roi-badge-live">● EN VIVO ($25k/h)</span>
+        </div>
+        
+        <div class="roi-slider-container">
+          <div class="roi-slider-labels">
+            <span>Horas de paro acumuladas en tu planta:</span>
+            <span id="sliderHoursDisplay" class="mono-num"><strong>2.0 h</strong></span>
+          </div>
+          <input type="range" class="roi-slider" id="dialRoiStoppage" min="0.5" max="8.0" step="0.5" value="2.0" aria-label="Horas de paro de línea acumuladas">
+          <div class="roi-slider-labels" style="margin-top: 0.35rem;">
+            <span>0.5 h (Mínimo)</span>
+            <span>4.0 h (1/2 Turno)</span>
+            <span>8.0 h (Turno Completo)</span>
+          </div>
+        </div>
+
+        <div class="roi-metrics-grid">
+          <div class="roi-metric-item">
+            <div class="roi-metric-label">Pérdida en Producción Acumulada</div>
+            <div class="roi-metric-val loss mono-num" id="roiLossDisplay">$50,000 USD</div>
+            <div class="roi-metric-subtext">Calculado a tasa base de $25,000 USD/hora en línea de envasado / prensa.</div>
+          </div>
+          <div class="roi-metric-item">
+            <div class="roi-metric-label">Retorno Inmediato de Intervención</div>
+            <div class="roi-metric-val recovery mono-num" id="roiAmortizationDisplay">4.8 min</div>
+            <div class="roi-metric-subtext">Costo fijo de $2,000 USD amortizado en los primeros minutos de arranque.</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -339,6 +371,14 @@
           </div>
         </article>
       </div>
+
+      <!-- Botón 1-Click para Compras y Finanzas (Decisión 5 / Arbitraje 10) -->
+      <button type="button" class="btn-po-memo" id="btnCopyPoSlip">
+        <span>📋 Copiar Memorándum de Justificación para Orden de Compra MRO (SAP / Coupa)</span>
+      </button>
+      <div id="copyToastFeedback" class="hidden" style="color: var(--accent-emerald); font-size: 0.82rem; font-weight: 700; text-align: center; margin-bottom: 0.75rem;">
+        ✓ Memorándum copiado al portapapeles. Listo para enviar al Director Financiero (CFO).
+      </div>
     </section>
 
     <!-- Visor de Entregables Reales que Protegen tu Inversión (Fase 5: Evidencia Documental) -->
@@ -380,7 +420,7 @@
             <span class="report-folio-tag">#T-261007-8F2B</span>
             <strong style="font-size: 0.95rem;">Reporte de Cierre Técnico e Inventario de Causa Raíz</strong>
           </div>
-          <span class="report-sheet-meta">Sopladora Rotativa / Llenadora Isométrica</span>
+          <span class="report-sheet-meta" id="bomMachineSubtitle">Sopladora Rotativa / Llenadora Isométrica</span>
         </div>
 
         <!-- Pestañas Interactivas de la Muestra (Telemetría vs Refacciones) -->
@@ -394,7 +434,7 @@
         </div>
 
         <div class="bom-tab-pane active" id="tabTelemetry" role="tabpanel">
-          <div class="report-telemetry-box">
+          <div class="report-telemetry-box" id="bomTelemetryContent">
             • <strong>Variable Crítica Medida:</strong> Presión en manifold de soplado <strong>38 bar (Medida)</strong> vs. <strong>40 bar (Nominal)</strong>.<br>
             • <strong>Hallazgo Determinista:</strong> Fuga dinámica en junta rotativa de distribución y corredera de válvula servoproporcional atascada por barniz térmico.<br>
             • <strong>Acción Ejecutada:</strong> Desmontaje in-situ, flushing ultrasónico de corredera, reemplazo de empaque primario y recalibración de lazo cerrado p/Q.
@@ -402,7 +442,7 @@
         </div>
 
         <div class="bom-tab-pane" id="tabParts" role="tabpanel">
-          <div class="report-bom-table-wrapper">
+          <div class="report-bom-table-wrapper" id="bomPartsContent">
             <table class="report-bom-table">
               <thead>
                 <tr>
@@ -460,7 +500,7 @@
           </div>
         </div>
         <h2 class="intake-title">Mesa de Entrada para Intervención Técnica</h2>
-        <p class="intake-desc">Describe el problema observable en planta. David revisa personalmente la solicitud para verificar la viabilidad técnica y emitir la proforma de alcance cerrado en su siguiente ventana operativa.</p>
+        <p class="intake-desc">Ventana activa de triage en máquina: &lt; 1 h. Proforma de costo cerrado ex-ante. Facturación CFDI 4.0 / W-8BEN inmediata.</p>
       </div>
 
       <form class="intake-form" id="intakeForm">
@@ -511,7 +551,7 @@
         <div class="ack-folio" id="ackFolioDisplay">#T-XXXX</div>
         <h3 style="margin-bottom: 0.5rem; font-weight: 800;">Solicitud Técnica Registrada en Mesa de Entrada</h3>
         <p style="margin-bottom: 0.75rem;">
-          Tu caso ha sido canalizado directamente al <strong>Ing. David Estefani</strong>. Debido a intervenciones activas en máquina, David evalúa la viabilidad técnica en su siguiente ventana operativa para emitir la proforma de alcance cerrado.
+          Expediente activo reservado. David emite la proforma de costo cerrado en su siguiente receso operativo en máquina.
         </p>
 
         <div class="ack-checklist">

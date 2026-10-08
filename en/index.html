@@ -69,7 +69,7 @@
   <header class="top-bar">
     <div class="top-bar-badge">
       <span class="top-bar-dot" aria-hidden="true"></span>
-      <span>North America Field Availability: US & Mexico</span>
+      <span>Bilingual Field Availability: US & Mexico</span>
     </div>
     <nav class="lang-toggle" aria-label="Language navigation">
       <a href="../" hreflang="es">ES</a>
@@ -86,7 +86,7 @@
       </div>
       
       <h1 class="hero-title">
-        Bottling Line or Continuous Press Downtime. On-Site Root-Cause Triage in &lt; 24–48 h.
+        Critical Production Line Downtime. On-Site Diagnostics in &lt; 24–48 h.
       </h1>
 
       <!-- Industrial Machinery Touch Segmenter -->
@@ -103,7 +103,7 @@
       </div>
       
       <p class="hero-subtitle">
-        Independent bilingual mechatronics field specialist with closed scope and fixed-fee agreements ($1,500 – $2,500 USD) prior to dispatch. Direct corporate billing with W-8BEN and SWIFT wire transfers. Rapid on-site mobilization across US plants and cross-border corridors.
+        Independent root-cause analysis and guided restoration. Fixed scope. W-8BEN and SWIFT direct billing.
       </p>
 
       <!-- Fiduciary Guarantee Badges (Apple-Grade Grid) -->
@@ -287,8 +287,40 @@
         </article>
       </div>
 
-      <div class="roi-highlight-box">
-        Financial Arbitrage: A high-speed bottling line or continuous press downtime costs $15,000 to $50,000 USD/hour. A fixed-fee diagnostic intervention ($1,500 – $2,500 USD) pays for itself in the first 6 to 10 minutes of recovered production.
+      <!-- Live Haptic ROI Dial (Decision 4 / Arbitrage 14) -->
+      <div class="roi-dial-card" id="roiDialCard">
+        <div class="roi-dial-header">
+          <div class="roi-dial-title">
+            <span>⏱️ Real-Time Line Downtime Calculator (ROI)</span>
+          </div>
+          <span class="roi-badge-live">● LIVE ($25k/h)</span>
+        </div>
+        
+        <div class="roi-slider-container">
+          <div class="roi-slider-labels">
+            <span>Cumulative plant downtime hours:</span>
+            <span id="sliderHoursDisplay" class="mono-num"><strong>2.0 h</strong></span>
+          </div>
+          <input type="range" class="roi-slider" id="dialRoiStoppage" min="0.5" max="8.0" step="0.5" value="2.0" aria-label="Cumulative plant downtime hours">
+          <div class="roi-slider-labels" style="margin-top: 0.35rem;">
+            <span>0.5 h (Min)</span>
+            <span>4.0 h (1/2 Shift)</span>
+            <span>8.0 h (Full Shift)</span>
+          </div>
+        </div>
+
+        <div class="roi-metrics-grid">
+          <div class="roi-metric-item">
+            <div class="roi-metric-label">Cumulative Production Loss</div>
+            <div class="roi-metric-val loss mono-num" id="roiLossDisplay">$50,000 USD</div>
+            <div class="roi-metric-subtext">Calculated at baseline $25,000 USD/hour bottling line or press downtime rate.</div>
+          </div>
+          <div class="roi-metric-item">
+            <div class="roi-metric-label">Immediate Intervention Payback</div>
+            <div class="roi-metric-val recovery mono-num" id="roiAmortizationDisplay">4.8 min</div>
+            <div class="roi-metric-subtext">Fixed $2,000 USD diagnostic fee amortized in the first minutes of line recovery.</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -339,6 +371,14 @@
           </div>
         </article>
       </div>
+
+      <!-- 1-Click Procurement Button (Decision 5 / Arbitrage 10) -->
+      <button type="button" class="btn-po-memo" id="btnCopyPoSlip">
+        <span>📋 Copy MRO Purchase Order Memo (SAP / Coupa)</span>
+      </button>
+      <div id="copyToastFeedback" class="hidden" style="color: var(--accent-emerald); font-size: 0.82rem; font-weight: 700; text-align: center; margin-bottom: 0.75rem;">
+        ✓ Memorandum copied to clipboard. Ready for CFO / Purchasing approval.
+      </div>
     </section>
 
     <!-- Deliverables Viewer -->
@@ -380,7 +420,7 @@
             <span class="report-folio-tag">#T-261007-8F2B</span>
             <strong style="font-size: 0.95rem;">Technical Closeout Report & Root-Cause Audit</strong>
           </div>
-          <span class="report-sheet-meta">High-Speed Rotary Blower / Isometric Filler</span>
+          <span class="report-sheet-meta" id="bomMachineSubtitle">High-Speed Rotary Blower / Isometric Filler</span>
         </div>
 
         <!-- Interactive BOM Tabs (Telemetry vs Open Parts) -->
@@ -394,7 +434,7 @@
         </div>
 
         <div class="bom-tab-pane active" id="tabTelemetry" role="tabpanel">
-          <div class="report-telemetry-box">
+          <div class="report-telemetry-box" id="bomTelemetryContent">
             • <strong>Measured Critical Variable:</strong> Blowing manifold pressure <strong>38 bar (Actual)</strong> vs. <strong>40 bar (Nominal)</strong>.<br>
             • <strong>Deterministic Finding:</strong> Dynamic seal blow-by on rotary distributor carousel and thermal varnish spool lock on Rexroth servo-proportional valve.<br>
             • <strong>Executed Protocol:</strong> In-situ disassembly, ultrasonic spool flushing, primary distributor seal renewal, and closed-loop p/Q retuning.
@@ -402,7 +442,7 @@
         </div>
 
         <div class="bom-tab-pane" id="tabParts" role="tabpanel">
-          <div class="report-bom-table-wrapper">
+          <div class="report-bom-table-wrapper" id="bomPartsContent">
             <table class="report-bom-table">
               <thead>
                 <tr>
@@ -460,7 +500,7 @@
           </div>
         </div>
         <h2 class="intake-title">Submit Field Engineering Scope</h2>
-        <p class="intake-desc">Describe the observable line issue. David personally reviews every inquiry during his next operational window to verify feasibility and issue a fixed SOW.</p>
+        <p class="intake-desc">Active triage window on machine: &lt; 1 h. Ex-ante binding SOW. Direct CFDI 4.0 / W-8BEN invoicing.</p>
       </div>
 
       <form class="intake-form" id="intakeForm">

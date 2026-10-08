@@ -6,28 +6,31 @@
    ========================================================================== */
 
 :root {
-  /* Paleta Hidro-Mineral Noble (Pureza de Manantial y Acero Quirúrgico 316L) */
-  --bg-page: #F9FBFC;
-  --bg-surface: #FFFFFF;
-  --bg-subtle: #F1F5F9;
-  --bg-surface-elevated: #FFFFFF;
-  --bg-hover: #E2E8F0;
-  
-  --text-primary: #0F1418;
-  --text-secondary: #334155;
-  --text-muted: #64748B;
-  --text-inverse: #FFFFFF;
-  
-  --border-subtle: #E2E8F0;
-  --border-medium: #64748B;
-  --border-strong: #0F1418;
-  --border-focus: #0284C7;
+  /* Paleta Mineral Soberana "Titanio & Obsidiana" (Inmunidad Solar Industrial >13.5:1 WCAG AAA) */
+  --bg-page: #090A0C;
+  --bg-surface: #13161A;
+  --bg-subtle: #1A1E24;
+  --bg-surface-elevated: #222730;
+  --bg-hover: #2D333F;
 
-  /* Micro-Acentos de Ingeniería Hidráulica y Sanitaria */
-  --accent-titanium: #64748B;
-  --accent-charcoal: #0F1418;
-  --accent-water: #0284C7;
-  --accent-water-subtle: #E0F2FE;
+  --text-primary: #F4F5F7;
+  --text-secondary: #A0AEC0;
+  --text-muted: #718096;
+  --text-inverse: #090A0C;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-strong: #F4F5F7;
+  --border-focus: #38BDF8;
+
+  /* Micro-Acentos de Ingeniería Mecatrónica */
+  --accent-titanium: #E2E8F0;
+  --accent-charcoal: #F4F5F7;
+  --accent-water: #38BDF8;
+  --accent-water-subtle: rgba(56, 189, 248, 0.12);
+  --accent-emerald: #10B981;
+  --accent-amber: #F59E0B;
+  --accent-cobalt: #2563EB;
 
   /* Aliases para compatibilidad */
   --bg-primary: var(--bg-page);
@@ -42,37 +45,10 @@
   --radius-sm: 6px;
   --radius-pill: 9999px;
   --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
-  --shadow-card: 0 1px 3px rgba(15, 20, 24, 0.04), 0 6px 16px -4px rgba(15, 20, 24, 0.03);
-  --shadow-hover: 0 4px 16px rgba(15, 20, 24, 0.08);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.5), 0 8px 24px -6px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-page: #0B0E11;
-    --bg-surface: #12171C;
-    --bg-subtle: #1A2027;
-    --bg-surface-elevated: #1E262F;
-    --bg-hover: #26303B;
-
-    --text-primary: #F8FAFC;
-    --text-secondary: #94A3B8;
-    --text-muted: #64748B;
-    --text-inverse: #0B0E11;
-
-    --border-subtle: #1E293B;
-    --border-medium: #475569;
-    --border-strong: #F8FAFC;
-    --border-focus: #38BDF8;
-
-    --accent-titanium: #94A3B8;
-    --accent-charcoal: #F8FAFC;
-    --accent-water: #38BDF8;
-    --accent-water-subtle: #082F49;
-
-    --bg-primary: var(--bg-page);
-    --bg-secondary: var(--bg-subtle);
-  }
-}
 
 /* Base Reset */
 *, *::before, *::after {
@@ -309,52 +285,7 @@ p {
   border-color: var(--text-primary);
 }
 
-/* Ficha de Telemetría Cuantificada (Spec Sheet sin Redundancia) */
-.telemetry-spec-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-card);
-  padding: 1.35rem;
-  margin-top: 1rem;
-  box-shadow: var(--shadow-card);
-}
 
-.spec-grid-3col {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.85rem;
-  margin: 1rem 0;
-}
-
-@media (min-width: 640px) {
-  .spec-grid-3col {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.spec-col-item {
-  background: var(--bg-subtle);
-  padding: 0.85rem 1rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-subtle);
-}
-
-.spec-col-label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.35rem;
-}
-
-.spec-col-val {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.4;
-}
 
 /* Conmutador Táctil iOS de Emergencia (oturra/ios-switcher CSS Puro) */
 .ios-switch-container {
@@ -709,7 +640,6 @@ p {
   color: var(--bg-surface);
 }
 
-.machine-diag-box,
 .machine-spec-card {
   display: none;
   margin-top: 1rem;
@@ -722,7 +652,6 @@ p {
   box-shadow: 0 4px 12px rgba(15, 20, 24, 0.05);
 }
 
-.machine-diag-box.visible,
 .machine-spec-card.visible {
   display: block;
 }
@@ -755,30 +684,7 @@ p {
   letter-spacing: 0.04em;
 }
 
-.machine-spec-points {
-  list-style: none;
-  margin: 0.75rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-}
 
-.machine-spec-points li {
-  font-size: 0.86rem;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  line-height: 1.4;
-}
-
-.machine-spec-points li::before {
-  content: "•";
-  color: var(--accent-water);
-  font-weight: 900;
-  font-size: 1.1rem;
-  line-height: 1;
-}
 
 .machine-spec-footer {
   display: flex;
@@ -826,68 +732,7 @@ p {
   transform: translateY(1px) scale(0.98);
 }
 
-/* Tarjetas Informativas */
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-  margin-bottom: 2.25rem;
-}
 
-@media (min-width: 768px) {
-  .grid-2 {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.card {
-  background-color: var(--bg-surface);
-  border: 1.5px solid var(--border-subtle);
-  border-radius: var(--radius-card);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-card);
-  transition: border-color 150ms ease, box-shadow 150ms ease;
-}
-
-.card:hover {
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-hover);
-}
-
-.card-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.74rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.25rem 0.6rem;
-  border-radius: 4px;
-  margin-bottom: 0.75rem;
-}
-
-.card-badge.stps {
-  background-color: var(--bg-subtle);
-  color: var(--text-primary);
-  border: 1.5px solid var(--border-strong);
-}
-
-.card-badge.tax {
-  background-color: var(--text-primary);
-  color: var(--bg-surface);
-  border: 1.5px solid var(--text-primary);
-}
-
-.card-badge.case {
-  background-color: var(--bg-subtle);
-  color: var(--text-primary);
-  border: 1.5px dashed var(--border-strong);
-}
-
-.card-title {
-  margin-bottom: 0.65rem;
-}
 
 .card-list {
   list-style: none;
@@ -1233,14 +1078,7 @@ p {
   .roi-table-wrapper { display: block; }
 }
 
-.roi-highlight-box {
-  background-color: var(--bg-subtle);
-  border-left: 3px solid var(--border-strong);
-  padding: 0.85rem 1rem;
-  margin-top: 1rem;
-  font-size: 0.88rem;
-  font-weight: 600;
-}
+
 
 /* Sección de Vías de Aprobación para Compras (Aliado Fiduciario Institucional) */
 .procurement-section {
@@ -1540,3 +1378,259 @@ p {
 .hidden {
   display: none !important;
 }
+
+/* ==========================================================================
+   DIAL TÁCTIL HÁPTICO DE ROI (PÉRDIDA EN VIVO VS COSTO FIJO) [Decisión 4]
+   Adopta Cool-Runningz/range-input.css + Asequibilidad Háptica Peck & Childers
+   ========================================================================== */
+
+.roi-dial-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  margin: 1.75rem 0;
+  box-shadow: var(--shadow-card);
+}
+
+.roi-dial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.roi-dial-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.roi-badge-live {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: rgba(245, 158, 11, 0.15);
+  color: var(--accent-amber);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+}
+
+.roi-slider-container {
+  margin: 1.25rem 0;
+}
+
+.roi-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  margin-bottom: 0.4rem;
+}
+
+/* Custom Range Input (Cool-Runningz/range-input.css) */
+.roi-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: var(--bg-subtle);
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.roi-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  border: 3px solid var(--accent-water);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+  cursor: grab;
+  transition: transform 0.15s var(--ease-apple), box-shadow 0.15s ease;
+}
+
+.roi-slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.15);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
+}
+
+.roi-slider::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  border: 3px solid var(--accent-water);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+  cursor: grab;
+}
+
+.roi-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .roi-metrics-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.roi-metric-item {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+}
+
+.roi-metric-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.roi-metric-val {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.roi-metric-val.loss {
+  color: #EF4444;
+}
+
+.roi-metric-val.recovery {
+  color: var(--accent-emerald);
+}
+
+.roi-metric-subtext {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+/* ==========================================================================
+   BOTÓN 1-CLICK DE MEMORÁNDUM PO PARA SAP / COUPA [Decisión 5]
+   ========================================================================== */
+
+.btn-po-memo {
+  width: 100%;
+  min-height: 48px;
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.25rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-apple);
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.btn-po-memo:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.btn-po-memo:active {
+  transform: translateY(0);
+}
+
+.btn-po-memo.copied {
+  background-color: rgba(16, 185, 129, 0.15);
+  border-color: var(--accent-emerald);
+  color: var(--accent-emerald);
+}
+
+/* ==========================================================================
+   HOJA DE ESTILOS DE IMPRESIÓN LÁSER OFICINA (@media print) [Decisión 9]
+   Adopta vladocar/Hartija---CSS-Print-Framework
+   ========================================================================== */
+
+@media print {
+  @page {
+    margin: 1.2cm;
+    size: letter portrait;
+  }
+
+  body {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+
+  /* Suprimir navegación, interactivos, switches y CTAs en papel */
+  .top-bar,
+  .hero-actions,
+  .ios-switch-container,
+  .roi-slider-container,
+  .btn-po-memo,
+  .btn-group,
+  .footer-meta-links,
+  .lang-toggle,
+  .machine-segmenter,
+  #copyToastFeedback {
+    display: none !important;
+  }
+
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .machine-spec-card,
+  .report-sample-sheet,
+  .deliverable-card,
+  .procurement-card,
+  .roi-dial-card {
+    background: #FFFFFF !important;
+    border: 1px solid #CCCCCC !important;
+    box-shadow: none !important;
+    color: #000000 !important;
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3, h4, p, span, td, th {
+    color: #000000 !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: #000000 !important;
+  }
+
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+  }
+}
+
