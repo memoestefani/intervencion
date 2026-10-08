@@ -6,28 +6,30 @@
    ========================================================================== */
 
 :root {
-  /* Paleta Mineral de Alta Precisión */
-  --bg-page: #FAF9F6;
+  /* Paleta Hidro-Mineral Noble (Pureza de Manantial y Acero Quirúrgico 316L) */
+  --bg-page: #F9FBFC;
   --bg-surface: #FFFFFF;
-  --bg-subtle: #F2F1ED;
+  --bg-subtle: #F1F5F9;
   --bg-surface-elevated: #FFFFFF;
-  --bg-hover: #ECEAE4;
+  --bg-hover: #E2E8F0;
   
-  --text-primary: #111113;
-  --text-secondary: #48484E;
-  --text-muted: #74747C;
+  --text-primary: #0F1418;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
   --text-inverse: #FFFFFF;
   
-  --border-subtle: #E4E2D8;
-  --border-medium: #A8A69E;
-  --border-strong: #111113;
-  --border-focus: #111113;
+  --border-subtle: #E2E8F0;
+  --border-medium: #64748B;
+  --border-strong: #0F1418;
+  --border-focus: #0284C7;
 
-  /* Micro-Acentos de Ingeniería */
-  --accent-titanium: #71717A;
-  --accent-charcoal: #18181B;
+  /* Micro-Acentos de Ingeniería Hidráulica y Sanitaria */
+  --accent-titanium: #64748B;
+  --accent-charcoal: #0F1418;
+  --accent-water: #0284C7;
+  --accent-water-subtle: #E0F2FE;
 
-  /* Aliases para compatibilidad sin tintes */
+  /* Aliases para compatibilidad */
   --bg-primary: var(--bg-page);
   --bg-secondary: var(--bg-subtle);
 
@@ -40,30 +42,32 @@
   --radius-sm: 6px;
   --radius-pill: 9999px;
   --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
-  --shadow-card: 0 1px 3px rgba(17, 17, 19, 0.04), 0 6px 16px -4px rgba(17, 17, 19, 0.03);
-  --shadow-hover: 0 4px 16px rgba(17, 17, 19, 0.08);
+  --shadow-card: 0 1px 3px rgba(15, 20, 24, 0.04), 0 6px 16px -4px rgba(15, 20, 24, 0.03);
+  --shadow-hover: 0 4px 16px rgba(15, 20, 24, 0.08);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-page: #0C0C0E;
-    --bg-surface: #141416;
-    --bg-subtle: #1C1C1E;
-    --bg-surface-elevated: #222224;
-    --bg-hover: #262628;
+    --bg-page: #0B0E11;
+    --bg-surface: #12171C;
+    --bg-subtle: #1A2027;
+    --bg-surface-elevated: #1E262F;
+    --bg-hover: #26303B;
 
-    --text-primary: #F5F5F7;
-    --text-secondary: #A1A1A6;
-    --text-muted: #6E6E73;
-    --text-inverse: #0C0C0E;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --text-inverse: #0B0E11;
 
-    --border-subtle: #242426;
-    --border-medium: #48484A;
-    --border-strong: #F5F5F7;
-    --border-focus: #F5F5F7;
+    --border-subtle: #1E293B;
+    --border-medium: #475569;
+    --border-strong: #F8FAFC;
+    --border-focus: #38BDF8;
 
-    --accent-titanium: #A1A1A6;
-    --accent-charcoal: #F5F5F7;
+    --accent-titanium: #94A3B8;
+    --accent-charcoal: #F8FAFC;
+    --accent-water: #38BDF8;
+    --accent-water-subtle: #082F49;
 
     --bg-primary: var(--bg-page);
     --bg-secondary: var(--bg-subtle);
@@ -271,12 +275,12 @@ p {
   transform: translateY(2px) scale(0.98);
 }
 
-/* Cajón Plegable Nativo de Compliance y Descargo de Marcas (Cero JS) */
+/* Sello Plegable de Blindaje Normativo y Descargo de Marcas (Cero JS) */
 .compliance-drawer {
   background-color: var(--bg-surface);
   border: 1.5px solid var(--border-subtle);
   border-radius: var(--radius-card);
-  margin-bottom: 2rem;
+  margin: 1.5rem 0 2rem;
   transition: border-color 150ms ease;
 }
 
@@ -412,19 +416,121 @@ p {
   color: var(--bg-surface);
 }
 
-.machine-diag-box {
+.machine-diag-box,
+.machine-spec-card {
   display: none;
-  margin-top: 0.85rem;
-  padding: 0.85rem 1rem;
-  background-color: var(--bg-subtle);
-  border: 1px solid var(--border-subtle);
+  margin-top: 1rem;
+  padding: 1.25rem;
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-strong);
   border-radius: var(--radius-sm);
-  font-size: 0.85rem;
-  animation: fadeIn 200ms var(--ease-apple);
+  font-size: 0.88rem;
+  animation: fadeIn 250ms var(--ease-apple);
+  box-shadow: 0 4px 12px rgba(15, 20, 24, 0.05);
 }
 
-.machine-diag-box.visible {
+.machine-diag-box.visible,
+.machine-spec-card.visible {
   display: block;
+}
+
+.machine-spec-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.machine-spec-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.machine-spec-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  background-color: var(--accent-water-subtle);
+  color: var(--accent-water);
+  border: 1px solid var(--accent-water);
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.machine-spec-points {
+  list-style: none;
+  margin: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.machine-spec-points li {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+
+.machine-spec-points li::before {
+  content: "•";
+  color: var(--accent-water);
+  font-weight: 900;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.machine-spec-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+}
+
+.machine-spec-rate {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+}
+
+.machine-spec-rate strong {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.machine-spec-btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.15rem;
+  background-color: var(--text-primary);
+  color: var(--bg-surface);
+  border-radius: var(--radius-sm);
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1.5px solid var(--text-primary);
+  transition: transform 150ms var(--ease-apple), background-color 150ms ease;
+}
+
+.machine-spec-btn:hover {
+  background-color: #26303B;
+}
+
+.machine-spec-btn:active {
+  transform: translateY(1px) scale(0.98);
 }
 
 /* Tarjetas Informativas */
@@ -575,6 +681,122 @@ p {
   line-height: 1.45;
 }
 
+/* Muestra Tangible de Reporte Técnico y Despiece Abierto (reporte_cierre_template.md) */
+.report-sample-sheet {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(15, 20, 24, 0.04);
+}
+
+.report-sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid var(--border-subtle);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.report-folio-tag {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  font-weight: 800;
+  background-color: var(--text-primary);
+  color: var(--bg-surface);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+.report-sheet-meta {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.report-telemetry-box {
+  background-color: var(--bg-subtle);
+  border-left: 3px solid var(--border-strong);
+  padding: 0.65rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  margin-bottom: 0.85rem;
+}
+
+.report-bom-table-wrapper {
+  overflow-x: auto;
+}
+
+.report-bom-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  text-align: left;
+}
+
+.report-bom-table th, .report-bom-table td {
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.report-bom-table th {
+  background-color: var(--bg-subtle);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.badge-urgency {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.badge-urgency.inmediata {
+  background-color: #FEE2E2;
+  color: #991B1B;
+  border: 1px solid #FCA5A5;
+}
+
+.badge-urgency.preventiva {
+  background-color: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FCD34D;
+}
+
+.badge-urgency.stock {
+  background-color: #DCFCE7;
+  color: #166534;
+  border: 1px solid #86EFAC;
+}
+
+@media (prefers-color-scheme: dark) {
+  .badge-urgency.inmediata {
+    background-color: #450A0A;
+    color: #FCA5A5;
+    border-color: #7F1D1D;
+  }
+  .badge-urgency.preventiva {
+    background-color: #451A03;
+    color: #FCD34D;
+    border-color: #78350F;
+  }
+  .badge-urgency.stock {
+    background-color: #052E16;
+    color: #86EFAC;
+    border-color: #14532D;
+  }
+}
+
 /* Matriz Asimétrica de ROI vs. OEM */
 .roi-section {
   background-color: var(--bg-surface);
@@ -614,6 +836,110 @@ p {
   background-color: var(--bg-subtle);
 }
 
+/* Tarjetas Apiladas de ROI Móvil (Cero Scroll Horizontal) */
+.roi-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.roi-card {
+  background-color: var(--bg-subtle);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1.15rem;
+}
+
+.roi-card.recommended {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-strong);
+  box-shadow: 0 4px 16px rgba(15, 20, 24, 0.06);
+}
+
+.roi-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+  gap: 0.5rem;
+}
+
+.roi-card-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.roi-card-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+.roi-card.recommended .roi-card-badge {
+  background-color: var(--text-primary);
+  color: var(--bg-surface);
+}
+
+.roi-card:not(.recommended) .roi-card-badge {
+  background-color: var(--bg-page);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+}
+
+.roi-card-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.roi-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.45rem;
+}
+
+.roi-card-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.roi-card-label {
+  color: var(--text-muted);
+  font-weight: 600;
+  flex: 1;
+}
+
+.roi-card-val {
+  color: var(--text-primary);
+  font-weight: 700;
+  text-align: right;
+  flex: 1.3;
+}
+
+.roi-card.recommended .roi-card-val {
+  color: var(--text-primary);
+  font-weight: 800;
+}
+
+@media (max-width: 640px) {
+  .roi-table-wrapper { display: none; }
+  .roi-cards-stack { display: flex; }
+}
+
+@media (min-width: 641px) {
+  .roi-cards-stack { display: none; }
+  .roi-table-wrapper { display: block; }
+}
+
 .roi-highlight-box {
   background-color: var(--bg-subtle);
   border-left: 3px solid var(--border-strong);
@@ -621,6 +947,94 @@ p {
   margin-top: 1rem;
   font-size: 0.88rem;
   font-weight: 600;
+}
+
+/* Sección de Vías de Aprobación para Compras (Aliado Fiduciario Institucional) */
+.procurement-section {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: 1.75rem 1.5rem;
+  margin-bottom: 2.25rem;
+}
+
+.procurement-header {
+  margin-bottom: 1.25rem;
+}
+
+.procurement-header h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.procurement-header p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.procurement-routes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+}
+
+@media (min-width: 768px) {
+  .procurement-routes-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.procurement-card {
+  background-color: var(--bg-subtle);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.procurement-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-card);
+}
+
+.procurement-route-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--accent-water);
+  background-color: var(--accent-water-subtle);
+  border: 1px solid var(--accent-water);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.65rem;
+  width: fit-content;
+}
+
+.procurement-card-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.45rem;
+}
+
+.procurement-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 0.85rem;
+}
+
+.procurement-card-footer {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.65rem;
 }
 
 /* Sección de Formulario de Admisión (Intake) */

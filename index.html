@@ -85,11 +85,11 @@
       </div>
       
       <h1 class="hero-title">
-        Diagnóstico de Causa Raíz y Restablecimiento en Líneas Industriales Críticas.
+        Paro en Línea de Envasado o Prensa Continua. Diagnóstico en Sitio en &lt; 24–48 h.
       </h1>
       
       <p class="hero-subtitle">
-        Especialista mecatrónico independiente en sitio con alcance cerrado y costo fijo acordado antes de salir. Movilización en menos de 24–48 horas a complejos fabriles en México y cobertura transfronteriza.
+        Especialista mecatrónico independiente en sitio con alcance técnico y costo fijo acordado ($1,500 – $2,500 USD) antes de salir. Facturación W-8BEN o Persona Moral SAT 32-D. Movilización en menos de 24–48 horas a complejos fabriles en México y cobertura transfronteriza.
       </p>
 
       <!-- Banda Dual de Acción Inmediata (Above-the-Fold Thumb Zone) -->
@@ -101,28 +101,6 @@
           <span>Canalizar por WhatsApp</span>
         </a>
       </div>
-
-      <!-- Cajón Plegable Nativo de Compliance y Descargo de Marcas (Cero JS) -->
-      <details class="compliance-drawer" id="complianceDrawer">
-        <summary class="compliance-summary">
-          <span>Persona Moral SAT 32-D • STPS DC-3 • Libre de Riesgo REPSE • Aviso Legal de Marcas</span>
-        </summary>
-        <div class="compliance-content">
-          <div class="compliance-grid">
-            <div class="compliance-item">
-              <div class="compliance-item-title">Blindaje Normativo EHS (STPS)</div>
-              <p>Constancias DC-3 vigentes en mantenimiento y recipientes a presión. Equipo de Protección Personal certificado NOM-017 y bloqueo de energías peligrosas LOTO bajo NOM-029.</p>
-            </div>
-            <div class="compliance-item">
-              <div class="compliance-item-title">Facturación Corporativa (Sin Riesgo REPSE)</div>
-              <p>Facturación formal mediante Persona Moral mexicana con opinión de cumplimiento 32-D positiva. Contratos por resultado sin suministro de personal (Art. 15-D CFF). W-8BEN en USD para clientes en EE.UU.</p>
-            </div>
-          </div>
-          <div class="disclaimer-box">
-            <strong>Aviso de Marcas Registradas (Uso Leal Descriptivo / Nominative Fair Use):</strong> Sidel®, Dieffenbacher®, Rexroth®, Siemens® y Festo® son marcas registradas de sus respectivos fabricantes. La mención de estas marcas en este sitio se realiza bajo el principio de uso leal descriptivo (Art. 55 LFPPI / 15 U.S.C. § 1115(b)(4)) con fines estrictamente informativos sobre pericia y compatibilidad técnica. David Estefani y la entidad operadora prestan servicios como especialistas independientes y no representan, no están afiliados ni cuentan con patrocinio oficial de dichos fabricantes.
-          </div>
-        </div>
-      </details>
     </section>
 
     <!-- Chips Interactivos de Maquinaria y Pericia de Campo -->
@@ -146,10 +124,24 @@
         </span>
       </div>
 
-      <!-- Panel dinámico de micro-diagnóstico por equipo -->
-      <div class="machine-diag-box" id="machineDiagBox">
-        <strong id="machineDiagTitle">Equipo seleccionado:</strong>
-        <p id="machineDiagText" style="margin-top: 0.25rem; font-size: 0.84rem;"></p>
+      <!-- Ficha Técnica Reactiva en el Mismo Viewport (Patrón Linear) -->
+      <div class="machine-spec-card" id="machineSpecCard">
+        <div class="machine-spec-header">
+          <div class="machine-spec-title" id="machineSpecTitle">Equipo Seleccionado</div>
+          <span class="machine-spec-badge" id="machineSpecBadge">Inspección p/Q</span>
+        </div>
+        <p id="machineSpecSummary" style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.5rem;"></p>
+        <ul class="machine-spec-points" id="machineSpecPoints">
+          <!-- Puntos clave de inspección cargados dinámicamente -->
+        </ul>
+        <div class="machine-spec-footer">
+          <div class="machine-spec-rate">
+            Tarifa estimada: <strong id="machineSpecRate">$1,500 – $2,500 USD</strong> (Costo fijo cerrado)
+          </div>
+          <a class="machine-spec-btn" href="#fieldSymptom" id="btnMachineSpecAction">
+            <span>Solicitar Diagnóstico para este Equipo</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -157,7 +149,7 @@
     <section class="deliverables-section" aria-label="Entregables Operativos Formales">
       <div class="deliverables-header">
         <h2>Entregables Técnicos que Justifican tu Inversión ante Compras y Finanzas</h2>
-        <p>No vendemos horas abiertas ni promesas verbales. Cada intervención concluye con documentación formal de ingeniería:</p>
+        <p>Intervenciones técnicas de alcance cerrado y entregables garantizados antes de viajar:</p>
       </div>
 
       <div class="deliverables-grid">
@@ -183,13 +175,72 @@
           </div>
         </article>
       </div>
+
+      <!-- Muestra Fáctica de Reporte Técnico de Cierre (reporte_cierre_template.md) -->
+      <div class="report-sample-sheet" aria-label="Muestra Real de Reporte de Cierre">
+        <div class="report-sheet-header">
+          <div style="display: flex; align-items: center; gap: 0.65rem;">
+            <span class="report-folio-tag">#T-261007-8F2B</span>
+            <strong style="font-size: 0.95rem;">Reporte de Cierre Técnico e Inventario de Causa Raíz</strong>
+          </div>
+          <span class="report-sheet-meta">Sopladora Rotativa / Llenadora Isométrica</span>
+        </div>
+        <div class="report-telemetry-box">
+          • Variable Crítica Medida: Presión en manifold de soplado <strong>38 bar (Medida)</strong> vs. <strong>40 bar (Nominal)</strong>.<br>
+          • Hallazgo Determinista: Fuga dinámica en junta rotativa de distribución y corredera de válvula servoproporcional atascada por barniz térmico.
+        </div>
+        <div class="report-bom-table-wrapper">
+          <table class="report-bom-table">
+            <thead>
+              <tr>
+                <th>Prioridad</th>
+                <th>Componente de Falla</th>
+                <th>Refacción Homologada Abierta</th>
+                <th>Fabricante</th>
+                <th>Disponibilidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge-urgency inmediata">🔴 INMEDIATA</span></td>
+                <td>Válvula servoproporcional NG10</td>
+                <td><code>4WRPE10-W6-50L-2X/G24K0/A1M</code></td>
+                <td>Bosch Rexroth</td>
+                <td>Distribución local abierta</td>
+              </tr>
+              <tr>
+                <td><span class="badge-urgency inmediata">🔴 INMEDIATA</span></td>
+                <td>Elemento filtrante alta presión 10µm</td>
+                <td><code>0240D010BN4HC</code></td>
+                <td>Hydac</td>
+                <td>En stock distribuidor</td>
+              </tr>
+              <tr>
+                <td><span class="badge-urgency preventiva">🟡 PREVENTIVA (30d)</span></td>
+                <td>Juego de sellos Vitón alta temperatura</td>
+                <td><code>V8388-75 Parker O-Ring Kit</code></td>
+                <td>Parker Hannifin</td>
+                <td>Tiempo entrega 5 días</td>
+              </tr>
+              <tr>
+                <td><span class="badge-urgency stock">🟢 STOCK PLANTA</span></td>
+                <td>Servomotor sincrónico eje soplado</td>
+                <td><code>1FK7060-2AC71-1QA0</code></td>
+                <td>Siemens</td>
+                <td>Existente en almacén cliente</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </section>
 
     <!-- Matriz Asimétrica de ROI vs. OEM -->
     <section class="roi-section" aria-label="Comparativa de Tiempo y Costo frente a Alternativas">
-      <h2>Matriz de Decisión Operativa: Tiempo de Respuesta y Arbitraje Económico</h2>
+      <h2>Costo de Paro en Línea vs. Inversión en Diagnóstico</h2>
       <p>Cuando cada hora de paro en línea destruye miles de dólares de producción, la variable crítica es la velocidad de certidumbre:</p>
 
+      <!-- Vista Tabular para Escritorio -->
       <div class="roi-table-wrapper">
         <table class="roi-table">
           <thead>
@@ -229,8 +280,110 @@
         </table>
       </div>
 
+      <!-- Tarjetas Apiladas para Móvil (Cero Scroll Horizontal) -->
+      <div class="roi-cards-stack">
+        <article class="roi-card">
+          <div class="roi-card-header">
+            <div class="roi-card-title">Servicio de Fabricante (OEM Internacional)</div>
+            <span class="roi-card-badge">Tradicional</span>
+          </div>
+          <div class="roi-card-metrics">
+            <div class="roi-card-row">
+              <span class="roi-card-label">Movilización</span>
+              <span class="roi-card-val">2 a 3 semanas de espera</span>
+            </div>
+            <div class="roi-card-row">
+              <span class="roi-card-label">Costo</span>
+              <span class="roi-card-val">$15,000+ USD (Tarifa abierta)</span>
+            </div>
+            <div class="roi-card-row">
+              <span class="roi-card-label">Refacciones</span>
+              <span class="roi-card-val">Candado cautivo (+400% sobreprecio)</span>
+            </div>
+            <div class="roi-card-row">
+              <span class="roi-card-label">Compliance</span>
+              <span class="roi-card-val">Trámite burocrático corporativo</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="roi-card recommended">
+          <div class="roi-card-header">
+            <div class="roi-card-title">David Estefani (Intervención Técnica)</div>
+            <span class="roi-card-badge">Alta Velocidad</span>
+          </div>
+          <div class="roi-card-metrics">
+            <div class="roi-card-row">
+              <span class="roi-card-label">Movilización</span>
+              <span class="roi-card-val">&lt; 24 a 48 horas en planta</span>
+            </div>
+            <div class="roi-card-row">
+              <span class="roi-card-label">Costo</span>
+              <span class="roi-card-val">$1,500 – $2,500 USD (Costo cerrado)</span>
+            </div>
+            <div class="roi-card-row">
+              <span class="roi-card-label">Refacciones</span>
+              <span class="roi-card-val">Despiece abierto (Festo, Rexroth, SKF)</span>
+            </div>
+            <div class="roi-card-row">
+              <span class="roi-card-label">Compliance</span>
+              <span class="roi-card-val">SAT 32-D + DC-3 STPS / W-8BEN</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
       <div class="roi-highlight-box">
         Ecuación de Retorno Inmediato: Una línea de embotellado o prensa detenida cuesta típicamente entre $15,000 y $50,000 USD/hora. Una intervención de costo cerrado ($1,500 a $2,500 USD) se amortiza en los primeros 6 a 10 minutos de producción restablecida.
+      </div>
+    </section>
+
+    <!-- Sección de Vías de Aprobación para Compras (Aliado Fiduciario Institucional) -->
+    <section class="procurement-section" aria-label="Rutas de Aprobación y Facilidad de Compra">
+      <div class="procurement-header">
+        <h2>3 Vías Ágiles de Autorización para Compras y Finanzas</h2>
+        <p>Facilidades operativas diseñadas para cumplir con los estándares fiduciarios, fiscales y de auditoría de tu departamento de compras:</p>
+      </div>
+
+      <div class="procurement-routes-grid">
+        <article class="procurement-card">
+          <div>
+            <span class="procurement-route-badge">Vía 1 • Ordinaria</span>
+            <div class="procurement-card-title">Orden de Compra Directa MRO (SAP / Oracle / Ariba)</div>
+            <p class="procurement-card-desc">
+              Tarifa fija pactada ($1,500 – $2,500 USD) situada deliberadamente por debajo del umbral corporativo de licitación obligatoria ($5,000 USD). Emisión ágil de PO en tu ERP habitual.
+            </p>
+          </div>
+          <div class="procurement-card-footer">
+            Factura electrónica CFDI 4.0 / W-8BEN inmediata.
+          </div>
+        </article>
+
+        <article class="procurement-card">
+          <div>
+            <span class="procurement-route-badge">Vía 2 • Urgencia Crítica</span>
+            <div class="procurement-card-title">Tarjeta Corporativa o Fondo Fijo de Mantenimiento</div>
+            <p class="procurement-card-desc">
+              Para contingencias con paro total de línea. Autorización instantánea vía P-Card de planta con comprobante fiscal desglosado para legalización contable el mismo día.
+            </p>
+          </div>
+          <div class="procurement-card-footer">
+            Sin demora de alta de proveedor previa.
+          </div>
+        </article>
+
+        <article class="procurement-card">
+          <div>
+            <span class="procurement-route-badge">Vía 3 • Tránsito Simultáneo</span>
+            <div class="procurement-card-title">SOW Firmado + Número de Requisición Interna</div>
+            <p class="procurement-card-desc">
+              Si tu política exige alta completa de proveedor: el especialista se moviliza a planta con la requisición aprobada por Dirección de Operaciones mientras Compras procesa el expediente con nuestra opinión 32-D positiva.
+            </p>
+          </div>
+          <div class="procurement-card-footer">
+            Cero horas de producción perdidas por trámite.
+          </div>
+        </article>
       </div>
     </section>
 
@@ -296,6 +449,28 @@
           </ul>
         </div>
       </div>
+
+      <!-- Sello Plegable de Blindaje Normativo y Descargo de Marcas al Pie -->
+      <details class="compliance-drawer" id="complianceDrawer">
+        <summary class="compliance-summary">
+          <span>Persona Moral SAT 32-D • STPS DC-3 • Libre de Riesgo REPSE • Aviso Legal de Marcas</span>
+        </summary>
+        <div class="compliance-content">
+          <div class="compliance-grid">
+            <div class="compliance-item">
+              <div class="compliance-item-title">Blindaje Normativo EHS (STPS)</div>
+              <p>Constancias DC-3 vigentes en mantenimiento y recipientes a presión. Equipo de Protección Personal certificado NOM-017 y bloqueo de energías peligrosas LOTO bajo NOM-029.</p>
+            </div>
+            <div class="compliance-item">
+              <div class="compliance-item-title">Facturación Corporativa (Sin Riesgo REPSE)</div>
+              <p>Facturación formal mediante Persona Moral mexicana con opinión de cumplimiento 32-D positiva. Contratos por resultado sin suministro de personal (Art. 15-D CFF). W-8BEN en USD para clientes en EE.UU.</p>
+            </div>
+          </div>
+          <div class="disclaimer-box">
+            <strong>Aviso de Marcas Registradas (Uso Leal Descriptivo / Nominative Fair Use):</strong> Sidel®, Dieffenbacher®, Rexroth®, Siemens® y Festo® son marcas registradas de sus respectivos fabricantes. La mención de estas marcas en este sitio se realiza bajo el principio de uso leal descriptivo (Art. 55 LFPPI / 15 U.S.C. § 1115(b)(4)) con fines estrictamente informativos sobre pericia y compatibilidad técnica. David Estefani y la entidad operadora prestan servicios como especialistas independientes y no representan, no están afiliados ni cuentan con patrocinio oficial de dichos fabricantes.
+          </div>
+        </div>
+      </details>
     </section>
 
     <!-- Matriz de Cobertura Geográfica -->

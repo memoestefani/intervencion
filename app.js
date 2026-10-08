@@ -53,6 +53,76 @@
     const machineDiagBox = document.getElementById('machineDiagBox');
     const machineDiagTitle = document.getElementById('machineDiagTitle');
     const machineDiagText = document.getElementById('machineDiagText');
+    const machineSpecCard = document.getElementById('machineSpecCard');
+    const machineSpecTitle = document.getElementById('machineSpecTitle');
+    const machineSpecBadge = document.getElementById('machineSpecBadge');
+    const machineSpecSummary = document.getElementById('machineSpecSummary');
+    const machineSpecPoints = document.getElementById('machineSpecPoints');
+    const btnMachineSpecAction = document.getElementById('btnMachineSpecAction');
+
+    // Perfiles técnicos de inspección para la Ficha Reactiva
+    const machineProfiles = {
+      "Sidel": {
+        badge: isEnglish ? "High-Pressure Blowing (40 bar)" : "Soplado Alta Presión (40 bar)",
+        points: isEnglish ? [
+          "Static & dynamic pressure decay checks on 40-bar blowing manifold",
+          "Rotary distributor carousel seal & micro-leak telemetry",
+          "B&R / Siemens servo axis synchronization jitter diagnosis"
+        ] : [
+          "Verificación estática y dinámica de presurización a 40 bar en manifold de soplado",
+          "Detección de micro-fugas en carrusel y juntas rotativas de distribución",
+          "Desincronización y jitter en lazo de servomotores B&R / Siemens"
+        ]
+      },
+      "Dieffenbacher": {
+        badge: isEnglish ? "Continuous Press Hydraulics" : "Hidráulica de Prensa Continua",
+        points: isEnglish ? [
+          "Thermal frame alignment & expansion delta verification",
+          "Closed-loop proportional valve p/Q curve calibration",
+          "Return line oil aeration, varnish buildup & cavitation audit"
+        ] : [
+          "Alineación térmica y desbalance de presiones en marcos de prensado",
+          "Calibración de lazo cerrado p/Q en servoválvulas proporcionales",
+          "Saturación de retorno electrohidráulico, aireación y barniz térmico"
+        ]
+      },
+      "Rexroth": {
+        badge: isEnglish ? "Electro-Hydraulic Servo Systems" : "Sistemas Electrohidráulicos",
+        points: isEnglish ? [
+          "NG6/NG10 proportional spool response & deadband tuning",
+          "Axial piston pump swashplate displacement & ripple check",
+          "ISO 4406 fluid contamination & filter element differential pressure"
+        ] : [
+          "Respuesta dinámica de corredera y compensación de banda muerta en servoválvulas",
+          "Cavitación y pulsación de caudal en bombas de pistones axiales",
+          "Análisis de contaminación de fluido ISO 4406 y saturación de filtros"
+        ]
+      },
+      "Siemens": {
+        badge: isEnglish ? "Industrial Automation & Safety" : "Automatización y Redes",
+        points: isEnglish ? [
+          "Profinet packet jitter & cyclic bus topology fault isolation",
+          "Safety-integrated F-CPU interlock & emergency stop sequence audit",
+          "Sinamics S120 drive diagnostic buffer & encoder error readout"
+        ] : [
+          "Aislamiento de fallos intermitentes en topología de bus Profinet",
+          "Auditoría de enclavamientos de seguridad F-CPU y cadenas de paro de emergencia",
+          "Lectura profunda del búfer de fallos en variadores Sinamics S120 y encoders"
+        ]
+      },
+      "Festo": {
+        badge: isEnglish ? "Precision Servo-Pneumatics" : "Neumática Proporcional",
+        points: isEnglish ? [
+          "MPPE / VPPM proportional pressure regulator calibration",
+          "Valve manifold bus interface & air starvation troubleshooting",
+          "Cylinder seal blow-by & dynamic backpressure profiling"
+        ] : [
+          "Calibración de reguladores de presión proporcionales MPPE / VPPM",
+          "Diagnóstico de caída de caudal y estrangulamiento en terminales de válvulas",
+          "Desgaste dinámico de sellos de actuador y contrapresiones parásitas"
+        ]
+      }
+    };
 
     // Generar un folio base para la sesión
     const sessionFolio = generateTechnicalFolio();
@@ -74,21 +144,43 @@
     // Configuración inicial de WhatsApp
     syncInputsToWhatsApp();
 
-    // 4. Lógica de Chips Interactivos de Maquinaria
+    // 4. Lógica de Chips Interactivos de Maquinaria y Ficha Reactiva
     const brandChips = document.querySelectorAll('.brand-chip');
     brandChips.forEach(chip => {
       chip.addEventListener('click', () => {
         brandChips.forEach(c => c.classList.remove('selected'));
         chip.classList.add('selected');
 
-        const machineName = chip.getAttribute('data-machine');
-        const diagInfo = chip.getAttribute('data-diag');
+        const machineName = chip.getAttribute('data-machine') || '';
+        const diagInfo = chip.getAttribute('data-diag') || '';
 
         if (equipmentInput && machineName) {
           equipmentInput.value = machineName;
           syncInputsToWhatsApp();
         }
 
+        // Determinar perfil técnico para la Ficha Reactiva
+        let profileKey = "Sidel";
+        if (machineName.includes("Dieffenbacher")) profileKey = "Dieffenbacher";
+        else if (machineName.includes("Rexroth")) profileKey = "Rexroth";
+        else if (machineName.includes("Siemens")) profileKey = "Siemens";
+        else if (machineName.includes("Festo")) profileKey = "Festo";
+
+        const profile = machineProfiles[profileKey];
+
+        if (machineSpecCard) {
+          if (machineSpecTitle) machineSpecTitle.textContent = machineName;
+          if (machineSpecBadge && profile) machineSpecBadge.textContent = profile.badge;
+          if (machineSpecSummary) machineSpecSummary.textContent = diagInfo;
+
+          if (machineSpecPoints && profile) {
+            machineSpecPoints.innerHTML = profile.points.map(pt => `<li>${pt}</li>`).join('');
+          }
+
+          machineSpecCard.classList.add('visible');
+        }
+
+        // Soporte retrocompatible
         if (machineDiagBox && machineDiagText && diagInfo) {
           if (machineDiagTitle) {
             machineDiagTitle.textContent = isEnglish
@@ -100,6 +192,16 @@
         }
       });
     });
+
+    // Acción directa desde la Ficha Reactiva
+    if (btnMachineSpecAction) {
+      btnMachineSpecAction.addEventListener('click', () => {
+        if (symptomInput) {
+          symptomInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          symptomInput.focus();
+        }
+      });
+    }
 
     // 5. Manejo de Envío Asíncrono con Web3Forms y Honeypot Anti-Bot
     if (intakeForm) {
